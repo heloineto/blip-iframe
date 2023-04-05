@@ -1,0 +1,27 @@
+{
+    "name": "blip-iframe-messages",
+    "version": "0.0.1",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "build": "tsc",
+        "test": "jest"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/heloineto/blip-iframe-messages.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/heloineto/blip-iframe-messages/issues"
+    },
+    "homepage": "https://github.com/heloineto/blip-iframe-messages#readme",
+    "devDependencies": {
+        "@types/jest": "^29.5.0",
+        "jest": "^29.5.0",
+        "ts-jest": "^29.1.0",
+        "typescript": "^5.0.3"
+    }
+}
