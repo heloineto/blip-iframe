@@ -3,7 +3,7 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
 export type Permissions = 'write';
 export type PermissionAreas = 'team';
 
-const getHasPermission = async (
+const hasPermissions = async (
     permission: Permissions,
     area: PermissionAreas
 ) => {
@@ -14,7 +14,7 @@ const getHasPermission = async (
                 permissionType: permission,
                 customArea: area
             }
-        })) as WrappedGetHasPermissionResponse;
+        })) as WrappedHasPermissionResponse;
 
         return { response, error: null };
     } catch (error) {
@@ -22,7 +22,7 @@ const getHasPermission = async (
     }
 };
 
-export interface RequestHasPermission {
+export interface HasPermissionRequest {
     action: 'hasPermissions';
     content: {
         permissionType: Permissions;
@@ -30,11 +30,11 @@ export interface RequestHasPermission {
     };
 }
 
-export interface WrappedGetHasPermissionResponse {
-    response: GetHasPermissionResponse;
+export interface WrappedHasPermissionResponse {
+    response: HasPermissionResponse;
     trackingProperties: { id: string };
 }
 
-export type GetHasPermissionResponse = boolean;
+export type HasPermissionResponse = boolean;
 
-export default getHasPermission;
+export default hasPermissions;

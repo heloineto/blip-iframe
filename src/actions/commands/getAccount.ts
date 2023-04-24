@@ -1,6 +1,6 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
-const getUser = async () => {
+const getAccount = async () => {
     try {
         const { response } = (await IframeMessageProxy.sendMessage({
             action: 'sendCommand',
@@ -11,7 +11,7 @@ const getUser = async () => {
                 },
                 destination: 'BlipService'
             }
-        })) as WrappedGetUserResponse;
+        })) as WrappedGetAccountResponse;
 
         return { response, error: null };
     } catch (error) {
@@ -19,12 +19,12 @@ const getUser = async () => {
     }
 };
 
-export interface WrappedGetUserResponse {
-    response: GetUserResponse;
+export interface WrappedGetAccountResponse {
+    response: GetAccountResponse;
     trackingProperties: { id: string };
 }
 
-export interface GetUserResponse {
+export interface GetAccountResponse {
     fullName: string;
     alternativeAccount: string;
     identity: string;
@@ -41,4 +41,4 @@ export interface GetUserResponse {
     creationDate: string;
 }
 
-export default getUser;
+export default getAccount;

@@ -13,7 +13,7 @@ const getApplication = async (fullIdentity?: string | null) => {
     }
 };
 
-export interface RequestGetApplication {
+export interface GetApplicationRequest {
     action: 'getApplication';
     content: string | null;
 }

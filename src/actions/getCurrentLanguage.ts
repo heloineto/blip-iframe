@@ -12,7 +12,7 @@ const getCurrentLanguage = async () => {
     }
 };
 
-export interface RequestGetCurrentLanguage {
+export interface GetCurrentLanguageRequest {
     action: 'getCurrentLanguage';
 }
 

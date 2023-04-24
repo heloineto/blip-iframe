@@ -1,13 +1,13 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
-const segment = async (content: RequestSegment['content']) => {
+const segment = async (content: SegmentRequest['content']) => {
     await IframeMessageProxy.sendMessage({
         action: 'segment',
         content
     });
 };
 
-export interface RequestSegment {
+export interface SegmentRequest {
     action: 'segment';
     content: {
         method: 'createApplicationTrack';

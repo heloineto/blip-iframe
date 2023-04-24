@@ -1,6 +1,6 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
-const sendCommand = async (content: RequestSendCommand['content']) => {
+const sendCommand = async (content: SendCommandRequest['content']) => {
     try {
         const { response } = (await IframeMessageProxy.sendMessage({
             action: 'sendCommand',
@@ -13,7 +13,7 @@ const sendCommand = async (content: RequestSendCommand['content']) => {
     }
 };
 
-export interface RequestSendCommand {
+export interface SendCommandRequest {
     action: 'sendCommand';
     content: {
         destination: 'BlipService' | 'MessagingHubService';
