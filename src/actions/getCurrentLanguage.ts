@@ -1,5 +1,8 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
+/**
+ * Get the language of the current contract
+ */
 const getCurrentLanguage = async () => {
     try {
         const { response } = (await IframeMessageProxy.sendMessage({

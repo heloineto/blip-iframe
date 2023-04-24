@@ -1,5 +1,9 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
+/**
+ * Get various application details (see response type)
+ * @param fullIdentity The full identity of the application to get details for
+ */
 const getApplication = async (fullIdentity?: string | null) => {
     try {
         const { response } = (await IframeMessageProxy.sendMessage({
