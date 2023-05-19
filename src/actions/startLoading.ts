@@ -1,11 +1,11 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
 const startLoading = async () => {
-    await IframeMessageProxy.sendMessage({ action: 'startLoading' });
+  await IframeMessageProxy.sendMessage({ action: 'startLoading' });
 };
 
 export interface StartLoadingRequest {
-    action: 'startLoading';
+  action: 'startLoading';
 }
 
 export default startLoading;

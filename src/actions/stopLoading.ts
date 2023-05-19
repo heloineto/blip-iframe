@@ -1,11 +1,11 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
 const stopLoading = async () => {
-    await IframeMessageProxy.sendMessage({ action: 'stopLoading' });
+  await IframeMessageProxy.sendMessage({ action: 'stopLoading' });
 };
 
 export interface StopLoadingRequest {
-    action: 'stopLoading';
+  action: 'stopLoading';
 }
 
 export default stopLoading;

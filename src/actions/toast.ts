@@ -7,21 +7,21 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  * @param content
  */
 const toast = async (content: ToastRequest['content']) => {
-    await IframeMessageProxy.sendMessage({
-        action: 'toast',
-        content
-    });
+  await IframeMessageProxy.sendMessage({
+    action: 'toast',
+    content
+  });
 };
 
 export type ToastTypes = 'info' | 'success' | 'warning' | 'danger' | 'refresh';
 export interface ToastRequest {
-    action: 'toast';
-    content: {
-        type: ToastTypes;
-        message: string;
-        title?: string;
-        duration?: number;
-    };
+  action: 'toast';
+  content: {
+    type: ToastTypes;
+    message: string;
+    title?: string;
+    duration?: number;
+  };
 }
 
 export default toast;
