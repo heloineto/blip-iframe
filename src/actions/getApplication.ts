@@ -23,7 +23,7 @@ export interface GetApplicationRequest {
 }
 
 export interface WrappedGetApplicationResponse {
-  response: Response;
+  response: GetApplicationResponse;
   trackingProperties: { id: string };
 }
 

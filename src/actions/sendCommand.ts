@@ -17,7 +17,7 @@ export interface SendCommandRequest {
   action: 'sendCommand';
   content: {
     timeout?: number;
-    destination: 'BlipService' | 'MessagingHubService';
+    destination?: 'BlipService' | 'MessagingHubService';
     command: {
       method: 'get' | 'set' | 'delete' | 'observe' | 'subscribe';
       to?: string;
