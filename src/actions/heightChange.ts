@@ -8,17 +8,15 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  * pass 0 as the height
  * @param height The height of the extension's iframe parent
  */
-const heightChange = async (height: number) => {
+export default async function heightChange(height: number) {
     await IframeMessageProxy.sendMessage({
         action: 'heightChange',
         content: height,
-        fireAndForget: true
+        fireAndForget: true,
     });
-};
+}
 
 export interface HeightChangeRequest {
     action: 'heightChange';
     content: number;
 }
-
-export default heightChange;

@@ -1,7 +1,7 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 import { PORTAL_URL } from '../../constants';
 
-const getBot = async (fullIdentity: string) => {
+export default async function getBot(fullIdentity: string) {
     try {
         const { response } = (await IframeMessageProxy.sendMessage({
             action: 'sendCommand',
@@ -10,16 +10,16 @@ const getBot = async (fullIdentity: string) => {
                 command: {
                     method: 'get',
                     to: PORTAL_URL,
-                    uri: `/applications/${fullIdentity}`
-                }
-            }
+                    uri: `/applications/${fullIdentity}`,
+                },
+            },
         })) as WrappedGetBotResponse;
 
         return { response, error: null };
     } catch (error) {
         return { response: null, error };
     }
-};
+}
 
 export interface WrappedGetBotResponse {
     response: GetBotResponse;
@@ -27,5 +27,3 @@ export interface WrappedGetBotResponse {
 }
 
 export type GetBotResponse = unknown;
-
-export default getBot;

@@ -5,12 +5,12 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  * a title, body, confirm and cancel button
  * @param content
  */
-const showModal = async (content: ShowModalRequest['content']) => {
+export default async function showModal(content: ShowModalRequest['content']) {
     await IframeMessageProxy.sendMessage({
         action: 'showModal',
-        content
+        content,
     });
-};
+}
 
 export interface ShowModalRequest {
     action: 'showModal';
@@ -21,5 +21,3 @@ export interface ShowModalRequest {
         cancel: string;
     };
 }
-
-export default showModal;

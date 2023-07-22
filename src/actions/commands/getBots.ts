@@ -2,7 +2,7 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
 
 const PORTAL_URL = 'postmaster@portal.blip.ai';
 
-const getBots = async (tenantId?: string) => {
+export default async function getBots(tenantId?: string) {
     try {
         const { response } = await IframeMessageProxy.sendMessage({
             action: 'sendCommand',
@@ -15,16 +15,16 @@ const getBots = async (tenantId?: string) => {
                     uri:
                         tenantId === undefined
                             ? '/applications'
-                            : `/tenants/${tenantId}/applications`
-                }
-            }
+                            : `/tenants/${tenantId}/applications`,
+                },
+            },
         });
 
         return { response, error: null };
     } catch (error) {
         return { response: null, error };
     }
-};
+}
 
 export interface GetBotsResponse {
     total: number;
@@ -34,5 +34,3 @@ export interface GetBotsResponse {
         imageUri?: string;
     }[];
 }
-
-export default getBots;

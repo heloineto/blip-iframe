@@ -1,17 +1,19 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
-const sendCommand = async (content: SendCommandRequest['content']) => {
+export default async function sendCommand(
+    content: SendCommandRequest['content']
+) {
     try {
         const { response } = (await IframeMessageProxy.sendMessage({
             action: 'sendCommand',
-            content
+            content,
         })) as WrappedSendCommandResponse;
 
         return { response, error: null };
     } catch (error) {
         return { response: null, error };
     }
-};
+}
 
 export interface SendCommandRequest {
     action: 'sendCommand';
@@ -31,5 +33,3 @@ export interface WrappedSendCommandResponse {
 }
 
 export type SendCommandResponse = unknown;
-
-export default sendCommand;

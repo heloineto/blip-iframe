@@ -6,12 +6,12 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  *
  * @param content
  */
-const toast = async (content: ToastRequest['content']) => {
+export default async function toast(content: ToastRequest['content']) {
     await IframeMessageProxy.sendMessage({
         action: 'toast',
-        content
+        content,
     });
-};
+}
 
 export type ToastTypes = 'info' | 'success' | 'warning' | 'danger' | 'refresh';
 export interface ToastRequest {
@@ -23,5 +23,3 @@ export interface ToastRequest {
         duration?: number;
     };
 }
-
-export default toast;

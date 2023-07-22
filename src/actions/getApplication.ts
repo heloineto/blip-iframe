@@ -4,18 +4,18 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  * Get various application details (see response type)
  * @param fullIdentity The full identity of the application to get details for
  */
-const getApplication = async (fullIdentity?: string | null) => {
+export default async function getApplication(fullIdentity?: string | null) {
     try {
         const { response } = (await IframeMessageProxy.sendMessage({
             action: 'getApplication',
-            content: fullIdentity ?? null
+            content: fullIdentity ?? null,
         })) as WrappedGetApplicationResponse;
 
         return { response, error: null };
     } catch (error) {
         return { response: null, error };
     }
-};
+}
 
 export interface GetApplicationRequest {
     action: 'getApplication';
@@ -47,5 +47,3 @@ export interface GetApplicationResponse {
     channels: unknown[];
     applicationJson: Record<string, unknown>;
 }
-
-export default getApplication;

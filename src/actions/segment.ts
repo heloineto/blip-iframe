@@ -1,11 +1,11 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
-const segment = async (content: SegmentRequest['content']) => {
+export default async function segment(content: SegmentRequest['content']) {
     await IframeMessageProxy.sendMessage({
         action: 'segment',
-        content
+        content,
     });
-};
+}
 
 export interface SegmentRequest {
     action: 'segment';
@@ -17,5 +17,3 @@ export interface SegmentRequest {
         };
     };
 }
-
-export default segment;
