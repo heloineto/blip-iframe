@@ -1,36 +1,36 @@
 {
-    "name": "blip-iframe",
-    "version": "0.0.1",
-    "description": "A type safe and intuitive API to communicate with the Blip platform.",
-    "main": "lib/index.js",
-    "types": "lib/index.d.ts",
-    "scripts": {
-        "build": "tsc",
-        "prepare": "npm run build"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/heloineto/blip-iframe.git"
-    },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/heloineto/blip-iframe/issues"
-    },
-    "homepage": "https://github.com/heloineto/blip-iframe#readme",
-    "devDependencies": {
-        "typescript": "^5.0.3"
-    },
-    "dependencies": {
-        "iframe-message-proxy": "^1.2.0"
-    },
-    "prettier": {
-        "singleQuote": true,
-        "trailingComma": "es5",
-        "endOfLine": "auto",
-        "tabWidth": 4,
-        "useTabs": false,
-        "semi": true
-    }
+  "name": "blip-iframe",
+  "version": "0.0.1",
+  "description": "A type safe and intuitive API to communicate with the Blip platform.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",
+  "author": "Heloi Neto",
+  "scripts": {
+    "build": "tsc",
+    "prepare": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heloineto/blip-iframe.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/heloineto/blip-iframe/issues"
+  },
+  "homepage": "https://github.com/heloineto/blip-iframe#readme",
+  "devDependencies": {
+    "typescript": "^5.0.3"
+  },
+  "dependencies": {
+    "iframe-message-proxy": "^1.2.0"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "endOfLine": "auto",
+    "tabWidth": 2,
+    "useTabs": false,
+    "semi": true
+  }
 }

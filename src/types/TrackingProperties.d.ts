@@ -1,5 +1,5 @@
 interface TrackingProperties {
-    id: string;
+  id: string;
 }
 
 export default TrackingProperties;

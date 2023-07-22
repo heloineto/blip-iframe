@@ -8,26 +8,28 @@ import showModal from './actions/showModal';
 import startLoading from './actions/startLoading';
 import stopLoading from './actions/stopLoading';
 import toast from './actions/toast';
-import getAccount from './actions/commands/getAccount';
-import getBot from './actions/commands/getBot';
-import getBots from './actions/commands/getBots';
+import getAccount from './commands/getAccount';
+import getBot from './commands/getBot';
+import getBots from './commands/getBots';
+import getPublishedFlow from './commands/getPublishedFlow';
 
 const iframe = {
-    getApplication,
-    getCurrentLanguage,
-    hasPermissions,
-    heightChange,
-    segment,
-    sendCommand,
-    showModal,
-    startLoading,
-    stopLoading,
-    toast,
-    commands: {
-        getAccount,
-        getBot,
-        getBots,
-    },
+  getApplication,
+  getCurrentLanguage,
+  hasPermissions,
+  heightChange,
+  segment,
+  sendCommand,
+  showModal,
+  startLoading,
+  stopLoading,
+  toast,
+  commands: {
+    getAccount,
+    getBot,
+    getBots,
+    getPublishedFlow,
+  },
 };
 
 export default iframe;
@@ -41,6 +43,7 @@ export type * from './actions/showModal';
 export type * from './actions/startLoading';
 export type * from './actions/stopLoading';
 export type * from './actions/toast';
-export type * from './actions/commands/getAccount';
-export type * from './actions/commands/getBot';
-export type * from './actions/commands/getBots';
+export type * from './commands/getAccount';
+export type * from './commands/getBot';
+export type * from './commands/getBots';
+export type * from './commands/getPublishedFlow';

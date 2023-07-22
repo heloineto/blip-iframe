@@ -4,35 +4,35 @@ export type Permissions = 'write';
 export type PermissionAreas = 'team';
 
 export default async function hasPermissions(
-    permission: Permissions,
-    area: PermissionAreas
+  permission: Permissions,
+  area: PermissionAreas
 ) {
-    try {
-        const { response } = (await IframeMessageProxy.sendMessage({
-            action: 'hasPermissions',
-            content: {
-                permissionType: permission,
-                customArea: area,
-            },
-        })) as WrappedHasPermissionResponse;
+  try {
+    const { response } = (await IframeMessageProxy.sendMessage({
+      action: 'hasPermissions',
+      content: {
+        permissionType: permission,
+        customArea: area,
+      },
+    })) as WrappedHasPermissionResponse;
 
-        return { response, error: null };
-    } catch (error) {
-        return { response: null, error };
-    }
+    return { response, error: null };
+  } catch (error) {
+    return { response: null, error };
+  }
 }
 
 export interface HasPermissionRequest {
-    action: 'hasPermissions';
-    content: {
-        permissionType: Permissions;
-        customArea: PermissionAreas;
-    };
+  action: 'hasPermissions';
+  content: {
+    permissionType: Permissions;
+    customArea: PermissionAreas;
+  };
 }
 
 export interface WrappedHasPermissionResponse {
-    response: HasPermissionResponse;
-    trackingProperties: { id: string };
+  response: HasPermissionResponse;
+  trackingProperties: { id: string };
 }
 
 export type HasPermissionResponse = boolean;

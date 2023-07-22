@@ -7,19 +7,19 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  * @param content
  */
 export default async function toast(content: ToastRequest['content']) {
-    await IframeMessageProxy.sendMessage({
-        action: 'toast',
-        content,
-    });
+  await IframeMessageProxy.sendMessage({
+    action: 'toast',
+    content,
+  });
 }
 
 export type ToastTypes = 'info' | 'success' | 'warning' | 'danger' | 'refresh';
 export interface ToastRequest {
-    action: 'toast';
-    content: {
-        type: ToastTypes;
-        message: string;
-        title?: string;
-        duration?: number;
-    };
+  action: 'toast';
+  content: {
+    type: ToastTypes;
+    message: string;
+    title?: string;
+    duration?: number;
+  };
 }
