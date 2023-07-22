@@ -1,3 +1,4 @@
+import { IframeMessageProxy } from 'iframe-message-proxy';
 import getApplication from './actions/getApplication';
 import getCurrentLanguage from './actions/getCurrentLanguage';
 import hasPermissions from './actions/hasPermissions';
@@ -14,6 +15,7 @@ import getAccount from './commands/getAccount';
 import getBot from './commands/getBot';
 import getBots from './commands/getBots';
 import getPublishedFlow from './commands/getPublishedFlow';
+import IframeMessageProxyType from './types/iframe-message';
 
 const iframe = {
   getApplication,
@@ -34,6 +36,7 @@ const iframe = {
     getBots,
     getPublishedFlow,
   },
+  imp: IframeMessageProxy as IframeMessageProxyType,
 };
 
 export default iframe;
