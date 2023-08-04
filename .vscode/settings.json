@@ -8,5 +8,6 @@
   "files.exclude": {
     ".nyc_output": true
   },
-  "editor.formatOnSave": true
+  "editor.formatOnSave": true,
+  "cSpell.words": ["Heloi", "iframe", "tsup"]
 }

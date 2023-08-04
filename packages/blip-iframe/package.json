@@ -5,12 +5,17 @@
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "author": "Heloi Neto",
+  "sideEffects": false,
   "license": "MIT",
+  "files": [
+    "dist/**"
+  ],
+  "author": "Heloi Neto",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
-    "prepare": "npm run build",
-    "clean": "rm -rf dist"
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
   },
   "repository": {
     "type": "git",
@@ -36,5 +41,8 @@
     "tabWidth": 2,
     "useTabs": false,
     "semi": true
+  },
+  "publishConfig": {
+    "access": "public"
   }
 }
