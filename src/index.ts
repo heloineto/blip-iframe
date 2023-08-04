@@ -15,9 +15,11 @@ import getAccount from './commands/getAccount';
 import getBot from './commands/getBot';
 import getBots from './commands/getBots';
 import getPublishedFlow from './commands/getPublishedFlow';
+import setVariable from './bucket/setVariable';
+import getVariable from './bucket/getVariable';
 import IframeMessageProxyType from './types/iframe-message';
 
-const iframe = {
+const actions = {
   getApplication,
   getCurrentLanguage,
   hasPermissions,
@@ -30,12 +32,25 @@ const iframe = {
   startLoading,
   stopLoading,
   toast,
-  commands: {
-    getAccount,
-    getBot,
-    getBots,
-    getPublishedFlow,
-  },
+};
+
+const commands = {
+  getAccount,
+  getBot,
+  getBots,
+  getPublishedFlow,
+};
+
+const bucket = {
+  setVariable,
+  getVariable,
+};
+
+const iframe = {
+  ...actions,
+  actions,
+  commands,
+  bucket,
   imp: IframeMessageProxy as IframeMessageProxyType,
 };
 

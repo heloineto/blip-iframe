@@ -24,6 +24,8 @@ export interface SendCommandRequest {
       method: 'get' | 'set' | 'delete' | 'observe' | 'subscribe';
       to?: string;
       uri: string;
+      type?: string;
+      [key: string]: unknown;
     };
   };
 }

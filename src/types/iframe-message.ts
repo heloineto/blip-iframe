@@ -26,7 +26,7 @@ export interface Options {
   }) => boolean;
 }
 
-interface TrackingProperties {
+export interface TrackingProperties {
   id: string;
 }
 
