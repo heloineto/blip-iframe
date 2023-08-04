@@ -2,8 +2,9 @@
   "name": "blip-iframe",
   "version": "0.0.4",
   "description": "A type safe and intuitive API to communicate with the Blip platform.",
-  "main": "lib/index.js",
-  "types": "lib/index.d.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
   "author": "Heloi Neto",
   "scripts": {
     "build": "tsup src/index.ts --format esm,cjs --dts",
