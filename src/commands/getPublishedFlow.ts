@@ -1,7 +1,5 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
-const URI = '/buckets/blip_portal:builder_published_flow';
-
 export default async function getPublishedFlow() {
   try {
     const { response } = (await IframeMessageProxy.sendMessage({
@@ -9,7 +7,7 @@ export default async function getPublishedFlow() {
       content: {
         command: {
           method: 'get',
-          uri: URI,
+          uri: '/buckets/blip_portal:builder_published_flow',
         },
       },
     })) as WrappedGetPublishedFlowResponse;

@@ -1,5 +1,4 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
-import { PORTAL_URL } from '../constants';
 
 export default async function getBot(fullIdentity: string) {
   try {
@@ -9,7 +8,7 @@ export default async function getBot(fullIdentity: string) {
         destination: 'BlipService',
         command: {
           method: 'get',
-          to: PORTAL_URL,
+          to: 'postmaster@portal.blip.ai',
           uri: `/applications/${fullIdentity}`,
         },
       },

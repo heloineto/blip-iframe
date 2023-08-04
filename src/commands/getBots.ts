@@ -1,7 +1,5 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
-const PORTAL_URL = 'postmaster@portal.blip.ai';
-
 export default async function getBots(tenantId?: string) {
   try {
     const { response } = await IframeMessageProxy.sendMessage({
@@ -11,7 +9,7 @@ export default async function getBots(tenantId?: string) {
         destination: 'BlipService',
         command: {
           method: 'get',
-          to: PORTAL_URL,
+          to: 'postmaster@portal.blip.ai',
           uri:
             tenantId === undefined
               ? '/applications'
