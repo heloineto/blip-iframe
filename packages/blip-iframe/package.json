@@ -15,7 +15,8 @@
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
     "lint": "eslint \"src/**/*.ts*\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist"
+    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
+    "prepublishOnly": "rm -rf dist && npm run build"
   },
   "repository": {
     "type": "git",
