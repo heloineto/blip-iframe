@@ -1,6 +1,8 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
-export default async function getVariable<TResponse>(variableKey: string) {
+export default async function getBucketVariable<TResponse>(
+  variableKey: string
+) {
   try {
     const response = (await IframeMessageProxy.sendMessage({
       action: 'sendCommand',
@@ -11,10 +13,15 @@ export default async function getVariable<TResponse>(variableKey: string) {
           uri: `/buckets/${variableKey}`,
         },
       },
-    })) as TResponse;
+    })) as WrappedGetBucketVariableResponse<TResponse>;
 
     return { response, error: null };
   } catch (error) {
     return { response: null, error };
   }
+}
+
+export interface WrappedGetBucketVariableResponse<TResponse> {
+  response: TResponse;
+  trackingProperties: { id: string };
 }

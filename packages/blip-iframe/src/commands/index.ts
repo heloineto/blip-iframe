@@ -1,15 +1,14 @@
-import getAccount from './getAccount';
-import getAttendants from './getAttendants';
-import getBot from './getBot';
-import getBots from './getBots';
-import getPublishedFlow from './getPublishedFlow';
+export * from './getAccount';
+export { default as getAccount } from './getAccount';
 
-const commands = {
-  getAccount,
-  getBot,
-  getBots,
-  getPublishedFlow,
-  getAttendants,
-};
+export * from './getAttendants';
+export { default as getAttendants } from './getAttendants';
 
-export default commands;
+export * from './getBot';
+export { default as getBot } from './getBot';
+
+export * from './getBots';
+export { default as getBots } from './getBots';
+
+export * from './getPublishedFlow';
+export { default as getPublishedFlow } from './getPublishedFlow';

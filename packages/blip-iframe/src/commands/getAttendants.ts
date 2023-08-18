@@ -1,5 +1,6 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
+// TODO: Fix, this does not work
 export default async function getAttendants() {
   try {
     const { response } = (await IframeMessageProxy.sendMessage({
