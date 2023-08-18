@@ -12,6 +12,11 @@ const Home = () => {
         label="iframe.actions.getCurrentLanguage()"
         command={() => iframe.actions.getCurrentLanguage()}
       />
+
+      <Command
+        label="iframe.commands.getAttendants()"
+        command={() => iframe.commands.getAttendants()}
+      />
     </div>
   );
 };

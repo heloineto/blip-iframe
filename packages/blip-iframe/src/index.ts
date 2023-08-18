@@ -11,12 +11,9 @@ import showNavbar from './actions/showNavbar';
 import startLoading from './actions/startLoading';
 import stopLoading from './actions/stopLoading';
 import toast from './actions/toast';
-import getAccount from './commands/getAccount';
-import getBot from './commands/getBot';
-import getBots from './commands/getBots';
-import getPublishedFlow from './commands/getPublishedFlow';
-import setVariable from './bucket/setVariable';
 import getVariable from './bucket/getVariable';
+import setVariable from './bucket/setVariable';
+import commands from './commands';
 import IframeMessageProxyType from './types/iframe-message';
 
 const actions = {
@@ -32,13 +29,6 @@ const actions = {
   startLoading,
   stopLoading,
   toast,
-};
-
-const commands = {
-  getAccount,
-  getBot,
-  getBots,
-  getPublishedFlow,
 };
 
 const bucket = {
@@ -71,3 +61,8 @@ export type * from './commands/getAccount';
 export type * from './commands/getBot';
 export type * from './commands/getBots';
 export type * from './commands/getPublishedFlow';
+
+// import * as z from "./external";
+// export * from "./external";
+// export { z };
+// export default z;
