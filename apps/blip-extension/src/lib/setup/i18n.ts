@@ -1,4 +1,4 @@
-import iframe from 'blip-iframe';
+import { getCurrentLanguage } from 'blip-iframe';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import enTranslation from '../../assets/locales/en/translation.json';
@@ -11,7 +11,7 @@ void i18n
     type: 'languageDetector',
     async: true,
     detect: async (callback: (language: string) => void) => {
-      const { response } = await iframe.getCurrentLanguage();
+      const { response } = await getCurrentLanguage();
 
       const fallback = 'pt';
       const language = response ?? fallback;

@@ -1,22 +1,23 @@
-import iframe from 'blip-iframe';
-import Command from './components/Command';
+import { IframeMessageProxy } from 'blip-iframe';
 
 const Home = () => {
   return (
     <div>
+      <button
+        type="button"
+        onClick={() => {
+          IframeMessageProxy.sendMessage({});
+        }}
+      >
+        Publish Flow
+      </button>
+      {/* <Command label="getApplication()" command={() => getApplication()} />
       <Command
-        label="iframe.actions.getApplication()"
-        command={() => iframe.actions.getApplication()}
-      />
-      <Command
-        label="iframe.actions.getCurrentLanguage()"
-        command={() => iframe.actions.getCurrentLanguage()}
-      />
-
-      <Command
-        label="iframe.commands.getAttendants()"
-        command={() => iframe.commands.getAttendants()}
-      />
+        label="getCurrentLanguage()"
+        command={() => getCurrentLanguage()}
+      /> */}
+      {/* <Command label="getAttendants()" command={() => getAttendants()} /> */}
+      {/* <Command label="getBots()" command={() => getBots('csgrowth')} /> */}
     </div>
   );
 };

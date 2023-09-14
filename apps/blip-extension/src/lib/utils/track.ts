@@ -1,4 +1,4 @@
-import iframe from 'blip-iframe';
+import { segment } from 'blip-iframe';
 import config from '../../config';
 import isDev from './isDev';
 
@@ -13,7 +13,7 @@ const track = async <TKey extends string>(
   const trackEvent = `${config.segment.prefix}-${eventName}`;
   const payload = { ...properties, environment: config.env };
 
-  await iframe.segment({
+  await segment({
     method: 'createApplicationTrack',
     parameters: { trackEvent, payload },
   });

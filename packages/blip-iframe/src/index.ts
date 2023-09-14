@@ -1,4 +1,8 @@
-export { IframeMessageProxy } from 'iframe-message-proxy';
+import { IframeMessageProxy as _IframeMessageProxy } from 'iframe-message-proxy';
+import { IframeMessageProxyType } from './types';
+
+export const IframeMessageProxy = _IframeMessageProxy as IframeMessageProxyType;
 export * from './actions';
 export * from './bucket';
 export * from './commands';
+export * from './types';

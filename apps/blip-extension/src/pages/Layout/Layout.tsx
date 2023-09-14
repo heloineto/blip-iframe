@@ -1,8 +1,6 @@
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import track from '../../lib/utils/track';
-import Header from './components/Header';
-
 const Layout = () => {
   const location = useLocation();
 
@@ -15,7 +13,6 @@ const Layout = () => {
 
   return (
     <div className="flex h-screen flex-col overflow-auto px-10">
-      <Header />
       <Outlet />
     </div>
   );

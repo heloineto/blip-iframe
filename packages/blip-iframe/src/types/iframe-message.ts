@@ -1,7 +1,7 @@
 import Request from './request';
 
-interface IframeMessageProxy {
-  config: (options?: Options) => IframeMessageProxy;
+export interface IframeMessageProxyType {
+  config: (options?: Options) => IframeMessageProxyType;
   listen: () => void;
   stopListen: () => void;
   sendMessage: (payload: Message) => Promise<{
@@ -29,5 +29,3 @@ export interface Options {
 export interface TrackingProperties {
   id: string;
 }
-
-export default IframeMessageProxy;
