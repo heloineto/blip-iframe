@@ -9,5 +9,5 @@
     ".nyc_output": true
   },
   "editor.formatOnSave": true,
-  "cSpell.words": ["Heloi", "iframe", "tsup"]
+  "cSpell.words": ["Heloi", "iframe", "mantine", "tsup"]
 }
