@@ -1,7 +1,6 @@
-import { useQuery } from '@tanstack/react-query';
 import type { GetTicketsResponse } from 'blip-iframe';
-import { blip } from 'blip-iframe';
-import blipQueryFn from '../utils/queryFn';
+import useAttendant from '../queries/useAttendant';
+import useContact from '../queries/useContact';
 
 export default function TicketCard({
   ticket,
@@ -11,15 +10,8 @@ export default function TicketCard({
   const contactId = ticket.customerIdentity;
   const attendantId = ticket.agentIdentity;
 
-  const contactQuery = useQuery({
-    queryKey: ['getContact', contactId],
-    queryFn: () => blipQueryFn(blip.getContact({ identity: contactId })),
-  });
-
-  const attendantQuery = useQuery({
-    queryKey: ['getContact', attendantId],
-    queryFn: () => blipQueryFn(blip.getAttendant({ identity: attendantId })),
-  });
+  const contactQuery = useContact({ identity: contactId });
+  const attendantQuery = useAttendant({ identity: attendantId });
 
   if (contactQuery.isLoading || attendantQuery.isLoading) {
     return <div>Loading...</div>;

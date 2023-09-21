@@ -1,7 +1,5 @@
-import { useQuery } from '@tanstack/react-query';
-import { blip } from 'blip-iframe';
 import type { Dispatch, SetStateAction } from 'react';
-import blipQueryFn from '../utils/queryFn';
+import useTickets from '../queries/useTickets';
 import TicketCard from './TicketCard';
 
 interface Props {
@@ -9,10 +7,7 @@ interface Props {
 }
 
 export default function TicketList({ setSelectedTicketId }: Props) {
-  const ticketsQuery = useQuery({
-    queryKey: ['getTickets'],
-    queryFn: () => blipQueryFn(blip.getTickets()),
-  });
+  const ticketsQuery = useTickets();
 
   if (ticketsQuery.isLoading) return <div>Loading...</div>;
   if (ticketsQuery.isError) return <div>Error</div>;

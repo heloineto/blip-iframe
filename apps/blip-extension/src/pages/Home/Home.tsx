@@ -38,21 +38,43 @@ const Home = () => {
         }
       />
       <Command
+        label="getTunnelAccount()"
+        command={() =>
+          blip.getTunnelAccount({
+            identity: '3394098f-47a6-48ec-a154-d13484e511c8@tunnel.msging.net',
+          })
+        }
+      />
+
+      <Command
         label="TEST"
         command={async () => {
-          const identity = 'heloi.neto%40blip.ai@blip.ai';
-          const [name, domain] = identity.split('@');
+          // getFromOriginator
+          // :
+          // false
+          // identity
+          // :
+          // "73990c0f-85af-41e0-b206-fdc6ca4a33fe.solutionslabrouter@0mn.io"
+          // messageId
+          // :
+          // undefined
+          // ownerIdentity
+          // :
+          // "solutionslabrouter@msging.net"
+          // skipDate
+          // :
+          // undefined
+          // take
+          // :
+          // 20
 
-          if (!name || !domain) {
-            throw new Error('Invalid identity');
-          }
-
-          return await blip.sendCommand({
-            command: {
-              method: 'get',
-              to: `postmaster@${domain}`,
-              uri: `lime://${domain}/accounts/${encodeURIComponent(name)}`,
-            },
+          return await blip.getThreads({
+            // getFromOriginator: false,
+            identity:
+              '73990c0f-85af-41e0-b206-fdc6ca4a33fe.solutionslabrouter@0mn.io',
+            ownerIdentity: 'solutionslabrouter@msging.net',
+            // take: 20,
+            // merged: true,
           });
         }}
       />

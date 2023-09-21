@@ -6,8 +6,6 @@ export interface GetAttendantParams {
 
 // TODO: Figure out if agent is the same as attendant
 export default async function getAttendant({ identity }: GetAttendantParams) {
-  console.log('getAttendant');
-
   try {
     const [name, domain] = identity.split('@');
 
@@ -28,8 +26,6 @@ export default async function getAttendant({ identity }: GetAttendantParams) {
         },
       },
     })) as WrappedGetAttendantResponse;
-
-    console.log(response);
 
     return { response, error: null };
   } catch (error) {

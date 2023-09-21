@@ -10,6 +10,7 @@ export interface GetThreadsParams {
   ownerIdentity?: string;
   skip?: number;
   take?: number;
+  direction?: 'desc' | 'asc';
 }
 
 export default async function getThreads({
@@ -21,13 +22,12 @@ export default async function getThreads({
   ownerIdentity,
   skip,
   take,
+  direction = 'desc',
 }: GetThreadsParams) {
   try {
-    // const prefix = slug.startsWith('lime://') ? '' : '/';
-
     const uri = buildUri({
       prefix:
-        ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}` : '/',
+        ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}/` : '/',
       paths: [
         merged ? 'threads-merged' : 'threads',
         identity ? encodeURIComponent(identity) : '',
@@ -36,6 +36,7 @@ export default async function getThreads({
         messageId,
         storageDate,
         getFromOriginator,
+        direction,
         $skip: skip,
         $take: take,
       },
