@@ -21,3 +21,5 @@ export { default as getThreads } from './getThreads';
 
 export * from './getTicketsHistory';
 export { default as getTicketsHistory } from './getTicketsHistory';
+
+export * from './contacts';

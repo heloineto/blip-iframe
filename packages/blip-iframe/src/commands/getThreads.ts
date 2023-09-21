@@ -23,9 +23,12 @@ export default async function getThreads({
   take,
 }: GetThreadsParams) {
   try {
+    // const prefix = slug.startsWith('lime://') ? '' : '/';
+
     const uri = buildUri({
+      prefix:
+        ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}` : '/',
       paths: [
-        ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}` : '',
         merged ? 'threads-merged' : 'threads',
         identity ? encodeURIComponent(identity) : '',
       ],

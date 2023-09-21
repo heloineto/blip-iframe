@@ -1,20 +1,20 @@
+import buildSearchParams from './buildSearchParams';
+
 export interface BuildUriParams {
-  paths: string[];
-  params: Record<string, string | boolean | number | undefined>;
+  paths: (string | undefined)[];
+  params?: Record<string, string | boolean | number | undefined>;
+  prefix?: string;
 }
 
-export default function buildUri({ paths, params }: BuildUriParams) {
-  const searchParams = new URLSearchParams();
-  Object.entries(params).forEach(([key, value]) => {
-    if (value === undefined) return;
+export default function buildUri({
+  paths,
+  params,
+  prefix = '/',
+}: BuildUriParams) {
+  const searchParams = buildSearchParams(params);
+  const slug = (paths.filter((path) => !!path) as string[])
+    .map((path) => encodeURIComponent(path))
+    .join('/');
 
-    searchParams.append(key, encodeURIComponent(value));
-  });
-
-  const slug = paths.filter((path) => !!path).join('/');
-  const prefix = slug.startsWith('lime://') ? '' : '/';
-
-  const search = searchParams.toString();
-
-  return `${prefix}${slug}${search ? `?${search}` : ''}`;
+  return `${prefix}${slug}${searchParams}`;
 }

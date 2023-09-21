@@ -17,8 +17,6 @@ export default function Command({ label, command }: Props) {
 
   const response = commandQuery.data?.response;
 
-  console.log('response', response);
-
   return (
     <div>
       <button

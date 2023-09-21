@@ -19,6 +19,15 @@ const Home = () => {
           })
         }
       />
+      <Command
+        label="getContact()"
+        command={() =>
+          blip.getContact({
+            identity: '3394098f-47a6-48ec-a154-d13484e511c8@tunnel.msging.net',
+          })
+        }
+      />
+      <Command label="getContacts()" command={() => blip.getContacts()} />
     </div>
   );
 };
