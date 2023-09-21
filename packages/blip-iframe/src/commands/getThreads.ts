@@ -2,33 +2,41 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
 import { buildUri } from '../lib/utils';
 
 export interface GetThreadsParams {
-  identity: string;
+  identity?: string;
   storageDate?: string;
   messageId?: string;
   getFromOriginator?: boolean;
   merged?: boolean;
   ownerIdentity?: string;
+  skip?: number;
+  take?: number;
 }
 
 export default async function getThreads({
   messageId,
   identity,
   storageDate,
-  getFromOriginator = false,
+  getFromOriginator,
   merged,
   ownerIdentity,
+  skip,
+  take,
 }: GetThreadsParams) {
   try {
     const uri = buildUri({
       paths: [
         ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}` : '',
         merged ? 'threads-merged' : 'threads',
-        encodeURIComponent(identity),
+        identity ? encodeURIComponent(identity) : '',
       ],
-      params: { messageId, storageDate, getFromOriginator },
+      params: {
+        messageId,
+        storageDate,
+        getFromOriginator,
+        $skip: skip,
+        $take: take,
+      },
     });
-
-    console.log(uri);
 
     const { response } = (await IframeMessageProxy.sendMessage({
       action: 'sendCommand',

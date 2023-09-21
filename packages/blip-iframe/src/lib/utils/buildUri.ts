@@ -1,6 +1,6 @@
 export interface BuildUriParams {
   paths: string[];
-  params: Record<string, string | boolean | undefined>;
+  params: Record<string, string | boolean | number | undefined>;
 }
 
 export default function buildUri({ paths, params }: BuildUriParams) {
@@ -11,8 +11,10 @@ export default function buildUri({ paths, params }: BuildUriParams) {
     searchParams.append(key, encodeURIComponent(value));
   });
 
-  const slug = paths.join('/');
+  const slug = paths.filter((path) => !!path).join('/');
   const prefix = slug.startsWith('lime://') ? '' : '/';
 
-  return `${prefix}${slug}?${searchParams.toString()}`;
+  const search = searchParams.toString();
+
+  return `${prefix}${slug}${search ? `?${search}` : ''}`;
 }

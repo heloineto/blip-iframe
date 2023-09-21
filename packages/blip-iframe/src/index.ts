@@ -6,4 +6,5 @@ export * from './actions';
 export { default as blip } from './blip';
 export * from './bucket';
 export * from './commands';
+export * from './lib/utils';
 export * from './types';

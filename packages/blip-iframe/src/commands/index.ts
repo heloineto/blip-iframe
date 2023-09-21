@@ -18,3 +18,6 @@ export { default as getTickets } from './getTickets';
 
 export * from './getThreads';
 export { default as getThreads } from './getThreads';
+
+export * from './getTicketsHistory';
+export { default as getTicketsHistory } from './getTicketsHistory';
