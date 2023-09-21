@@ -1,9 +1,0 @@
-export { usage } from './ColorInput.demo.usage';
-export { error } from './ColorInput.demo.error';
-export { disabled } from './ColorInput.demo.disabled';
-export { stylesApi } from './ColorInput.demo.stylesApi';
-export { formatsConfigurator } from './ColorInput.demo.formatsConfigurator';
-export { readOnly } from './ColorInput.demo.readOnly';
-export { rightSection } from './ColorInput.demo.rightSection';
-export { swatches } from './ColorInput.demo.swatches';
-export { swatchesOnly } from './ColorInput.demo.swatchesOnly';
