@@ -1,7 +1,9 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
+// TODO: figure out what fullIdentity is
+
 /**
- * Get application details
+ * Get details about a application
  * @param fullIdentity The full identity of the application to get details for
  */
 export default async function getApplication(fullIdentity?: string | null) {

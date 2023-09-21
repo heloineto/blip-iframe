@@ -29,7 +29,6 @@ export function MdxPre({ children }: PreProps) {
     <MdxCodeHighlight
       code={getCode(children)}
       language={getLanguage(children)}
-      // withCopyButton={false}
     />
   );
 }
