@@ -28,6 +28,34 @@ const Home = () => {
         }
       />
       <Command label="getContacts()" command={() => blip.getContacts()} />
+      <Command label="getAttendants()" command={() => blip.getAttendants()} />
+      <Command
+        label="getAttendant()"
+        command={() =>
+          blip.getAttendant({
+            identity: 'heloi.neto%40blip.ai@blip.ai',
+          })
+        }
+      />
+      <Command
+        label="TEST"
+        command={async () => {
+          const identity = 'heloi.neto%40blip.ai@blip.ai';
+          const [name, domain] = identity.split('@');
+
+          if (!name || !domain) {
+            throw new Error('Invalid identity');
+          }
+
+          return await blip.sendCommand({
+            command: {
+              method: 'get',
+              to: `postmaster@${domain}`,
+              uri: `lime://${domain}/accounts/${encodeURIComponent(name)}`,
+            },
+          });
+        }}
+      />
     </div>
   );
 };

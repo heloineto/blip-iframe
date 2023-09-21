@@ -1,9 +1,6 @@
 export * from './getAccount';
 export { default as getAccount } from './getAccount';
 
-export * from './getAttendants';
-export { default as getAttendants } from './getAttendants';
-
 export * from './getBot';
 export { default as getBot } from './getBot';
 
@@ -22,4 +19,5 @@ export { default as getThreads } from './getThreads';
 export * from './getTicketsHistory';
 export { default as getTicketsHistory } from './getTicketsHistory';
 
+export * from './attendants';
 export * from './contacts';

@@ -9,7 +9,7 @@ export default async function getAttendants() {
         destination: 'BlipService',
         command: {
           method: 'get',
-          to: 'postmaster@portal.blip.ai',
+          to: 'postmaster@desk.blip.ai',
           uri: '/attendants',
         },
       },
