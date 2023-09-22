@@ -1,4 +1,4 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendCommand } from '../actions';
 import { buildUri } from '../lib/utils';
 
 export interface GetTicketsHistory {
@@ -15,27 +15,13 @@ export default async function getTicketsHistory({
     params: { $skip: skip, $take: take },
   });
 
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'sendCommand',
-      content: {
-        command: {
-          method: 'get',
-          to: 'postmaster@desk.msging.net',
-          uri: uri,
-        },
-      },
-    })) as WrappedGetTicketsHistoryResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
-}
-
-export interface WrappedGetTicketsHistoryResponse {
-  response: GetTicketsHistoryResponse;
-  trackingProperties: { id: string };
+  return await sendCommand<GetTicketsHistoryResponse>({
+    command: {
+      method: 'get',
+      to: 'postmaster@desk.msging.net',
+      uri: uri,
+    },
+  });
 }
 
 export interface GetTicketsHistoryResponse {

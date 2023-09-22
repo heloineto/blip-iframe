@@ -1,26 +1,12 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendCommand } from '../actions';
 
 export default async function getPublishedFlow() {
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'sendCommand',
-      content: {
-        command: {
-          method: 'get',
-          uri: '/buckets/blip_portal:builder_published_flow',
-        },
-      },
-    })) as WrappedGetPublishedFlowResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
-}
-
-export interface WrappedGetPublishedFlowResponse {
-  response: GetPublishedFlowResponse;
-  trackingProperties: { id: string };
+  return await sendCommand<GetPublishedFlowResponse>({
+    command: {
+      method: 'get',
+      uri: '/buckets/blip_portal:builder_published_flow',
+    },
+  });
 }
 
 // TODO: Define GetPublishedFlowResponse

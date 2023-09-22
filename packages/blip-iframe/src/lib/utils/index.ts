@@ -6,3 +6,6 @@ export { default as parseError } from './parseError';
 
 export * from './parseErrorString';
 export { default as parseErrorString } from './parseErrorString';
+
+export * from './buildAuthorizationKey';
+export { default as buildAuthorizationKey } from './buildAuthorizationKey';

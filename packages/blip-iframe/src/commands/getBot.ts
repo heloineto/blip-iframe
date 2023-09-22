@@ -1,28 +1,14 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendCommand } from '../actions';
 
 export default async function getBot(fullIdentity: string) {
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'sendCommand',
-      content: {
-        destination: 'BlipService',
-        command: {
-          method: 'get',
-          to: 'postmaster@portal.blip.ai',
-          uri: `/applications/${fullIdentity}`,
-        },
-      },
-    })) as WrappedGetBotResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
-}
-
-export interface WrappedGetBotResponse {
-  response: GetBotResponse;
-  trackingProperties: { id: string };
+  return await sendCommand<GetBotResponse>({
+    destination: 'BlipService',
+    command: {
+      method: 'get',
+      to: 'postmaster@portal.blip.ai',
+      uri: `/applications/${fullIdentity}`,
+    },
+  });
 }
 
 export type GetBotResponse = unknown;

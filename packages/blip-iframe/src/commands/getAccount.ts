@@ -1,27 +1,13 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendCommand } from '../actions';
 
 export default async function getAccount() {
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'sendCommand',
-      content: {
-        command: {
-          method: 'get',
-          uri: '/account',
-        },
-        destination: 'BlipService',
-      },
-    })) as WrappedGetAccountResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
-}
-
-export interface WrappedGetAccountResponse {
-  response: GetAccountResponse;
-  trackingProperties: { id: string };
+  return await sendCommand<GetAccountResponse>({
+    destination: 'BlipService',
+    command: {
+      method: 'get',
+      uri: '/account',
+    },
+  });
 }
 
 export interface GetAccountResponse {

@@ -1,5 +1,5 @@
-import { sendCommand } from '../actions';
-import { buildUri } from '../lib/utils';
+import { sendCommand } from '../../actions';
+import { buildUri } from '../../lib/utils';
 
 export interface GetThreadsParams {
   identity?: string;

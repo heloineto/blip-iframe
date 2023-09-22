@@ -1,27 +1,13 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendCommand } from '../actions';
 
 export default async function getTickets() {
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'sendCommand',
-      content: {
-        command: {
-          method: 'get',
-          to: 'postmaster@desk.msging.net',
-          uri: '/tickets',
-        },
-      },
-    })) as WrappedGetTicketsResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
-}
-
-export interface WrappedGetTicketsResponse {
-  response: GetTicketsResponse;
-  trackingProperties: { id: string };
+  return await sendCommand<GetTicketsResponse>({
+    command: {
+      method: 'get',
+      to: 'postmaster@desk.msging.net',
+      uri: '/tickets',
+    },
+  });
 }
 
 export interface GetTicketsResponse {

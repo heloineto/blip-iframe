@@ -1,27 +1,18 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendCommand } from '../actions';
 
 export default async function getBots(tenantId?: string) {
-  try {
-    const { response } = await IframeMessageProxy.sendMessage({
-      action: 'sendCommand',
-      content: {
-        timeout: 30000,
-        destination: 'BlipService',
-        command: {
-          method: 'get',
-          to: 'postmaster@portal.blip.ai',
-          uri:
-            tenantId === undefined
-              ? '/applications'
-              : `/tenants/${tenantId}/applications`,
-        },
-      },
-    });
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
+  return await sendCommand<GetBotsResponse>({
+    timeout: 30000,
+    destination: 'BlipService',
+    command: {
+      method: 'get',
+      to: 'postmaster@portal.blip.ai',
+      uri:
+        tenantId === undefined
+          ? '/applications'
+          : `/tenants/${tenantId}/applications`,
+    },
+  });
 }
 
 export interface GetBotsResponse {
