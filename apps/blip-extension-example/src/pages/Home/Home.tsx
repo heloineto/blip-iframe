@@ -7,7 +7,10 @@ export default function Home() {
 
   return (
     <div className="grid grow grid-cols-3 gap-10 py-10">
-      <TicketList setSelectedTicketId={setSelectedTicketId} />
+      <TicketList
+        setSelectedTicketId={setSelectedTicketId}
+        selectedTicketId={selectedTicketId}
+      />
       <Ticket selectedTicketId={selectedTicketId} />
     </div>
   );

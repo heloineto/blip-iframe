@@ -1,8 +1,7 @@
-import { useQuery } from '@tanstack/react-query';
-import { blip } from 'blip-iframe';
 import clsx from 'clsx';
+import useThreads from '../queries/useThreads';
 import useTickets from '../queries/useTickets';
-import blipQueryFn from '../utils/queryFn';
+import useTunnelAccount from '../queries/useTunnelAccount';
 
 interface Props {
   selectedTicketId: string | null;
@@ -28,30 +27,23 @@ function TicketInner({ ticketId }: { ticketId: string }) {
 
   const tunnelAccountIdentity = ticket?.customerIdentity;
 
-  const tunnelAccountQuery = useQuery({
-    queryKey: ['getTunnelAccount', tunnelAccountIdentity],
-    queryFn: () =>
-      blipQueryFn(
-        blip.getTunnelAccount({ identity: tunnelAccountIdentity ?? '' })
-      ),
+  const tunnelAccountQuery = useTunnelAccount({
+    params: { identity: tunnelAccountIdentity as string },
     enabled: !!tunnelAccountIdentity,
   });
 
   const threadsIdentity = tunnelAccountQuery.data?.alternativeAccount;
-  const ownerIdentity = tunnelAccountQuery.data?.extras[
-    'tunnel.owner'
-  ] as string;
+  const ownerIdentity = tunnelAccountQuery.data?.extras['tunnel.owner'] as
+    | string
+    | undefined;
+  const merged = true;
 
-  const threadsQuery = useQuery({
-    queryKey: ['getThreads', threadsIdentity],
-    queryFn: () =>
-      blipQueryFn(
-        blip.getThreads({
-          identity: threadsIdentity ?? '',
-          merged: true,
-          ownerIdentity,
-        })
-      ),
+  const threadsQuery = useThreads({
+    params: {
+      identity: threadsIdentity as string,
+      ownerIdentity: ownerIdentity as string,
+      merged,
+    },
     enabled: !!threadsIdentity && !!ownerIdentity,
   });
 
@@ -59,8 +51,11 @@ function TicketInner({ ticketId }: { ticketId: string }) {
   if (threadsQuery.isError || !threadsQuery.data)
     return <div>Erro ao carregar threads</div>;
 
-  const threads = threadsQuery.data.items.reverse();
-  console.log('threads', threads);
+  const threads = threadsQuery.data.items.sort((a, b) => {
+    const dateA = new Date(a.date);
+    const dateB = new Date(b.date);
+    return dateA.getTime() - dateB.getTime();
+  });
 
   return (
     <div>
@@ -77,8 +72,10 @@ function TicketInner({ ticketId }: { ticketId: string }) {
             >
               <div
                 className={clsx(
-                  'w-fit whitespace-pre-wrap rounded px-3 py-1.5',
-                  isSent ? 'bg-blue-800' : 'bg-slate-950'
+                  'w-fit whitespace-pre-wrap rounded-lg px-3 py-1.5',
+                  isSent
+                    ? 'rounded-br-none bg-blue-800'
+                    : 'rounded-bl-none bg-slate-950'
                 )}
               >
                 {thread.content}
