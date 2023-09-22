@@ -1,4 +1,4 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendCommand } from '../../actions';
 import { buildUri } from '../../lib/utils';
 
 export interface GetTunnelAccountParams {
@@ -8,31 +8,17 @@ export interface GetTunnelAccountParams {
 export default async function getTunnelAccount({
   identity,
 }: GetTunnelAccountParams) {
-  try {
-    const uri = buildUri({
-      paths: ['accounts', identity],
-    });
+  const uri = buildUri({
+    paths: ['accounts', identity],
+  });
 
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'sendCommand',
-      content: {
-        command: {
-          method: 'get',
-          to: 'postmaster@tunnel.msging.net',
-          uri: uri,
-        },
-      },
-    })) as WrappedGetTunnelAccountResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
-}
-
-export interface WrappedGetTunnelAccountResponse {
-  response: GetTunnelAccountResponse;
-  trackingProperties: { id: string };
+  return await sendCommand<GetTunnelAccountResponse>({
+    command: {
+      method: 'get',
+      to: 'postmaster@tunnel.msging.net',
+      uri: uri,
+    },
+  });
 }
 
 export type GetTunnelAccountResponse = {

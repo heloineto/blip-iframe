@@ -1,17 +1,10 @@
 import { blip } from 'blip-iframe';
-import type { UseBlipQueryOptions } from './useBlipQuery';
+import type { DefaultUseBlipQueryOptions } from './useBlipQuery';
 import useBlipQuery from './useBlipQuery';
 
 export default function useTunnelAccount({
   ...rest
-}: Omit<
-  UseBlipQueryOptions<
-    typeof blip.getTunnelAccount,
-    unknown,
-    (string | Parameters<typeof blip.getTunnelAccount>[0])[]
-  >,
-  'blipFn'
->) {
+}: DefaultUseBlipQueryOptions<typeof blip.getTunnelAccount>) {
   return useBlipQuery({
     blipFn: blip.getTunnelAccount,
     ...rest,

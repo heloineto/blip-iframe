@@ -1,4 +1,4 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendCommand } from '../../actions';
 
 export interface GetAttendantParams {
   identity: string;
@@ -6,36 +6,22 @@ export interface GetAttendantParams {
 
 // TODO: Figure out if agent is the same as attendant
 export default async function getAttendant({ identity }: GetAttendantParams) {
-  try {
-    const [name, domain] = identity.split('@');
+  const [name, domain] = identity.split('@');
 
-    if (!name || !domain) {
-      throw new Error(
-        `Invalid identity. Expected format: "name@domain", got "${identity}"`
-      );
-    }
-
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'sendCommand',
-      content: {
-        destination: 'BlipService',
-        command: {
-          method: 'get',
-          to: `postmaster@${domain}`,
-          uri: `lime://${domain}/accounts/${encodeURIComponent(name)}`,
-        },
-      },
-    })) as WrappedGetAttendantResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
+  if (!name || !domain) {
+    throw new Error(
+      `Invalid identity. Expected format: "name@domain", got "${identity}"`
+    );
   }
-}
 
-export interface WrappedGetAttendantResponse {
-  response: GetAttendantResponse;
-  trackingProperties: { id: string };
+  return await sendCommand<GetAttendantResponse>({
+    destination: 'BlipService',
+    command: {
+      method: 'get',
+      to: `postmaster@${domain}`,
+      uri: `lime://${domain}/accounts/${encodeURIComponent(name)}`,
+    },
+  });
 }
 
 export type GetAttendantResponse = {

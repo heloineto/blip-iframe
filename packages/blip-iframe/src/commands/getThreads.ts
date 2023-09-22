@@ -1,6 +1,5 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendCommand } from '../actions';
 import { buildUri } from '../lib/utils';
-import log from '../lib/utils/log';
 
 export interface GetThreadsParams {
   identity?: string;
@@ -27,51 +26,27 @@ export default async function getThreads({
   direction = 'desc',
   refreshExpiredMedia = true,
 }: GetThreadsParams) {
-  try {
-    const uri = buildUri({
-      prefix:
-        ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}/` : '/',
-      paths: [merged ? 'threads-merged' : 'threads', identity],
-      params: {
-        messageId,
-        storageDate,
-        getFromOriginator,
-        direction,
-        refreshExpiredMedia,
-        $skip: skip,
-        $take: take,
-      },
-    });
+  const uri = buildUri({
+    prefix:
+      ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}/` : '/',
+    paths: [merged ? 'threads-merged' : 'threads', identity],
+    params: {
+      messageId,
+      storageDate,
+      getFromOriginator,
+      direction,
+      refreshExpiredMedia,
+      $skip: skip,
+      $take: take,
+    },
+  });
 
-    const request = {
-      action: 'sendCommand',
-      content: {
-        command: {
-          method: 'get',
-          uri: uri,
-        },
-      },
-    } as const;
-
-    log.request(uri, request);
-
-    const { response } = (await IframeMessageProxy.sendMessage(
-      request
-    )) as WrappedGetThreadsResponse;
-
-    log.response(uri, response);
-
-    return { response, error: null };
-  } catch (error) {
-    log.error(error);
-
-    return { response: null, error };
-  }
-}
-
-export interface WrappedGetThreadsResponse {
-  response: GetThreadsResponse;
-  trackingProperties: { id: string };
+  return await sendCommand<GetThreadsResponse>({
+    command: {
+      method: 'get',
+      uri: uri,
+    },
+  });
 }
 
 export interface GetThreadsResponse {

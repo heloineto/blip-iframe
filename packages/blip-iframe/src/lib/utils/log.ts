@@ -1,4 +1,4 @@
-const shouldLog = process.env.NODE_ENV === 'development' && false;
+const shouldLog = process.env.NODE_ENV === 'development' && true;
 
 const log = shouldLog
   ? {
@@ -8,8 +8,8 @@ const log = shouldLog
       response: (uri: string, response: unknown) => {
         console.log(`[Blip Iframe] Response: ${uri}`, response);
       },
-      error: (error: unknown) => {
-        console.error(`[Blip Iframe] Error: `, error);
+      error: (uri: string, error: unknown) => {
+        console.error(`[Blip Iframe] Error: ${uri}`, error);
       },
     }
   : {

@@ -1,12 +1,12 @@
-import { useQuery } from '@tanstack/react-query';
 import { blip } from 'blip-iframe';
-import blipQueryFn from '../utils/queryFn';
+import type { DefaultUseBlipQueryOptions } from './useBlipQuery';
+import useBlipQuery from './useBlipQuery';
 
-export default function useAttendant(
-  ...params: Parameters<typeof blip.getAttendant>
-) {
-  return useQuery({
-    queryKey: ['getContact', ...params],
-    queryFn: () => blipQueryFn(blip.getAttendant(...params)),
+export default function useAttendant({
+  ...rest
+}: DefaultUseBlipQueryOptions<typeof blip.getAttendant>) {
+  return useBlipQuery({
+    blipFn: blip.getAttendant,
+    ...rest,
   });
 }

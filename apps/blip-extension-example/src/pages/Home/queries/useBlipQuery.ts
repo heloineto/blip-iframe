@@ -9,6 +9,12 @@ export type BlipIframeFunction = (
   params: any
 ) => Promise<{ response: any; error: null } | { response: null; error: any }>;
 
+export type DefaultUseBlipQueryOptions<TBlipFn extends BlipIframeFunction> =
+  Omit<
+    UseBlipQueryOptions<TBlipFn, unknown, (string | Parameters<TBlipFn>[0])[]>,
+    'blipFn'
+  >;
+
 export interface UseBlipQueryOptions<
   TBlipFn extends BlipIframeFunction,
   TError = unknown,

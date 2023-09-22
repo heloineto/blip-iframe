@@ -1,4 +1,4 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendCommand } from '../../actions';
 import { buildUri } from '../../lib/utils';
 import { BlipContact } from './_types';
 
@@ -14,26 +14,12 @@ export default async function getContact({ identity }: GetContactParams) {
     paths: ['contacts', identity],
   });
 
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'sendCommand',
-      content: {
-        command: {
-          method: 'get',
-          uri: uri,
-        },
-      },
-    })) as WrappedGetContactResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
-}
-
-export interface WrappedGetContactResponse {
-  response: GetContactResponse;
-  trackingProperties: { id: string };
+  return await sendCommand<GetContactResponse>({
+    command: {
+      method: 'get',
+      uri: uri,
+    },
+  });
 }
 
 export type GetContactResponse = BlipContact;

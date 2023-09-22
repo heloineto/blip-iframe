@@ -10,8 +10,8 @@ export default function TicketCard({
   const contactId = ticket.customerIdentity;
   const attendantId = ticket.agentIdentity;
 
-  const contactQuery = useContact({ identity: contactId });
-  const attendantQuery = useAttendant({ identity: attendantId });
+  const contactQuery = useContact({ params: { identity: contactId } });
+  const attendantQuery = useAttendant({ params: { identity: attendantId } });
 
   if (contactQuery.isLoading || attendantQuery.isLoading) {
     return <div>Loading...</div>;

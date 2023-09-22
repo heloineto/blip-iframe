@@ -1,16 +1,24 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
+import log from '../lib/utils/log';
 
-export default async function sendCommand(
-  content: SendCommandRequest['content']
-) {
+export default async function sendCommand<
+  TResponse = unknown,
+  TWrappedResponse extends WrappedSendCommandResponse<TResponse> = WrappedSendCommandResponse<TResponse>
+>(content: SendCommandRequest['content']) {
   try {
+    log.request(content.command.uri, content);
+
     const { response } = (await IframeMessageProxy.sendMessage({
       action: 'sendCommand',
       content,
-    })) as WrappedSendCommandResponse;
+    })) as TWrappedResponse;
+
+    log.response(content.command.uri, content);
 
     return { response, error: null };
   } catch (error) {
+    log.error(content.command.uri, error);
+
     return { response: null, error };
   }
 }
@@ -37,9 +45,7 @@ export interface SendCommandRequest {
   };
 }
 
-export interface WrappedSendCommandResponse {
-  response: SendCommandResponse;
+export interface WrappedSendCommandResponse<TResponse> {
+  response: TResponse;
   trackingProperties: { id: string };
 }
-
-export type SendCommandResponse = unknown;
