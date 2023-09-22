@@ -1,5 +1,6 @@
 import { useQuery } from '@tanstack/react-query';
 import { blip } from 'blip-iframe';
+import clsx from 'clsx';
 import useTickets from '../queries/useTickets';
 import blipQueryFn from '../utils/queryFn';
 
@@ -9,7 +10,7 @@ interface Props {
 
 export default function Ticket({ selectedTicketId }: Props) {
   return (
-    <div className="flex flex-col rounded bg-slate-800 p-5">
+    <div className="flex h-[calc(100vh-80px)] flex-col overflow-auto rounded bg-slate-800 p-5">
       {!selectedTicketId ? (
         <div className="flex grow items-center justify-center text-slate-300">
           Selecione um ticket para ver mais detalhes
@@ -37,21 +38,55 @@ function TicketInner({ ticketId }: { ticketId: string }) {
   });
 
   const threadsIdentity = tunnelAccountQuery.data?.alternativeAccount;
+  const ownerIdentity = tunnelAccountQuery.data?.extras[
+    'tunnel.owner'
+  ] as string;
 
   const threadsQuery = useQuery({
     queryKey: ['getThreads', threadsIdentity],
     queryFn: () =>
-      blipQueryFn(blip.getThreads({ identity: threadsIdentity ?? '' })),
-    enabled: !!threadsIdentity,
+      blipQueryFn(
+        blip.getThreads({
+          identity: threadsIdentity ?? '',
+          merged: true,
+          ownerIdentity,
+        })
+      ),
+    enabled: !!threadsIdentity && !!ownerIdentity,
   });
 
-  console.log('tunnelAccountQuery', tunnelAccountQuery.data);
-  console.log('threadsQuery', threadsQuery.data);
+  if (threadsQuery.isLoading) return <div>Carregando...</div>;
+  if (threadsQuery.isError || !threadsQuery.data)
+    return <div>Erro ao carregar threads</div>;
 
-  // const threadsQuery = useQuery({
-  //   queryKey: ['getThreads'],
-  //   queryFn: () => blipQueryFn(blip.getThreads({ identity })),
-  // });
+  const threads = threadsQuery.data.items.reverse();
+  console.log('threads', threads);
 
-  return <div>Hi</div>;
+  return (
+    <div>
+      <ul className="flex flex-col gap-3">
+        {threads.map((thread) => {
+          if (typeof thread.content !== 'string') return null;
+
+          const isSent = thread.direction === 'sent';
+
+          return (
+            <li
+              key={thread.id}
+              className={clsx('flex', isSent ? 'justify-end' : '')}
+            >
+              <div
+                className={clsx(
+                  'w-fit whitespace-pre-wrap rounded px-3 py-1.5',
+                  isSent ? 'bg-blue-800' : 'bg-slate-950'
+                )}
+              >
+                {thread.content}
+              </div>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  );
 }

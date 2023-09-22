@@ -1,5 +1,6 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 import { buildUri } from '../lib/utils';
+import log from '../lib/utils/log';
 
 export interface GetThreadsParams {
   identity?: string;
@@ -11,6 +12,7 @@ export interface GetThreadsParams {
   skip?: number;
   take?: number;
   direction?: 'desc' | 'asc';
+  refreshExpiredMedia?: boolean;
 }
 
 export default async function getThreads({
@@ -23,26 +25,25 @@ export default async function getThreads({
   skip,
   take,
   direction = 'desc',
+  refreshExpiredMedia = true,
 }: GetThreadsParams) {
   try {
     const uri = buildUri({
       prefix:
         ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}/` : '/',
-      paths: [
-        merged ? 'threads-merged' : 'threads',
-        identity ? encodeURIComponent(identity) : '',
-      ],
+      paths: [merged ? 'threads-merged' : 'threads', identity],
       params: {
         messageId,
         storageDate,
         getFromOriginator,
         direction,
+        refreshExpiredMedia,
         $skip: skip,
         $take: take,
       },
     });
 
-    const { response } = (await IframeMessageProxy.sendMessage({
+    const request = {
       action: 'sendCommand',
       content: {
         command: {
@@ -50,10 +51,20 @@ export default async function getThreads({
           uri: uri,
         },
       },
-    })) as WrappedGetThreadsResponse;
+    } as const;
+
+    log.request(uri, request);
+
+    const { response } = (await IframeMessageProxy.sendMessage(
+      request
+    )) as WrappedGetThreadsResponse;
+
+    log.response(uri, response);
 
     return { response, error: null };
   } catch (error) {
+    log.error(error);
+
     return { response: null, error };
   }
 }
