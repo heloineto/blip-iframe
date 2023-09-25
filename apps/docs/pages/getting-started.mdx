@@ -1,0 +1,56 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+import { SocialCards } from '@/components/SocialCards';
+
+export default Layout(MDX_DATA.GettingStarted);
+
+# Getting started
+
+Install `blip-iframe` in your project:
+
+<InstallScript packages="blip-iframe" />
+
+## Example usage
+
+You can use `blip-iframe` with any framework or even vanilla JavaScript. Here's an simple example using React:
+
+```jsx
+import { getBot } from 'blip-iframe';
+
+export default function Component() {
+  const [bot, setBot] = useState(null);
+  const [error, setError] = useState(null);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Fetches the current bot. If an error occurs, the response will be null.
+    // The error is not thrown, but returned. This improves types and error awarness.
+    getBot().then(({ response, error }) => {
+      setLoading(false);
+      setError(error);
+      setBot(response);
+    });
+  }, []);
+
+  if (loading) return <>Loading...</>;
+
+  if (error) return <>An error ocurred!</>;
+
+  // Shows data about the current bot
+  return <pre>{JSON.stringify(bot, null, 2)}</pre>;
+}
+```
+
+> **`blip-iframe` only works if your web app is inside Blip**
+>
+> As the name of the package sugests, `blip-iframe` only works
+> in web applications rendered as an iframe inside Blip.
+>
+> If you want to make the same calls in a standalone app,
+> it's recommended to use the fetch API instead.
+
+All set! Now you can use the `blip-iframe` API to make calls inside your application.
+
+## Getting help
+
+<SocialCards twitter={false} />

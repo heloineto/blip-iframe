@@ -1,32 +1,27 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import imp from '../imp';
 
 // TODO: figure out what fullIdentity is
 
+interface GetApplicationParams {
+  shortName?: string;
+}
+
 /**
  * Get details about a application
- * @param fullIdentity The full identity of the application to get details for
+ * @param shortName The full identity of the application to get details for
  */
-export default async function getApplication(fullIdentity?: string | null) {
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'getApplication',
-      content: fullIdentity ?? null,
-    })) as WrappedGetApplicationResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
+export default async function getApplication({
+  shortName,
+}: GetApplicationParams = {}) {
+  return await imp.sendMessage<GetApplicationResponse>({
+    action: 'getApplication',
+    content: shortName ?? null,
+  });
 }
 
 export interface GetApplicationRequest {
   action: 'getApplication';
   content: string | null;
-}
-
-export interface WrappedGetApplicationResponse {
-  response: GetApplicationResponse;
-  trackingProperties: { id: string };
 }
 
 export interface GetApplicationResponse {
