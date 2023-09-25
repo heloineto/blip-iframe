@@ -1,14 +1,15 @@
 import imp from '../imp';
 
-// TODO: figure out what fullIdentity is
-
-interface GetApplicationParams {
+export interface GetApplicationParams {
+  /**
+   * The shortName (aka identity) of the bot to get details for.
+   * Leave blank to get details for the current bot
+   */
   shortName?: string;
 }
 
 /**
- * Get details about a application
- * @param shortName The full identity of the application to get details for
+ * Get details about a bot (application)
  */
 export default async function getApplication({
   shortName,

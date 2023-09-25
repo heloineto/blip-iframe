@@ -25,7 +25,7 @@ const blipFns = {
         type: 'success',
         duration: 5000,
       }),
-    getApplication: () => blip.getApplication('solutionslabrouter'),
+    getApplication: () => blip.getApplication(),
     // hasPermissions: () => {},
     // getPermissionsObject: () => {},
     // segment: () => {},

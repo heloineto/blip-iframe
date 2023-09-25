@@ -3,40 +3,51 @@ import { MDX_DATA } from '@/mdx';
 
 export default Layout(MDX_DATA.getApplication);
 
-# Title
+## Usage
 
-getApplication
+getApplication is very useful to get information about the current or another bot.
+It is very likely that the information you need is available in the application object.
+(Be sure to check the applicationJson property).
 
-## Code
+## Parameters
 
-If you don't feel like installing a package just to do this, you can copy the code below and use it directly in your project.
+The getApplication function accepts the following parameters:
 
 ```ts
-import { IframeMessageProxy } from 'iframe-message-proxy';
-
-/**
- * Gets the language of the current contract
- */
-export default async function getCurrentLanguage() {
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'getCurrentLanguage',
-    })) as WrappedGetCurrentLanguageResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
+interface GetApplicationParams {
+  /**
+   * The shortName (aka identity) of the bot to get details for.
+   * Leave blank to get details for the current bot
+   */
+  shortName?: string;
 }
 
-export interface GetCurrentLanguageRequest {
-  action: 'getCurrentLanguage';
-}
+getApplication(GetApplicationParams | undefined);
+```
 
-export interface WrappedGetCurrentLanguageResponse {
-  response: GetCurrentLanguageResponse;
-  trackingProperties: { id: string };
-}
+## Return type
 
-export type GetCurrentLanguageResponse = string;
+The getApplication function returns an object with the following properties:
+
+```ts
+export interface GetApplicationResponse {
+  shortName: string;
+  name: string;
+  description: string;
+  accessKey: string;
+  imageUri: string;
+  template: string;
+  tenantId: string;
+  created: string;
+  updated: string;
+  hasPermission: boolean;
+  emailOwner: string;
+  applicationUserPermissionModel: {
+    permissionClaim: number;
+    permissionAction: number;
+  }[];
+  applicationDomainActivations: Record<string, unknown>[];
+  channels: Record<string, unknown>[];
+  applicationJson: Record<string, unknown>;
+}
 ```

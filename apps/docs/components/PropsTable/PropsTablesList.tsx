@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
 import { TextInput, Title } from '@mantine/core';
 import { IconSearch } from '@tabler/icons-react';
+import { useState } from 'react';
 import { PropsTable } from './PropsTable';
-import { getComponentName } from './getComponentName';
 import classes from './PropsTablesList.module.css';
+import { getComponentName } from './getComponentName';
 
 export interface PropsTablesListProps {
   components: string[];
   componentPrefix?: string;
 }
 
-export function PropsTablesList({ components, componentPrefix }: PropsTablesListProps) {
+export function PropsTablesList({
+  components,
+  componentPrefix,
+}: PropsTablesListProps) {
   const [query, setQuery] = useState('');
 
   const tables = components.map((component) => (

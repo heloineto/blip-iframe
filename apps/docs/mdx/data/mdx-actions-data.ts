@@ -5,7 +5,7 @@ export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
     title: 'getApplication',
     package: 'blip-iframe',
     slug: '/actions/get-application',
-    description: 'Get details about a application',
+    description: 'Get details about a bot (application)',
     import: "import { getApplication } from 'blip-iframe';",
     source: 'actions/getApplication.ts',
     docs: 'actions/get-application.mdx',
