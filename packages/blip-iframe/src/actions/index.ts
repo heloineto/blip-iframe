@@ -33,3 +33,6 @@ export { default as stopLoading } from './stopLoading';
 
 export * from './toast';
 export { default as toast } from './toast';
+
+export * from './getTenantPlan';
+export { default as getTenantPlan } from './getTenantPlan';

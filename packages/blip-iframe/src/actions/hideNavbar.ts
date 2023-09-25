@@ -5,14 +5,12 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  *
  * This can be useful if you want to create a full screen extension.
  */
-const hideNavbar = async () => {
+export default async function hideNavbar() {
   await IframeMessageProxy.sendMessage({
     action: 'hideNavbar',
   });
-};
+}
 
 export interface HideNavbarRequest {
   action: 'hideNavbar';
 }
-
-export default hideNavbar;

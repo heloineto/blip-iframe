@@ -1,5 +1,6 @@
 import { GetApplicationRequest } from '../actions/getApplication';
 import { GetCurrentLanguageRequest } from '../actions/getCurrentLanguage';
+import { GetTenantPlanRequest } from '../actions/getTenantPlan';
 import { HasPermissionRequest } from '../actions/hasPermissions';
 import { HeightChangeRequest } from '../actions/heightChange';
 import { HideNavbarRequest } from '../actions/hideNavbar';
@@ -21,6 +22,7 @@ type Request =
   | StartLoadingRequest
   | StopLoadingRequest
   | ToastRequest
-  | HideNavbarRequest;
+  | HideNavbarRequest
+  | GetTenantPlanRequest;
 
 export default Request;

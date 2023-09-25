@@ -1,5 +1,3 @@
-const stateChangeSuccess = () => {
+export default function stateChangeSuccess() {
   // TODO: Implement
-};
-
-export default stateChangeSuccess;
+}

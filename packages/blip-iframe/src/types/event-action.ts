@@ -12,6 +12,7 @@ type EventAction =
   | 'getApplication'
   | 'hasPermissions'
   | 'getPermissionsObject'
-  | 'segment';
+  | 'segment'
+  | 'getTenantPlan';
 
 export default EventAction;
