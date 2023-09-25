@@ -5,7 +5,7 @@ import * as commands from './commands';
 const blip = {
   ...actions,
   ...commands,
-  bucket,
+  ...bucket,
 };
 
 export default blip;

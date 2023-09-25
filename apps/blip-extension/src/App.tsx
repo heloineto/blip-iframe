@@ -1,3 +1,4 @@
+import { MantineProvider } from '@mantine/core';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import Routes from './Routes';
 
@@ -7,9 +8,11 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <Routes />
-    </QueryClientProvider>
+    <MantineProvider>
+      <QueryClientProvider client={queryClient}>
+        <Routes />
+      </QueryClientProvider>
+    </MantineProvider>
   );
 };
 
