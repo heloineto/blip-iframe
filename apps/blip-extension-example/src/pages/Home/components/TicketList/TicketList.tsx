@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import type { Dispatch, SetStateAction } from 'react';
-import useTickets from '../queries/useTickets';
-import TicketCard from './TicketCard';
+import useTickets from '../../queries/useTickets';
+import TicketCard from '../TicketCard';
 
 interface Props {
   selectedTicketId: string | null;
@@ -15,7 +15,7 @@ export default function TicketList({
   const ticketsQuery = useTickets();
 
   if (ticketsQuery.isLoading) return <div>Loading...</div>;
-  if (ticketsQuery.isError) return <div>Error</div>;
+  if (ticketsQuery.isError || !ticketsQuery.data) return <div>Error</div>;
 
   return (
     <div className="rounded bg-slate-800 p-5">

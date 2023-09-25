@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import Messages from './components/Messages';
 import Ticket from './components/Ticket';
 import TicketList from './components/TicketList';
 
@@ -12,6 +13,7 @@ export default function Home() {
         selectedTicketId={selectedTicketId}
       />
       <Ticket selectedTicketId={selectedTicketId} />
+      <Messages selectedTicketId={selectedTicketId} />
     </div>
   );
 }

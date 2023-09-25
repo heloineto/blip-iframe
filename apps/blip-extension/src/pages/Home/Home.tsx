@@ -1,9 +1,4 @@
-import {
-  blip,
-  buildAuthorizationKey,
-  buildUri,
-  sendCommand,
-} from 'blip-iframe';
+import { blip, buildAuthorizationKey } from 'blip-iframe';
 import Command from './components/Command';
 
 const Home = () => {
@@ -62,37 +57,23 @@ const Home = () => {
       <Command
         label="TEST"
         command={async () => {
-          const uri = buildUri({
-            paths: ['threads', 'notifications%40msging.net'],
-            params: {
-              direction: 'desc',
-            },
-          });
-
-          return await sendCommand({
-            command: {
-              method: 'get',
-              uri: uri,
-            },
+          return await blip.getThreads({
+            identity: 'eb47bbdc-5dcf-48da-aa6c-7d6f7d2b77c4.testeheloi@0mn.io',
           });
         }}
       />
-
       <Command
-        label="TEST2"
+        label="buildAuthorizationKey()"
         command={async () => {
-          console.log('TEST2');
-
           const app = await blip.getApplication();
 
-          console.log(
-            buildAuthorizationKey({
-              botAccessKey: app.response.accessKey,
-              botShortName: app.response.shortName,
-            })
-          );
-
-          return app;
+          return {
+            response: buildAuthorizationKey({
+              botAccessKey: app.response?.accessKey ?? '',
+              botShortName: app.response?.shortName ?? '',
+            }),
+            error: null,
+          };
         }}
       />
     </div>

@@ -1,6 +1,7 @@
+import { Avatar } from '@mantine/core';
 import type { GetTicketsResponse } from 'blip-iframe';
-import useAttendant from '../queries/useAttendant';
-import useContact from '../queries/useContact';
+import useAttendant from '../../queries/useAttendant';
+import useContact from '../../queries/useContact';
 
 export default function TicketCard({
   ticket,
@@ -25,18 +26,27 @@ export default function TicketCard({
   const attendant = attendantQuery.data;
 
   return (
-    <div className="flex gap-10">
+    <div className="flex h-20 grow gap-10">
       <div className="flex flex-col">
         <h2>Attendant</h2>
-        <div>{attendant?.fullName ?? attendant?.identity}</div>
+        <div className="flex grow items-center justify-center gap-5">
+          <Avatar
+            src={attendant.photoUri}
+            radius={999}
+            alt={attendant.fullName ?? attendant.identity}
+          />
+          <div>{attendant.fullName ?? attendant.identity}</div>
+        </div>
       </div>
       <div className="flex grow flex-col">
         <h2>Contact</h2>
-        <div>{contact?.name ?? contact?.identity}</div>
+        <div className="flex grow items-center justify-center">
+          {contact.name ?? contact.identity}
+        </div>
       </div>
       <div className="flex flex-col items-center">
         <h2>Ticket</h2>
-        <div>{`#${ticket.sequentialId}`}</div>
+        <div className="flex grow items-center justify-center">{`#${ticket.sequentialId}`}</div>
       </div>
     </div>
   );

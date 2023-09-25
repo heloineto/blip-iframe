@@ -13,7 +13,7 @@ export default async function sendCommand<
       content,
     })) as TWrappedResponse;
 
-    log.response(content.command.uri, content);
+    log.response(content.command.uri, response);
 
     return { response, error: null };
   } catch (error) {
