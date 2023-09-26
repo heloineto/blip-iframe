@@ -5,13 +5,28 @@ export default Layout(MDX_DATA.getApplication);
 
 ## Usage
 
-getApplication is very useful to get information about the current or another bot.
+The `getApplication` function is very useful to get information about the current or another bot.
 It is very likely that the information you need is available in the application object.
-(Be sure to check the applicationJson property).
+(Be sure to check the `applicationJson` property).
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const { response, error } = await blip.getApplication(); // Get info about the current bot
+
+if (error) {
+  console.error(error); // An error happened during the request
+  return;
+}
+
+console.log(response); // The application object
+```
 
 ## Parameters
 
-The getApplication function accepts the following parameters:
+The `getApplication` function accepts the following parameters:
 
 ```ts
 interface GetApplicationParams {
@@ -27,7 +42,7 @@ getApplication(GetApplicationParams | undefined);
 
 ## Return type
 
-The getApplication function returns an object with the following properties:
+The `getApplication` function returns the following response:
 
 ```ts
 export interface GetApplicationResponse {

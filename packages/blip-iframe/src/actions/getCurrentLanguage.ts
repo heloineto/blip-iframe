@@ -1,27 +1,16 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import imp from '../imp';
 
 /**
- * Get the language of the current contract
+ * Get the language of the current user account
  */
 export default async function getCurrentLanguage() {
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'getCurrentLanguage',
-    })) as WrappedGetCurrentLanguageResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
+  return await imp.sendMessage<GetCurrentLanguageResponse>({
+    action: 'getCurrentLanguage',
+  });
 }
 
 export interface GetCurrentLanguageRequest {
   action: 'getCurrentLanguage';
-}
-
-export interface WrappedGetCurrentLanguageResponse {
-  response: GetCurrentLanguageResponse;
-  trackingProperties: { id: string };
 }
 
 export type GetCurrentLanguageResponse = string;

@@ -4,7 +4,11 @@ import { MDX_DATA } from './mdx-data';
 export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
   {
     group: 'actions',
-    pages: [MDX_DATA.getApplication, MDX_DATA.getCurrentLanguage],
+    pages: [
+      MDX_DATA.getApplication,
+      MDX_DATA.getCurrentLanguage,
+      MDX_DATA.heightChange,
+    ],
   },
   {
     group: 'commands',

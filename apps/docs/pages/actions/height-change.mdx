@@ -1,0 +1,39 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.heightChange);
+
+## Usage
+
+The `heightChange` function changes the height the extension's iframe parent.
+The iframe parent has a minimum height of 100%,
+so if you want the extension to take the remaining space,
+pass 0 as the height.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+blip.heightChange({ height: 1000 }); // The extension will take 1000px
+blip.heightChange({ height: 0 }); // The extension will take the remaining space
+```
+
+## Parameters
+
+The `heightChange` function accepts the following parameters:
+
+```ts
+interface HeightChangeParams {
+  /**
+   * The height of the extension's iframe parent
+   */
+  height: number;
+}
+
+getApplication(HeightChangeParams | undefined);
+```
+
+## Return type
+
+The `heightChange` function does not return a response.

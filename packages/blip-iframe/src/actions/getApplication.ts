@@ -16,13 +16,13 @@ export default async function getApplication({
 }: GetApplicationParams = {}) {
   return await imp.sendMessage<GetApplicationResponse>({
     action: 'getApplication',
-    content: shortName ?? null,
+    content: shortName,
   });
 }
 
 export interface GetApplicationRequest {
   action: 'getApplication';
-  content: string | null;
+  content?: string;
 }
 
 export interface GetApplicationResponse {

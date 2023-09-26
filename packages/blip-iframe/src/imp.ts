@@ -1,16 +1,26 @@
-import { IframeMessageProxy as _IframeMessageProxy } from 'iframe-message-proxy';
+import { IframeMessageProxy } from 'iframe-message-proxy';
+import logger from './lib/utils/logger';
 import { Message } from './types';
 
 async function sendMessage<
   TResponse = unknown,
   TWrappedResponse extends WrappedResponse<TResponse> = WrappedResponse<TResponse>
->(payload: Message) {
+>(message: Message) {
+  const log = logger(message);
+
   try {
-    const { response } = (await _IframeMessageProxy.sendMessage(
-      payload
+    log.request(message);
+
+    const { response } = (await IframeMessageProxy.sendMessage(
+      message
     )) as TWrappedResponse;
+
+    log.response(response);
+
     return { response, error: null };
   } catch (error) {
+    log.error(error);
+
     return { response: null, error };
   }
 }
