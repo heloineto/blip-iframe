@@ -14,8 +14,8 @@ function TextMessage({ message }: Props) {
         className={clsx(
           'w-fit whitespace-pre-wrap rounded-lg px-3 py-1.5',
           isSent
-            ? 'ml-20 rounded-br-none bg-blue-800'
-            : 'mr-20 rounded-bl-none bg-slate-950'
+            ? 'bg-blue-8 ml-20 rounded-br-none'
+            : 'dark:bg-dark-9 mr-20 rounded-bl-none'
         )}
       >
         {message.content as string}
@@ -51,8 +51,8 @@ export default function Message({ message }: Props) {
         className={clsx(
           'w-fit whitespace-pre-wrap rounded-lg px-3 py-1.5',
           isSent
-            ? 'ml-20 rounded-br-none bg-blue-800'
-            : 'mr-20 rounded-bl-none bg-slate-950'
+            ? 'bg-blue-8 ml-20 rounded-br-none'
+            : 'dark:bg-dark-9 mr-20 rounded-bl-none'
         )}
       >
         {JSON.stringify(message.content, null, 2)}

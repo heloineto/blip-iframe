@@ -13,14 +13,20 @@ export default function Information({ ticketId }: Props) {
   const ticket = ticketsQuery.data?.items.find((t) => t.id === ticketId);
 
   if (!ticket) {
-    return <>Error: Ticket not found</>;
+    return <div>Error: Ticket not found</div>;
   }
+
+  const attendantId = ticket.agentIdentity;
 
   return (
     <Flex direction="column" gap="xl">
       <ContactInformation ticket={ticket} />
       <TicketInformation ticket={ticket} />
-      <AttendantInformation ticket={ticket} />
+      {attendantId ? (
+        <AttendantInformation attendantId={attendantId} />
+      ) : (
+        <div>No attendant assigned</div>
+      )}
     </Flex>
   );
 }

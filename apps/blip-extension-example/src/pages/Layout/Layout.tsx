@@ -1,4 +1,5 @@
 import { useMantineTheme } from '@mantine/core';
+import clsx from 'clsx';
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import track from '../../lib/utils/track';
@@ -16,7 +17,10 @@ const Layout = () => {
 
   return (
     <div
-      className="flex h-screen flex-col overflow-auto px-10"
+      className={clsx(
+        'flex h-screen flex-col overflow-auto px-10',
+        theme.colorScheme === 'dark' ? 'dark' : 'light'
+      )}
       style={{
         backgroundColor:
           theme.colorScheme === 'dark'

@@ -22,7 +22,7 @@ export interface GetTicketsResponseItem {
   ownerIdentity: string;
   customerIdentity: string;
   customerDomain: string;
-  agentIdentity: string;
+  agentIdentity?: string;
   provider: string;
   status: string;
   storageDate: string;

@@ -1,4 +1,4 @@
-import { Flex, Paper, ScrollArea } from '@mantine/core';
+import { Flex, Paper, ScrollArea, Text } from '@mantine/core';
 import Information from './components/Information';
 interface Props {
   selectedTicketId: string | null;
@@ -13,9 +13,9 @@ export default function Ticket({ selectedTicketId }: Props) {
       <ScrollArea px="md">
         <Flex direction="column" py="md">
           {!selectedTicketId ? (
-            <div className="flex grow items-center justify-center text-slate-300">
+            <Text className="flex grow items-center justify-center">
               Selecione um ticket para ver mais detalhes
-            </div>
+            </Text>
           ) : (
             <Information ticketId={selectedTicketId} />
           )}

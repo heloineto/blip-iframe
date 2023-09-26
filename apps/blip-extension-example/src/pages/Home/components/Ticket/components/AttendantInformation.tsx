@@ -1,19 +1,16 @@
 import { Flex, Title } from '@mantine/core';
-import type { GetTicketsResponseItem } from 'blip-iframe';
 import { DataTable } from 'mantine-datatable';
 import useAttendant from '../../../queries/useAttendant';
 
 interface Props {
-  ticket: GetTicketsResponseItem;
+  attendantId: string;
 }
 
-export default function AttendantInformation({ ticket }: Props) {
-  const attendantId = ticket.agentIdentity;
-
+export default function AttendantInformation({ attendantId }: Props) {
   const attendantQuery = useAttendant({ params: { identity: attendantId } });
 
   if (attendantQuery.isError) {
-    return <div>Error</div>;
+    return <div>Error fetching attendant</div>;
   }
 
   const attendant = attendantQuery.data;
@@ -27,6 +24,7 @@ export default function AttendantInformation({ ticket }: Props) {
         <DataTable
           withBorder
           borderRadius="sm"
+          verticalSpacing="sm"
           withColumnBorders
           striped
           noHeader

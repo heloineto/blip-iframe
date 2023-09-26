@@ -122,6 +122,7 @@
       "classname",
       "commitlint",
       "datetime",
+      "dayjs",
       "degit",
       "firefox",
       "fontsource",

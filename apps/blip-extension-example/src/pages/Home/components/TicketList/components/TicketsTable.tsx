@@ -19,11 +19,12 @@ export default function TicketsTable({
 }: Props) {
   const attendantQueries = useQueries({
     queries: tickets.map((ticket) => {
-      const params = { identity: ticket.agentIdentity };
+      const identity = ticket.agentIdentity;
 
       return {
-        queryKey: ['getAttendant', params],
-        queryFn: () => blipQueryFn(blip.getAttendant(params)),
+        queryKey: ['getAttendant', { identity }],
+        queryFn: () =>
+          identity ? blipQueryFn(blip.getAttendant({ identity })) : null,
         staleTime: Infinity,
       };
     }),
@@ -47,10 +48,7 @@ export default function TicketsTable({
         Tickets
       </Title>
       <DataTable
-        style={{
-          flex: 1,
-          height: 'fit-content',
-        }}
+        minHeight={200}
         withBorder
         borderRadius="sm"
         fetching={

@@ -1,4 +1,4 @@
-import { Flex, Paper, ScrollArea } from '@mantine/core';
+import { Flex, Loader, Paper, ScrollArea } from '@mantine/core';
 import type { Dispatch, SetStateAction } from 'react';
 import useTickets from '../../queries/useTickets';
 import TicketsTable from './components/TicketsTable';
@@ -14,9 +14,6 @@ export default function TicketList({
 }: Props) {
   const ticketsQuery = useTickets();
 
-  if (ticketsQuery.isLoading) return <div>Loading...</div>;
-  if (ticketsQuery.isError || !ticketsQuery.data) return <div>Error</div>;
-
   return (
     <Paper
       shadow="xs"
@@ -24,11 +21,25 @@ export default function TicketList({
     >
       <ScrollArea px="md">
         <Flex direction="column" py="md">
-          <TicketsTable
-            tickets={ticketsQuery.data.items}
-            selectedTicketId={selectedTicketId}
-            setSelectedTicketId={setSelectedTicketId}
-          />
+          {ticketsQuery.isLoading ? (
+            <div>
+              <Loader />
+            </div>
+          ) : (
+            <div>
+              {ticketsQuery.isError || !ticketsQuery.data ? (
+                <div className="flex grow items-center justify-center">
+                  Error
+                </div>
+              ) : (
+                <TicketsTable
+                  tickets={ticketsQuery.data.items}
+                  selectedTicketId={selectedTicketId}
+                  setSelectedTicketId={setSelectedTicketId}
+                />
+              )}
+            </div>
+          )}
         </Flex>
       </ScrollArea>
     </Paper>

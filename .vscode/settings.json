@@ -9,5 +9,8 @@
     ".nyc_output": true
   },
   "editor.formatOnSave": true,
-  "cSpell.words": ["clsx", "Heloi", "iframe", "mantine", "tsup"]
+  "cSpell.words": ["clsx", "Heloi", "iframe", "mantine", "tsup"],
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  }
 }
