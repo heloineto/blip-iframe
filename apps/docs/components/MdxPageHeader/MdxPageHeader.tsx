@@ -1,5 +1,5 @@
-import React from 'react';
-import { Box, Title, Text, rem } from '@mantine/core';
+import { Frontmatter } from '@/types';
+import { Box, Text, Title, rem } from '@mantine/core';
 import { GithubIcon, NpmIcon } from '@mantine/ds';
 import {
   IconCalendar,
@@ -7,13 +7,12 @@ import {
   IconPencil,
   IconSwitch2,
 } from '@tabler/icons-react';
-import { Frontmatter } from '@/types';
+import { ImportStatement } from './ImportStatement/ImportStatement';
 import { LinkItem } from './LinkItem/LinkItem';
 import classes from './MdxPageHeader.module.css';
-import { ImportStatement } from './ImportStatement/ImportStatement';
 
 const REPO_BASE = 'https://github.com/heloineto/blip-iframe/blob/main';
-const DOCS_BASE = `${REPO_BASE}/docs/pages`;
+const DOCS_BASE = `${REPO_BASE}/apps/docs/pages`;
 const SOURCE_BASE = `${REPO_BASE}/packages/blip-iframe/src`;
 
 interface MdxPageHeaderProps {

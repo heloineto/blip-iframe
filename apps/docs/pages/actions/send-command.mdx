@@ -1,0 +1,84 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.sendCommand);
+
+## Usage
+
+The `sendCommand` sends a command through the Blip Commands API using MessagingHubService
+(default) or BlipService.
+
+This package already provides a extensive list of type-safe wrappers for the most
+common commands, but you can also use the `sendCommand` function directly for any commands that are not covered by the wrappers.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+// Gets the current bot's json flow (from builder)
+blip
+  .sendCommand({
+    command: {
+      method: 'get',
+      uri: '/buckets/blip_portal:builder_published_flow',
+    },
+  })
+  .then(({ response }) => console.log(resource));
+
+// Gets all the bots (applications) of the current tenant
+blip
+  .sendCommand({
+    command: {
+      method: 'get',
+      to: 'postmaster@portal.blip.ai',
+      uri: '/applications',
+    },
+  })
+  .then(({ response }) => console.log(resource));
+```
+
+## Parameters
+
+The `sendCommand` function accepts the following parameters:
+
+```ts
+interface SendCommandParams {
+  /**
+   * The timeout in milliseconds for the command to be executed
+   */
+  timeout?: number;
+  /**
+   * The service that will call the command. MessagingHubService is the default
+   */
+  destination?: 'BlipService' | 'MessagingHubService';
+  /**
+   * Properties of the command to be executed
+   */
+  command: {
+    method:
+      | 'get'
+      | 'set'
+      | 'merge'
+      | 'delete'
+      | 'subscribe'
+      | 'unsubscribe'
+      | 'observe';
+    uri: string;
+    to?: string;
+    type?: string;
+    from?: string;
+    id?: string;
+    metadata?: unknown;
+    pp?: string;
+    reason?: string;
+    resource?: string;
+    status?: string;
+  };
+}
+```
+
+## Return type
+
+The return type `sendCommand` varies according to the command executed.
+If you want type safe access commands, you can use the commands functions provided by this package.

@@ -1,0 +1,27 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.hideNavbar);
+
+## Usage
+
+The `hideNavbar` function changes the height the extension's iframe parent.
+The iframe parent has a minimum height of 100%,
+so if you want the extension to take the remaining space,
+pass 0 as the height.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+blip.hideNavbar(); // hides the blip navbar
+```
+
+## Parameters
+
+The `hideNavbar` function accepts no parameters.
+
+## Return type
+
+The `hideNavbar` function does not return a response.

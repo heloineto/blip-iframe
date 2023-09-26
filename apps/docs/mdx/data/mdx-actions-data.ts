@@ -41,7 +41,7 @@ export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
     title: 'sendCommand',
     package: 'blip-iframe',
     slug: '/actions/send-command',
-    description: 'Hides the top navigation bar of the blip platform',
+    description: 'Sends a command through the Blip Commands API',
     import: "import { sendCommand } from 'blip-iframe';",
     source: 'actions/sendCommand.ts',
     docs: 'actions/send-command.mdx',

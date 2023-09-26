@@ -1,14 +1,51 @@
 import imp from '../imp';
 
-export type SendCommandParams = SendCommandRequest['content'];
+export interface SendCommandParams {
+  /**
+   * The timeout in milliseconds for the command to be executed
+   */
+  timeout?: number;
+  /**
+   * The service that will call the command. MessagingHubService is the default
+   */
+  destination?: 'BlipService' | 'MessagingHubService';
+  /**
+   * Properties of the command to be executed
+   */
+  command: {
+    method:
+      | 'get'
+      | 'set'
+      | 'merge'
+      | 'delete'
+      | 'subscribe'
+      | 'unsubscribe'
+      | 'observe';
+    uri: string;
+    to?: string;
+    type?: string;
+    from?: string;
+    id?: string;
+    metadata?: unknown;
+    pp?: string;
+    reason?: string;
+    resource?: string;
+    status?: string;
+  };
+}
 
+/**
+ * Sends a command through the Blip Commands API using MessagingHubService (default) or BlipService
+ * @param params The parameters of the command
+ * @returns The response of the command
+ */
 export default async function sendCommand<
   TResponse = unknown,
   TWrappedResponse extends WrappedSendCommandResponse<TResponse> = WrappedSendCommandResponse<TResponse>
->(content: SendCommandParams) {
+>(params: SendCommandParams) {
   return await imp.sendMessage<TResponse, TWrappedResponse>({
     action: 'sendCommand',
-    content,
+    content: params,
   });
 }
 
@@ -29,7 +66,13 @@ export interface SendCommandRequest {
       to?: string;
       uri: string;
       type?: string;
-      [key: string]: unknown;
+      from?: string;
+      id?: string;
+      metadata?: unknown;
+      pp?: string;
+      reason?: string;
+      resource?: string;
+      status?: string;
     };
   };
 }
