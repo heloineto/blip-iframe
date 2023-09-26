@@ -6,5 +6,5 @@ IframeMessageProxy.listen();
 
 // The iframe's parent minimum height is 100%. By setting it's height to 0px,
 // the extension will take 100% of the remaining height.
-void heightChange(0);
+void heightChange({ height: 0 });
 void track('opened');

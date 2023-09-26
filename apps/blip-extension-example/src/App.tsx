@@ -20,6 +20,7 @@ const App = () => {
       withNormalizeCSS
       theme={{
         fontFamily: 'Nunito Sans',
+        colorScheme: 'dark',
       }}
     >
       <QueryClientProvider client={queryClient}>

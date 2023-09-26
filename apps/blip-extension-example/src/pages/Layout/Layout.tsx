@@ -1,8 +1,11 @@
+import { useMantineTheme } from '@mantine/core';
 import { useEffect } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import track from '../../lib/utils/track';
+
 const Layout = () => {
   const location = useLocation();
+  const theme = useMantineTheme();
 
   useEffect(() => {
     void track('page-opened', {
@@ -12,7 +15,15 @@ const Layout = () => {
   }, [location]);
 
   return (
-    <div className="flex h-screen flex-col overflow-auto bg-slate-950 px-10 text-slate-50">
+    <div
+      className="flex h-screen flex-col overflow-auto px-10"
+      style={{
+        backgroundColor:
+          theme.colorScheme === 'dark'
+            ? theme.colors.dark[9]
+            : theme.colors.gray[0],
+      }}
+    >
       <Outlet />
     </div>
   );

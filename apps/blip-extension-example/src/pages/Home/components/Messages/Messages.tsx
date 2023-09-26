@@ -1,3 +1,4 @@
+import { Box, Paper, ScrollArea } from '@mantine/core';
 import useTickets from '../../queries/useTickets';
 import Message from './components/Message';
 import useMessages from './hooks/useMessages';
@@ -8,15 +9,20 @@ interface Props {
 
 export default function Messages({ selectedTicketId }: Props) {
   return (
-    <div className="flex h-[calc(100vh-80px)] flex-col overflow-auto rounded bg-slate-800 p-5">
-      {!selectedTicketId ? (
-        <div className="flex grow items-center justify-center text-slate-300">
-          Selecione um ticket para ver mais detalhes
-        </div>
-      ) : (
-        <TicketInner ticketId={selectedTicketId} />
-      )}
-    </div>
+    <Paper
+      shadow="xs"
+      className="flex h-[calc(100vh-80px)] flex-col overflow-auto"
+    >
+      <ScrollArea px="md">
+        {!selectedTicketId ? (
+          <div className="flex grow items-center justify-center text-slate-300">
+            Selecione um ticket para ver mais detalhes
+          </div>
+        ) : (
+          <TicketInner ticketId={selectedTicketId} />
+        )}
+      </ScrollArea>
+    </Paper>
   );
 }
 
@@ -43,12 +49,12 @@ function TicketInner({ ticketId }: { ticketId: string }) {
   const messages = formatMessages(messagesQuery.data.items);
 
   return (
-    <div>
+    <Box py="md">
       <ul className="flex flex-col gap-3">
         {messages.map((message) => (
           <Message key={message.id} message={message} />
         ))}
       </ul>
-    </div>
+    </Box>
   );
 }

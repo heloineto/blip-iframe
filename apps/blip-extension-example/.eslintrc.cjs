@@ -35,6 +35,7 @@ module.exports = {
         '@typescript-eslint/non-nullable-type-assertion-style': 'off',
         '@typescript-eslint/no-var-requires': 'off',
         '@typescript-eslint/no-namespace': 'off',
+    '@typescript-eslint/no-unused-vars': 'off',
         '@typescript-eslint/no-misused-promises': [
           'error',
           { checksVoidReturn: false },
@@ -52,5 +53,6 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'error',
     'react/self-closing-comp': 'error',
     'react/no-array-index-key': 'error',
+    '@typescript-eslint/no-unused-vars': 'off'
   },
 };

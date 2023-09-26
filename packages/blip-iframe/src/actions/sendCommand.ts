@@ -71,7 +71,7 @@ export interface SendCommandRequest {
       metadata?: unknown;
       pp?: string;
       reason?: string;
-      resource?: string;
+      resource?: unknown;
       status?: string;
     };
   };

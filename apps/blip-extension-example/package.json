@@ -27,6 +27,7 @@
     "@tanstack/react-query-devtools": "^4.35.3",
     "blip-iframe": "workspace:*",
     "clsx": "^2.0.0",
+    "dayjs": "^1.10.5",
     "i18next": "^23.2.11",
     "iframe-message-proxy": "^1.2.0",
     "mantine-datatable": "^2.9.13",

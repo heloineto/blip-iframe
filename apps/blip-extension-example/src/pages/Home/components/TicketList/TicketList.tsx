@@ -1,7 +1,7 @@
-import clsx from 'clsx';
+import { Flex, Paper, ScrollArea } from '@mantine/core';
 import type { Dispatch, SetStateAction } from 'react';
 import useTickets from '../../queries/useTickets';
-import TicketCard from '../TicketCard';
+import TicketsTable from './components/TicketsTable';
 
 interface Props {
   selectedTicketId: string | null;
@@ -18,28 +18,19 @@ export default function TicketList({
   if (ticketsQuery.isError || !ticketsQuery.data) return <div>Error</div>;
 
   return (
-    <div className="rounded bg-slate-800 p-5">
-      <ul className="flex flex-col divide-y divide-slate-500">
-        {ticketsQuery.data?.items.map((ticket) => (
-          <li
-            key={ticket.id}
-            className={clsx(
-              'flex transition-colors first:rounded-t last:rounded-b',
-              ticket.id === selectedTicketId ? 'bg-blue-900' : ''
-            )}
-          >
-            <button
-              type="button"
-              className="flex grow px-4 py-2 text-left"
-              onClick={() => {
-                setSelectedTicketId(ticket.id);
-              }}
-            >
-              <TicketCard ticket={ticket} />
-            </button>
-          </li>
-        ))}
-      </ul>
-    </div>
+    <Paper
+      shadow="xs"
+      className="flex h-[calc(100vh-80px)] flex-col overflow-auto"
+    >
+      <ScrollArea px="md">
+        <Flex direction="column" py="md">
+          <TicketsTable
+            tickets={ticketsQuery.data.items}
+            selectedTicketId={selectedTicketId}
+            setSelectedTicketId={setSelectedTicketId}
+          />
+        </Flex>
+      </ScrollArea>
+    </Paper>
   );
 }
