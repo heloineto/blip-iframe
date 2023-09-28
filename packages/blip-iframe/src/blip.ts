@@ -3,6 +3,8 @@ import * as bucket from './bucket';
 import * as commands from './commands';
 
 const blip = {
+  actions,
+  commands,
   ...actions,
   ...commands,
   ...bucket,

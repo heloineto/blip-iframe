@@ -16,7 +16,7 @@ export default async function getApplication({
 }: GetApplicationParams = {}) {
   return await imp.sendMessage<GetApplicationResponse>({
     action: 'getApplication',
-    content: shortName,
+    content: shortName || undefined,
   });
 }
 

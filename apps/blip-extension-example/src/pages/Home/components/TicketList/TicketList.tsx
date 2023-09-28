@@ -1,4 +1,4 @@
-import { Flex, Loader, Paper, ScrollArea } from '@mantine/core';
+import { Loader } from '@mantine/core';
 import type { Dispatch, SetStateAction } from 'react';
 import useTickets from '../../queries/useTickets';
 import TicketsTable from './components/TicketsTable';
@@ -14,34 +14,30 @@ export default function TicketList({
 }: Props) {
   const ticketsQuery = useTickets();
 
-  return (
-    <Paper
-      shadow="xs"
-      className="flex h-[calc(100vh-80px)] flex-col overflow-auto"
-    >
-      <ScrollArea px="md">
-        <Flex direction="column" py="md">
-          {ticketsQuery.isLoading ? (
-            <div>
-              <Loader />
-            </div>
-          ) : (
-            <div>
-              {ticketsQuery.isError || !ticketsQuery.data ? (
-                <div className="flex grow items-center justify-center">
-                  Error
-                </div>
-              ) : (
-                <TicketsTable
-                  tickets={ticketsQuery.data.items}
-                  selectedTicketId={selectedTicketId}
-                  setSelectedTicketId={setSelectedTicketId}
-                />
-              )}
-            </div>
-          )}
-        </Flex>
-      </ScrollArea>
-    </Paper>
+  return ticketsQuery.isLoading ? (
+    <div>
+      <Loader />
+    </div>
+  ) : (
+    <div>
+      {ticketsQuery.isError || !ticketsQuery.data ? (
+        <div
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            flex: 1,
+          }}
+        >
+          Error
+        </div>
+      ) : (
+        <TicketsTable
+          tickets={ticketsQuery.data.items}
+          selectedTicketId={selectedTicketId}
+          setSelectedTicketId={setSelectedTicketId}
+        />
+      )}
+    </div>
   );
 }

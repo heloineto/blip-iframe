@@ -1,4 +1,4 @@
-import { Avatar, Flex, Title } from '@mantine/core';
+import { Avatar, Flex, Title, useMantineTheme } from '@mantine/core';
 import { useQueries } from '@tanstack/react-query';
 import type { GetTicketsResponseItem } from 'blip-iframe';
 import { blip } from 'blip-iframe';
@@ -17,6 +17,8 @@ export default function TicketsTable({
   setSelectedTicketId,
   tickets,
 }: Props) {
+  const theme = useMantineTheme();
+
   const attendantQueries = useQueries({
     queries: tickets.map((ticket) => {
       const identity = ticket.agentIdentity;
@@ -88,8 +90,16 @@ export default function TicketsTable({
           { accessor: 'sequentialId', title: 'Id', textAlignment: 'right' },
         ]}
         onRowClick={(record) => setSelectedTicketId(record.id)}
-        rowClassName={(record) =>
-          selectedTicketId === record.id ? '!bg-blue-8 cursor-pointer' : ''
+        rowStyle={(record) =>
+          selectedTicketId === record.id
+            ? {
+                backgroundColor:
+                  theme.colorScheme === 'dark'
+                    ? theme.colors.blue[8]
+                    : theme.colors.blue[4],
+                cursor: 'pointer',
+              }
+            : undefined
         }
       />
     </Flex>

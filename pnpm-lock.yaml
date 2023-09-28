@@ -159,6 +159,9 @@ importers:
 
   apps/blip-extension-example:
     dependencies:
+      '@blip-ds/react-icons':
+        specifier: ^0.0.2
+        version: 0.0.2
       '@emotion/react':
         specifier: ^11.11.1
         version: 11.11.1(@types/react@18.2.15)(react@18.2.0)
@@ -1709,6 +1712,10 @@ packages:
       '@babel/helper-string-parser': 7.22.5
       '@babel/helper-validator-identifier': 7.22.5
       to-fast-properties: 2.0.0
+
+  /@blip-ds/react-icons@0.0.2:
+    resolution: {integrity: sha512-oi1Xi9aQZu8Fh+eYwuukxU7RivBQzDONXEDI1iRmJHJuIFJZa4CuVy6C0xhpl0RX1uIVAxWZBQAxKn6GCXGNdQ==}
+    dev: false
 
   /@colors/colors@1.5.0:
     resolution: {integrity: sha512-ooWCrlZP11i8GImSjTHYHLkvFDP48nS4+204nGb1RiX/WXYHmJA2III9/e2DWVabCESdW7hBAEzHRqUn9OUVvQ==}
