@@ -27,7 +27,7 @@ export default function TicketInformation({ ticket }: Props) {
         <DataTable
           withBorder
           borderRadius="sm"
-          verticalSpacing="sm"
+          verticalSpacing="xs"
           withColumnBorders
           striped
           noHeader

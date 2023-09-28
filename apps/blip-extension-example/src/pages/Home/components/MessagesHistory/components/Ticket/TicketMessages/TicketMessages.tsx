@@ -1,10 +1,10 @@
 import { Text } from '@mantine/core';
+import useMessagesHistory from '../../../context/MessagesHistoryContext/useMessagesHistory';
 import MessagesContainer from './components/MessagesContainer';
-interface Props {
-  selectedTicketId: string | null;
-}
 
-export default function Messages({ selectedTicketId }: Props) {
+export default function TicketMessages() {
+  const { selectedTicketId } = useMessagesHistory();
+
   return !selectedTicketId ? (
     <Text className="flex grow items-center justify-center">
       Selecione um ticket para ver mais detalhes

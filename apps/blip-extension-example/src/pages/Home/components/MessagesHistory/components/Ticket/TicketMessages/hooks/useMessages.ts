@@ -1,7 +1,7 @@
 import { useQuery } from '@tanstack/react-query';
 import type { GetTicketsResponseItem } from 'blip-iframe';
 import { blip } from 'blip-iframe';
-import blipQueryFn from '../../../utils/queryFn';
+import blipQueryFn from '../../../../../../utils/queryFn';
 
 export default function useMessages({
   ticket,

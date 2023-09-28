@@ -1,5 +1,5 @@
 import { Flex } from '@mantine/core';
-import useTickets from '../../../queries/useTickets';
+import useTickets from '../../../../../../queries/useTickets';
 import AttendantInformation from './AttendantInformation';
 import ContactInformation from './ContactInformation';
 import TicketInformation from './TicketInformation';

@@ -1,5 +1,5 @@
 import { Box } from '@mantine/core';
-import useTickets from '../../../queries/useTickets';
+import useTickets from '../../../../../../queries/useTickets';
 import useMessages from '../hooks/useMessages';
 import formatMessages from '../utils/formatMessages';
 import Message from './Message';

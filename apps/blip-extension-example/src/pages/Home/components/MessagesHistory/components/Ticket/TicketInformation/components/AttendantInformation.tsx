@@ -1,6 +1,6 @@
 import { Flex, Title } from '@mantine/core';
 import { DataTable } from 'mantine-datatable';
-import useAttendant from '../../../queries/useAttendant';
+import useAttendant from '../../../../../../queries/useAttendant';
 
 interface Props {
   attendantId: string;

@@ -1,7 +1,7 @@
 import { Flex, Title } from '@mantine/core';
 import type { GetTicketsResponseItem } from 'blip-iframe';
 import { DataTable } from 'mantine-datatable';
-import useContact from '../../../queries/useContact';
+import useContact from '../../../../../../queries/useContact';
 
 interface Props {
   ticket: GetTicketsResponseItem;
