@@ -123,6 +123,7 @@
       "Autosize",
       "classname",
       "commitlint",
+      "datatable",
       "datetime",
       "dayjs",
       "degit",

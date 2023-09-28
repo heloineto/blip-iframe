@@ -3,21 +3,16 @@ import { useQueries } from '@tanstack/react-query';
 import type { GetTicketsResponseItem } from 'blip-iframe';
 import { blip } from 'blip-iframe';
 import { DataTable } from 'mantine-datatable';
-import type { Dispatch, SetStateAction } from 'react';
-import blipQueryFn from '../../../utils/queryFn';
+import blipQueryFn from '../../../../../utils/queryFn';
+import useMessagesHistory from '../../../context/MessagesHistoryContext/useMessagesHistory';
 
 interface Props {
   tickets: GetTicketsResponseItem[];
-  selectedTicketId: string | null;
-  setSelectedTicketId: Dispatch<SetStateAction<string | null>>;
 }
 
-export default function TicketsTable({
-  selectedTicketId,
-  setSelectedTicketId,
-  tickets,
-}: Props) {
+export default function TicketsTable({ tickets }: Props) {
   const theme = useMantineTheme();
+  const { selectedTicketId, setSelectedTicketId } = useMessagesHistory();
 
   const attendantQueries = useQueries({
     queries: tickets.map((ticket) => {

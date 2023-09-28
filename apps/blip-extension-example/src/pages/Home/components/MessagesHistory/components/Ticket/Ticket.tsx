@@ -10,11 +10,7 @@ import {
   useMantineTheme,
 } from '@mantine/core';
 
-interface Props {
-  selectedTicketId: string;
-}
-
-export default function TicketTabs({ selectedTicketId }: Props) {
+export default function Ticket() {
   const theme = useMantineTheme();
 
   return (
