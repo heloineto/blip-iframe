@@ -43,12 +43,12 @@ export default function Extension() {
         <Drawer
           opened={opened}
           onClose={close}
-          title="Messages History"
+          withCloseButton={false}
           position="right"
           scrollAreaComponent={ScrollArea.Autosize}
           size={480}
         >
-          <MessagesHistory />
+          <MessagesHistory onCloseDrawer={close} />
         </Drawer>
       </MantineProvider>
     </div>
