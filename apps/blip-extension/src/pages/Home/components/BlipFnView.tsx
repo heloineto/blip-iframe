@@ -2,6 +2,7 @@ import { useQuery } from '@tanstack/react-query';
 import ReactJson from 'react-json-view';
 import type { BlipFnName, Category } from '../lib/blipFns';
 import blipFns from '../lib/blipFns';
+import { SchemaInformation } from './SchemaInformation';
 
 interface Props<TCategory extends Category> {
   blipFn: {
@@ -33,14 +34,21 @@ export default function BlipFnView<TCategory extends Category>({
   }
 
   return (
-    <div className="max-h-96 w-fit overflow-auto bg-slate-100">
-      <ReactJson
-        src={query.data as object}
-        name="response"
-        shouldCollapse={(field) => field.name !== 'response'}
-        theme="ocean"
-        style={{ width: 480 }}
-      />
+    <div className="flex flex-col">
+      <div className="max-h-96 w-fit overflow-auto bg-slate-100">
+        <ReactJson
+          src={query.data as object}
+          name="response"
+          shouldCollapse={(field) => field.name !== 'response'}
+          theme="ocean"
+          style={{ width: 480 }}
+        />
+      </div>
+      <div className="max-w-lg">
+        {query.data ? (
+          <SchemaInformation data={query.data} blipFn={blipFn} />
+        ) : null}
+      </div>
     </div>
   );
 }

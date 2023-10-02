@@ -20,9 +20,9 @@
   },
   "dependencies": {
     "@fontsource/nunito-sans": "^5.0.5",
-    "@mantine/core": "^7.0.0",
-    "@mantine/form": "^7.0.0",
-    "@mantine/hooks": "^7.0.0",
+    "@mantine/core": "^7.1.1",
+    "@mantine/form": "^7.1.1",
+    "@mantine/hooks": "^7.1.1",
     "@tanstack/react-query": "^4.32.5",
     "blip-iframe": "workspace:*",
     "i18next": "^23.2.11",
@@ -31,7 +31,8 @@
     "react-dom": "^18.2.0",
     "react-i18next": "^13.0.2",
     "react-json-view": "^1.21.3",
-    "react-router-dom": "^6.14.2"
+    "react-router-dom": "^6.14.2",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^17.6.7",
@@ -63,6 +64,7 @@
     "prettier": "^3.0.0",
     "tailwind-blip-ds": "^1.0.4",
     "tailwindcss": "^3.3.3",
+    "tsafe": "^1.6.5",
     "typescript": "^5.1.6",
     "vite": "^4.4.5"
   },
@@ -144,7 +146,8 @@
       "prestart",
       "tailwindcss",
       "takenet",
-      "tanstack"
+      "tanstack",
+      "tsafe"
     ]
   }
 }
