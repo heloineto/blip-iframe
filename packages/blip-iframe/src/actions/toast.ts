@@ -7,7 +7,7 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  * @param content
  */
 export default async function toast(content: ToastRequest['content']) {
-  await IframeMessageProxy.sendMessage({
+  void IframeMessageProxy.sendMessage({
     action: 'toast',
     content,
   });

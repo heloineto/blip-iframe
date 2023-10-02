@@ -7,8 +7,8 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  * bar is hidden (Ex.: after calling `hideNavbar`)
  */
 export default async function showNavbar() {
-  await IframeMessageProxy.sendMessage({
-    action: 'hideNavbar',
+  void IframeMessageProxy.sendMessage({
+    action: 'showNavbar',
   });
 }
 

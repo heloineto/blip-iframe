@@ -1,3 +1,4 @@
+import { ShowNavbarRequest } from '../actions';
 import { GetApplicationRequest } from '../actions/getApplication';
 import { GetCurrentLanguageRequest } from '../actions/getCurrentLanguage';
 import { GetTenantPlanRequest } from '../actions/getTenantPlan';
@@ -23,6 +24,7 @@ type Request =
   | StopLoadingRequest
   | ToastRequest
   | HideNavbarRequest
+  | ShowNavbarRequest
   | GetTenantPlanRequest;
 
 export default Request;
