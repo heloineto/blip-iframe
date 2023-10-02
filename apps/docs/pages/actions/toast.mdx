@@ -1,0 +1,56 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.toast);
+
+## Usage
+
+The `toast` function is used to show a toast notification on the main Blip platform.
+Toasts are small notifications that typically appear at the top or bottom of the screen for a short period of time. They can be used to display information, success messages, warnings, errors, and more.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+blip.toast({
+  type: 'success',
+  message: 'This is a success toast message.',
+  title: 'Success',
+  duration: 3000, // 3 seconds
+  buttonText: 'Close',
+});
+```
+
+## Parameters
+
+The `toast` function accepts the following parameters:
+
+```ts
+interface ToastParams {
+  /**
+   * The type of the toast message. It will change the icon, color, and other styles of the toast.
+   */
+  type: ToastType;
+  /**
+   * The message to be displayed in the toast.
+   */
+  message: string;
+  /**
+   * The title of the toast (optional).
+   */
+  title?: string;
+  /**
+   * The duration in milliseconds for which the toast should be displayed (optional).
+   */
+  duration?: number;
+  /**
+   * The text to be displayed on the button of the toast (optional).
+   */
+  buttontext?: string;
+}
+```
+
+## Return type
+
+The `toast` function does not return any value.

@@ -20,7 +20,7 @@ export default function BlipFnView<TCategory extends Category>({
   const query = useQuery({
     queryKey: [blipFn.category, blipFn.name],
     queryFn: () => queryFn(),
-    retry: false,
+    // retry: false,
     refetchOnWindowFocus: false,
   });
 
@@ -29,7 +29,7 @@ export default function BlipFnView<TCategory extends Category>({
   }
 
   if (query.isError || !query.data) {
-    return <span>error</span>;
+    return <span>error: {JSON.stringify(query.error)}</span>;
   }
 
   return (

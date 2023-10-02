@@ -10,6 +10,8 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       MDX_DATA.heightChange,
       MDX_DATA.hideNavbar,
       MDX_DATA.sendCommand,
+      MDX_DATA.showNavbar,
+      MDX_DATA.toast,
     ],
   },
   {

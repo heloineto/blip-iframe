@@ -13,6 +13,9 @@ export interface SendCommandParams {
    * Properties of the command to be executed
    */
   command: {
+    /**
+     * The HTTP-like method to be used for the command.
+     */
     method:
       | 'get'
       | 'set'
@@ -21,6 +24,9 @@ export interface SendCommandParams {
       | 'subscribe'
       | 'unsubscribe'
       | 'observe';
+    /**
+     * The Uniform Resource Identifier (URI) of the command.
+     */
     uri: string;
     to?: string;
     type?: string;

@@ -46,4 +46,22 @@ export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
     source: 'actions/sendCommand.ts',
     docs: 'actions/send-command.mdx',
   },
+  showNavbar: {
+    title: 'showNavbar',
+    package: 'blip-iframe',
+    slug: '/actions/show-navbar',
+    description: 'Shows the top navigation bar of the blip platform',
+    import: "import { showNavbar } from 'blip-iframe';",
+    source: 'actions/showNavbar.ts',
+    docs: 'actions/show-navbar.mdx',
+  },
+  toast: {
+    title: 'toast',
+    package: 'blip-iframe',
+    slug: '/actions/toast',
+    description: 'Shows a toast notification on the main platform',
+    import: "import { toast } from 'blip-iframe';",
+    source: 'actions/toast.ts',
+    docs: 'actions/toast.mdx',
+  },
 };

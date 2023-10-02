@@ -2,7 +2,6 @@ import { blip } from 'blip-iframe';
 
 const blipFns = {
   actions: {
-    // sendCommand: () => {},
     // startLoading: () => {},
     // stopLoading: () => {},
     // heightChange: () => {},
@@ -14,18 +13,20 @@ const blipFns = {
     // showChecklistModal: () => {},
     // showOverlayAndBlockScroll: () => {},
     // removeOverlayAndReleaseScroll: () => {},
+    getApplication: () => blip.getApplication(),
+    getCurrentLanguage: () => blip.getCurrentLanguage(),
     hideNavbar: () => blip.hideNavbar(),
+    sendCommand: () => {},
     showNavbar: () => blip.showNavbar(),
     // changeSubheaderTitle: () => {},
-    getCurrentLanguage: () => blip.getCurrentLanguage(),
     toast: () =>
       blip.toast({
         title: 'Hello World',
         message: 'Hello World',
         type: 'success',
-        duration: 5000,
+        duration: 1000,
+        buttontext: "I'm a button",
       }),
-    getApplication: () => blip.getApplication(),
     // hasPermissions: () => {},
     // getPermissionsObject: () => {},
     // segment: () => {},

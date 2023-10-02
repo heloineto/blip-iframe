@@ -5,17 +5,15 @@ export default Layout(MDX_DATA.hideNavbar);
 
 ## Usage
 
-The `hideNavbar` function changes the height the extension's iframe parent.
-The iframe parent has a minimum height of 100%,
-so if you want the extension to take the remaining space,
-pass 0 as the height.
+The `hideNavbar` function is used to hide the top navigation bar of the Blip platform.
+This can be useful if you want to create a full screen extension. To show the navbar again, use the `showNavbar` function.
 
 ## Example
 
 ```ts
 import { blip } from 'blip-iframe';
 
-blip.hideNavbar(); // hides the blip navbar
+await blip.hideNavbar();
 ```
 
 ## Parameters
@@ -24,4 +22,4 @@ The `hideNavbar` function accepts no parameters.
 
 ## Return type
 
-The `hideNavbar` function does not return a response.
+The `hideNavbar` function does not return any value.

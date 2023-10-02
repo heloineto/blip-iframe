@@ -1,0 +1,25 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.showNavbar);
+
+## Usage
+
+The `showNavbar` function is used to show the top navigation bar of the Blip platform.
+This function will only have an effect if the navigation bar is currently hidden. To hide the navbar, use the `hideNavbar` function.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+await blip.showNavbar();
+```
+
+## Parameters
+
+The `showNavbar` function accepts no parameters.
+
+## Return type
+
+The `showNavbar` function does not return any value.
