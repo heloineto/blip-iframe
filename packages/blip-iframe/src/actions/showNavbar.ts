@@ -1,4 +1,4 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import imp from '../imp';
 
 /**
  * Shows the top navigation bar of the blip platform.
@@ -7,7 +7,7 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  * bar is hidden (Ex.: after calling `hideNavbar`)
  */
 export default async function showNavbar() {
-  void IframeMessageProxy.sendMessage({
+  void imp.sendMessage({
     action: 'showNavbar',
   });
 }

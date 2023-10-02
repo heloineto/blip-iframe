@@ -37,6 +37,15 @@ export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
     source: 'actions/hideNavbar.ts',
     docs: 'actions/hide-navbar.mdx',
   },
+  segment: {
+    title: 'segment',
+    package: 'blip-iframe',
+    slug: '/actions/segment',
+    description: "Makes calls to the platform's analytics API",
+    import: "import { segment } from 'blip-iframe';",
+    source: 'actions/segment.ts',
+    docs: 'actions/segment.mdx',
+  },
   sendCommand: {
     title: 'sendCommand',
     package: 'blip-iframe',
@@ -73,6 +82,7 @@ export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
     source: 'actions/stopLoading.ts',
     docs: 'actions/stop-loading.mdx',
   },
+
   toast: {
     title: 'toast',
     package: 'blip-iframe',

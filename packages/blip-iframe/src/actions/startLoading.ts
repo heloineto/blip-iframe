@@ -1,10 +1,10 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import imp from '../imp';
 
 /**
  * Starts showing a loading indicator in the Blip platform.
  */
 export default async function startLoading() {
-  void IframeMessageProxy.sendMessage({ action: 'startLoading' });
+  void imp.sendMessage({ action: 'startLoading' });
 }
 
 export interface StartLoadingRequest {

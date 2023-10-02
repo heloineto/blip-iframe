@@ -1,4 +1,4 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import imp from '../imp';
 
 export type ToastType =
   | 'danger'
@@ -37,7 +37,7 @@ export interface ToastParams {
  * with a message, title a type and the duration is in milliseconds
  */
 export default async function toast(params: ToastParams) {
-  void IframeMessageProxy.sendMessage({
+  void imp.sendMessage({
     action: 'toast',
     content: params,
   });

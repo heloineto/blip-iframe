@@ -27,9 +27,18 @@ blip.toast({
 The `toast` function accepts the following parameters:
 
 ```ts
+type ToastType =
+  | 'danger'
+  | 'info'
+  | 'refresh'
+  | 'success'
+  | 'warning'
+  | 'undo'
+  | 'redo';
+
 interface ToastParams {
   /**
-   * The type of the toast message. It will change the icon, color, and other styles of the toast.
+   * The type of the toast message. It will change the icon, color and other styles of the toast
    */
   type: ToastType;
   /**
@@ -37,15 +46,15 @@ interface ToastParams {
    */
   message: string;
   /**
-   * The title of the toast (optional).
+   * The title of the toast.
    */
   title?: string;
   /**
-   * The duration in milliseconds for which the toast should be displayed (optional).
+   * The duration in milliseconds for which the toast should be displayed.
    */
   duration?: number;
   /**
-   * The text to be displayed on the button of the toast (optional).
+   * The text to be displayed on the button of the toast.
    */
   buttontext?: string;
 }

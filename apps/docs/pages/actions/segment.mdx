@@ -1,0 +1,67 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.segment);
+
+## Usage
+
+The `segment` function is used to make calls to the platform's analytics API.
+You can use this function to track events, send payload data, and application data to the analytics service.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const params = {
+  method: 'createTrack',
+  parameters: {
+    trackEvent: 'buttonClicked',
+    payload: { buttonId: 'submit' },
+  },
+};
+
+await blip.segment(params);
+```
+
+## Parameters
+
+The `segment` function accepts the following parameters:
+
+```ts
+export type SegmentMethod =
+  | 'createTrack'
+  | 'createApplicationTrack'
+  | 'resetAccount'
+  | 'setAccount'
+  | 'createApplicationTrack'
+  | 'createOrganizationTrack';
+
+export interface SegmentParams {
+  /**
+   * The analytics service method to be used.
+   */
+  method: SegmentMethod;
+  /**
+   * The method parameters.
+   */
+  parameters: {
+    /**
+     * The event to be tracked.
+     */
+    trackEvent?: string;
+    /**
+     * The payload data to be sent along with the event.
+     */
+    payload?: Record<string, unknown>;
+    /**
+     * The application data to be sent along with the event.
+     */
+    application?: Record<string, unknown>;
+  };
+}
+```
+
+## Return type
+
+The `segment` function returns the result of the analytics API call.
