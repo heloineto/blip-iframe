@@ -1,7 +1,7 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
 /**
- * Shows a modal dialog on the main platform with
+ * Shows a modal dialog on the Blip platform with
  * a title, body, confirm and cancel button
  * @param content
  */

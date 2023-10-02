@@ -1,0 +1,25 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.stopLoading);
+
+## Usage
+
+The `stopLoading` function is used to send a message to the Blip Platform to stop showing the loading indicator.
+Use this function when the operation that required the loading indicator is completed.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+await blip.stopLoading();
+```
+
+## Parameters
+
+The `stopLoading` function accepts no parameters.
+
+## Return type
+
+The `stopLoading` function does not return any value.

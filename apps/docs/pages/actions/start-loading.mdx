@@ -1,0 +1,25 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.startLoading);
+
+## Usage
+
+The `startLoading` function is used to send a message to the Blip platform to start showing an overlay loading indicator.
+This can be useful to indicate that an operation is in progress and the user should wait.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+await blip.startLoading();
+```
+
+## Parameters
+
+The `startLoading` function accepts no parameters.
+
+## Return type
+
+The `startLoading` function does not return any value.

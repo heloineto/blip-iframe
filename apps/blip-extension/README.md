@@ -51,7 +51,7 @@ In this section, you will learn how to set up and develop a Blip extension.
 ### What exactly is a Blip extension?
 
 In technical terms, A blip extension is simply a web application viewed as an iframe inside the Blip platform.
-It can do everything a web app can, and also communicate with the main platform though the [iframe-message-proxy](https://github.com/takenet/iframe-message-proxy) API.
+It can do everything a web app can, and also communicate with the Blip platform though the [iframe-message-proxy](https://github.com/takenet/iframe-message-proxy) API.
 
 ### Step 1: Setup
 
@@ -61,7 +61,7 @@ After running the development server, you will be able to see the extension runn
 
 ### Step 2: Running the extension inside Blip
 
-To be able to communicate with the main platform, your extension must be running inside the Blip platform. Due to company policy, I can't show you how to do it here, so if you are interested in learning how to do this, please reach out.
+To be able to communicate with the Blip platform, your extension must be running inside the Blip platform. Due to company policy, I can't show you how to do it here, so if you are interested in learning how to do this, please reach out.
 
 ### Step 3: Using the Blip APIs
 

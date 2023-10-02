@@ -11,6 +11,8 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       MDX_DATA.hideNavbar,
       MDX_DATA.sendCommand,
       MDX_DATA.showNavbar,
+      MDX_DATA.startLoading,
+      MDX_DATA.stopLoading,
       MDX_DATA.toast,
     ],
   },

@@ -1,10 +1,10 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
 /**
- * Sends a message to the Blip Platform to stop showing a loading indicator.
+ * Stops showing the loading indicator in the Blip platform.
  */
 export default async function stopLoading() {
-  await IframeMessageProxy.sendMessage({ action: 'stopLoading' });
+  void IframeMessageProxy.sendMessage({ action: 'stopLoading' });
 }
 
 export interface StopLoadingRequest {
