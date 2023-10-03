@@ -1,5 +1,5 @@
-import { sendCommand } from '../../actions';
-import { buildUri } from '../../lib/utils';
+import sendCommand from '../../actions/sendCommand';
+import buildURI from '../../lib/utils/buildURI';
 
 export interface GetTunnelAccountParams {
   identity: string;
@@ -8,7 +8,7 @@ export interface GetTunnelAccountParams {
 export default async function getTunnelAccount({
   identity,
 }: GetTunnelAccountParams) {
-  const uri = buildUri({
+  const uri = buildURI({
     paths: ['accounts', identity],
   });
 

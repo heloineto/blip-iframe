@@ -1,5 +1,5 @@
-export * from './buildUri';
-export { default as buildUri } from './buildUri';
+export * from './buildURI';
+export { default as buildURI } from './buildURI';
 
 export * from './parseError';
 export { default as parseError } from './parseError';

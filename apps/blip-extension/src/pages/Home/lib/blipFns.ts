@@ -51,7 +51,13 @@ const blipFns = {
   commands: {
     getAccount: () => blip.getAccount(),
     getTickets: () => blip.getTickets(),
-    getTicketsHistory: () => blip.getTicketsHistory(),
+    getTicketsHistory: () =>
+      blip.getTicketsHistory({
+        // filter:
+        //   "storageDate ge datetimeoffset'2023-09-02T03:00:00.000Z' and storageDate le datetimeoffset'2023-10-04T02:59:00.000Z' and status ne 'Open' and status ne 'Waiting'",
+        // take: 20,
+        // skip: 0,
+      }),
     getContacts: blip.getContacts(),
     getTunnelAccount: () =>
       blip.getTunnelAccount({

@@ -3,16 +3,18 @@ export default function buildSearchParams(
 ) {
   if (!params) return '';
 
-  const searchParams = new URLSearchParams();
-  Object.entries(params).forEach(([key, value]) => {
-    if (value === undefined) return;
+  let strParams = '';
+  const entries = Object.entries(params);
 
-    // append "encodeURIComponent" encodes the key and value.
-    // Make sure parameters like $take=x are fine with it.
-    searchParams.append(key, encodeURIComponent(value));
-  });
+  for (let index = 0; index < entries.length; index++) {
+    const [key, value] = entries[index];
 
-  const strParams = searchParams.toString();
+    if (value === undefined) continue;
 
-  return strParams ? `?${strParams}` : '';
+    const pre = index === 0 ? '?' : '&';
+
+    strParams = `${strParams}${pre}${key}=${encodeURIComponent(value)}`;
+  }
+
+  return strParams;
 }

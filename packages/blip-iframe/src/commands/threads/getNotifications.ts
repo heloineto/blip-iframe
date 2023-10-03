@@ -1,5 +1,5 @@
-import { sendCommand } from '../../actions';
-import { buildUri } from '../../lib/utils';
+import sendCommand from '../../actions/sendCommand';
+import buildURI from '../../lib/utils/buildURI';
 
 export interface GetNotificationsParams {
   identity?: string;
@@ -26,7 +26,7 @@ export default async function getNotifications({
   direction = 'desc',
   refreshExpiredMedia = true,
 }: GetNotificationsParams) {
-  const uri = buildUri({
+  const uri = buildURI({
     prefix:
       ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}/` : '/',
     paths: [merged ? 'threads-merged' : 'threads', identity],

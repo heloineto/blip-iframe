@@ -1,18 +1,20 @@
-import { sendCommand } from '../actions';
-import { buildUri } from '../lib/utils';
+import sendCommand from '../actions/sendCommand';
+import buildURI from '../lib/utils/buildURI';
 
 export interface GetTicketsHistory {
+  filter?: string;
   skip?: number;
   take?: number;
 }
 
 export default async function getTicketsHistory({
+  filter,
   skip,
   take,
 }: GetTicketsHistory = {}) {
-  const uri = buildUri({
-    paths: ['tickets', 'history'],
-    params: { $skip: skip, $take: take },
+  const uri = buildURI({
+    paths: ['tickets'],
+    params: { $filter: filter, $skip: skip, $take: take },
   });
 
   return await sendCommand<GetTicketsHistoryResponse>({

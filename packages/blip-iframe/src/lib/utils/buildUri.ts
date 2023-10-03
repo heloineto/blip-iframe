@@ -1,16 +1,16 @@
 import buildSearchParams from './buildSearchParams';
 
-export interface BuildUriParams {
+export interface buildURIParams {
   paths: (string | undefined)[];
   params?: Record<string, string | boolean | number | undefined>;
   prefix?: string;
 }
 
-export default function buildUri({
+export default function buildURI({
   paths,
   params,
   prefix = '/',
-}: BuildUriParams) {
+}: buildURIParams) {
   const searchParams = buildSearchParams(params);
   const slug = (paths.filter((path) => !!path) as string[])
     .map((path) => encodeURIComponent(path))

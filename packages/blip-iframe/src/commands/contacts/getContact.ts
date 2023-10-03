@@ -1,5 +1,5 @@
-import { sendCommand } from '../../actions';
-import { buildUri } from '../../lib/utils';
+import sendCommand from '../../actions/sendCommand';
+import buildURI from '../../lib/utils/buildURI';
 import { BlipContact } from './_types';
 
 export interface GetContactParams {
@@ -10,7 +10,7 @@ export interface GetContactParams {
  * Gets contact information
  */
 export default async function getContact({ identity }: GetContactParams) {
-  const uri = buildUri({
+  const uri = buildURI({
     paths: ['contacts', identity],
   });
 
