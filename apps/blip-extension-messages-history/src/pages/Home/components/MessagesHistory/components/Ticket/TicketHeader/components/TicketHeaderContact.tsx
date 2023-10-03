@@ -1,5 +1,6 @@
-import { Flex, Loader, Text } from '@mantine/core';
+import { Loader } from '@mantine/core';
 import useContact from '../../../../../../queries/useContact';
+import TicketHeaderContactInner from './TicketHeaderContactInner';
 
 interface Props {
   contactId: string;
@@ -19,13 +20,8 @@ export default function TicketHeaderContact({ contactId }: Props) {
   const contact = contactQuery.data;
 
   return (
-    <Flex direction="column" align="center">
-      <Text size="10px" fw={700} tt="uppercase" c="dimmed">
-        Contact
-      </Text>
-      <Text size="sm" fw={500} mt={-5}>
-        {contact.name ?? contact.identity ?? 'N/A'}
-      </Text>
-    </Flex>
+    <TicketHeaderContactInner
+      name={contact.name ?? contact.identity ?? 'N/A'}
+    />
   );
 }

@@ -4,31 +4,19 @@ import {
   Badge,
   Divider,
   Flex,
-  Group,
   Text,
   useMantineTheme,
 } from '@mantine/core';
-import useTickets from '../../../../../queries/useTickets';
 import useMessagesHistory from '../../../context/MessagesHistoryContext/useMessagesHistory';
 import TicketHeaderAttendant from './components/TicketHeaderAttendant';
+import TicketHeaderAttendantInner from './components/TicketHeaderAttendantInner';
 import TicketHeaderContact from './components/TicketHeaderContact';
-
-// const contactId = ticket.customerIdentity;
-// const contactQuery = useContact({ params: { identity: contactId } });
-
-// if (contactQuery.isError) {
-//   return <div>Error</div>;
-// }
+import TicketHeaderContactInner from './components/TicketHeaderContactInner';
 
 export default function TicketHeader() {
   const theme = useMantineTheme();
-  const { setSelectedTicketId, selectedTicketId } = useMessagesHistory();
-  const ticketsQuery = useTickets({
-    params: undefined,
-  });
-  const ticket = ticketsQuery.data?.items.find(
-    (t) => t.id === selectedTicketId
-  );
+  const { setSelectedTicket, selectedTicket } = useMessagesHistory();
+  const ticket = selectedTicket;
 
   if (!ticket) {
     return <div>Error: Ticket not found</div>;
@@ -37,43 +25,46 @@ export default function TicketHeader() {
   return (
     <div
       style={{
-        display: 'block',
-        width: '100%',
+        display: 'grid',
+        gridTemplateColumns: '28px 214px 1px 107px 1px 107px',
+        flexShrink: 0,
+        alignItems: 'center',
+        width: 480,
+        marginLeft: -16,
+        marginRight: -16,
+        paddingLeft: 6,
+        paddingRight: 16,
+        overflow: 'hidden',
         color:
           theme.colorScheme === 'dark' ? theme.colors.dark[0] : theme.black,
       }}
     >
-      <Group>
-        <ActionIcon
-          style={{
-            marginLeft: -10,
-          }}
-          onClick={() => {
-            setSelectedTicketId(null);
-          }}
-        >
-          <ArrowLeftOutline />
-        </ActionIcon>
-        {ticket.agentIdentity ? (
-          <TicketHeaderAttendant attendantId={ticket.agentIdentity} />
-        ) : null}
-        <Flex justify="center" align="center" style={{ flex: 1, height: 38 }}>
-          <Divider orientation="vertical" />
-        </Flex>
-        {ticket.customerIdentity ? (
-          <TicketHeaderContact contactId={ticket.customerIdentity} />
-        ) : null}
-        <Flex justify="center" align="center" style={{ flex: 1, height: 38 }}>
-          <Divider orientation="vertical" />
-        </Flex>
-        <Flex direction="column" align="center">
-          <Text size="10px" fw={700} tt="uppercase" c="dimmed">
-            Ticket
-          </Text>
-          <Badge>{`#${ticket.sequentialId}`}</Badge>
-        </Flex>
-        <Flex justify="center" align="center" style={{ flexGrow: 0.5 }} />
-      </Group>
+      <ActionIcon
+        onClick={() => {
+          setSelectedTicket(null);
+        }}
+      >
+        <ArrowLeftOutline />
+      </ActionIcon>
+
+      {ticket.agentIdentity ? (
+        <TicketHeaderAttendant attendantId={ticket.agentIdentity} />
+      ) : (
+        <TicketHeaderAttendantInner name="N/A" />
+      )}
+      <Divider orientation="vertical" />
+      {ticket.customerIdentity ? (
+        <TicketHeaderContact contactId={ticket.customerIdentity} />
+      ) : (
+        <TicketHeaderContactInner name="N/A" />
+      )}
+      <Divider orientation="vertical" />
+      <Flex direction="column" align="center">
+        <Text size="10px" fw={700} tt="uppercase" c="dimmed">
+          Ticket
+        </Text>
+        <Badge>{`#${ticket.sequentialId}`}</Badge>
+      </Flex>
     </div>
   );
 }

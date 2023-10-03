@@ -1,5 +1,6 @@
-import { Avatar, Flex, Loader, Text } from '@mantine/core';
+import { Loader } from '@mantine/core';
 import useAttendant from '../../../../../../queries/useAttendant';
+import TicketHeaderAttendantInner from './TicketHeaderAttendantInner';
 
 interface Props {
   attendantId: string;
@@ -19,16 +20,9 @@ export default function TicketHeaderAttendant({ attendantId }: Props) {
   const attendant = attendantQuery.data;
 
   return (
-    <Flex gap="sm" align="center">
-      <Avatar src={attendant.photoUri} radius="xl" />
-      <Flex direction="column" style={{ flex: 1 }}>
-        <Text size="10px" fw={700} tt="uppercase" c="dimmed">
-          Attendant
-        </Text>
-        <Text size="sm" fw={500} mt={-5}>
-          {attendant.fullName ?? attendant.identity ?? 'N/A'}
-        </Text>
-      </Flex>
-    </Flex>
+    <TicketHeaderAttendantInner
+      avatar={attendant.photoUri}
+      name={attendant.fullName ?? attendant.identity ?? 'N/A'}
+    />
   );
 }

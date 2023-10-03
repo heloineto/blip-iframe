@@ -18,11 +18,6 @@ const queryClient = new QueryClient();
 export default function Extension() {
   const [opened, { open, close }] = useDisclosure(true);
 
-  // blip
-  //   .getApplication()
-  //   .then((...a) => console.log(a))
-  //   .catch((...a) => console.log(a));
-
   return (
     <QueryClientProvider client={queryClient}>
       <MantineProvider withGlobalStyles withNormalizeCSS>
@@ -59,6 +54,12 @@ export default function Extension() {
             position="right"
             scrollAreaComponent={ScrollArea.Autosize}
             size={480}
+            styles={{
+              body: {
+                height: '100vh',
+                display: 'flex',
+              },
+            }}
           >
             <MessagesHistory onCloseDrawer={close} />
           </Drawer>

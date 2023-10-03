@@ -3,13 +3,13 @@ import useMessagesHistory from '../../../context/MessagesHistoryContext/useMessa
 import Information from './components/Information';
 
 export default function TicketInformation() {
-  const { selectedTicketId } = useMessagesHistory();
+  const { selectedTicket } = useMessagesHistory();
 
-  return !selectedTicketId ? (
+  return !selectedTicket ? (
     <Text className="flex grow items-center justify-center">
       Selecione um ticket para ver mais detalhes
     </Text>
   ) : (
-    <Information ticketId={selectedTicketId} />
+    <Information ticket={selectedTicket} />
   );
 }

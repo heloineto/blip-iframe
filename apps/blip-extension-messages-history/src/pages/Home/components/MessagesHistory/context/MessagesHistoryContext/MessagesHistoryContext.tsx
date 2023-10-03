@@ -1,11 +1,12 @@
 'use client';
 
+import type { GetTicketsResponseItem } from 'blip-iframe';
 import type { Dispatch, SetStateAction } from 'react';
 import { createContext } from 'react';
 
 export interface MessagesHistoryContextType {
-  selectedTicketId: string | null;
-  setSelectedTicketId: Dispatch<SetStateAction<string | null>>;
+  selectedTicket: GetTicketsResponseItem | null;
+  setSelectedTicket: Dispatch<SetStateAction<GetTicketsResponseItem | null>>;
   onCloseDrawer: () => void;
 }
 

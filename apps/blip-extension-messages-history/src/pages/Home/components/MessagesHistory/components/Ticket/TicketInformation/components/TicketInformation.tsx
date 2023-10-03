@@ -41,7 +41,7 @@ export default function TicketInformation({ ticket }: Props) {
               name: 'Open date',
               value: formatDate(ticket.openDate),
             },
-            { name: 'Closed', value: ticket.closed.toString() ?? 'N/A' },
+            { name: 'Closed', value: ticket.closed?.toString() ?? 'N/A' },
             { name: 'Closed by', value: ticket.closedBy ?? 'N/A' },
             {
               name: 'Customer domain',
@@ -49,7 +49,7 @@ export default function TicketInformation({ ticket }: Props) {
             },
             {
               name: 'Is automatic distribution',
-              value: ticket.isAutomaticDistribution.toString() ?? 'N/A',
+              value: ticket.isAutomaticDistribution?.toString() ?? 'N/A',
             },
             {
               name: 'Priority',

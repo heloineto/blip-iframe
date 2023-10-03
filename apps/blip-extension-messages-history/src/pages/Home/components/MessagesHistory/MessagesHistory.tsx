@@ -1,3 +1,4 @@
+import type { GetTicketsResponseItem } from 'blip-iframe';
 import { useState } from 'react';
 import Ticket from './components/Ticket';
 import TicketsTable from './components/TicketsTable';
@@ -8,17 +9,18 @@ interface Props {
 }
 
 export default function MessagesHistory({ onCloseDrawer }: Props) {
-  const [selectedTicketId, setSelectedTicketId] = useState<string | null>(null);
+  const [selectedTicket, setSelectedTicket] =
+    useState<GetTicketsResponseItem | null>(null);
 
   return (
     <MessagesHistoryProvider
       value={{
-        selectedTicketId,
-        setSelectedTicketId,
+        selectedTicket,
+        setSelectedTicket,
         onCloseDrawer,
       }}
     >
-      <div>{!selectedTicketId ? <TicketsTable /> : <Ticket />}</div>
+      {!selectedTicket ? <TicketsTable /> : <Ticket />}
     </MessagesHistoryProvider>
   );
 }

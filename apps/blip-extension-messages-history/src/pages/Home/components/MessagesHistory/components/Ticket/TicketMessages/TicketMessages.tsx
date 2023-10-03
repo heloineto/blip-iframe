@@ -3,13 +3,13 @@ import useMessagesHistory from '../../../context/MessagesHistoryContext/useMessa
 import MessagesContainer from './components/MessagesContainer';
 
 export default function TicketMessages() {
-  const { selectedTicketId } = useMessagesHistory();
+  const { selectedTicket } = useMessagesHistory();
 
-  return !selectedTicketId ? (
+  return !selectedTicket ? (
     <Text className="flex grow items-center justify-center">
       Selecione um ticket para ver mais detalhes
     </Text>
   ) : (
-    <MessagesContainer ticketId={selectedTicketId} />
+    <MessagesContainer ticket={selectedTicket} />
   );
 }

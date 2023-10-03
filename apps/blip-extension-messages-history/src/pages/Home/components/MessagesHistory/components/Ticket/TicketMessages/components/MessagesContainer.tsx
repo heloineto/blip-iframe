@@ -1,23 +1,14 @@
 import { Box } from '@mantine/core';
-import useTickets from '../../../../../../queries/useTickets';
+import type { GetTicketsResponseItem } from 'blip-iframe';
 import useMessages from '../hooks/useMessages';
 import formatMessages from '../utils/formatMessages';
 import Message from './Message';
 
 interface Props {
-  ticketId: string;
+  ticket: GetTicketsResponseItem;
 }
 
-export default function MessagesContainer({ ticketId }: Props) {
-  const ticketsQuery = useTickets({
-    params: {},
-  });
-  const ticket = ticketsQuery.data?.items.find((t) => t.id === ticketId);
-
-  if (!ticket) {
-    throw new Error(`Ticket ${ticketId} not found`);
-  }
-
+export default function MessagesContainer({ ticket }: Props) {
   const messagesQuery = useMessages({
     ticket,
   });
@@ -31,6 +22,10 @@ export default function MessagesContainer({ ticketId }: Props) {
   }
 
   const messages = formatMessages(messagesQuery.data.items);
+
+  if (!messages.length) {
+    return <div>Nenhuma mensagem encontrada</div>;
+  }
 
   return (
     <Box py="md">

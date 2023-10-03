@@ -30,6 +30,7 @@ module.exports = {
       parserOptions: { project: ['./tsconfig.json'] },
       rules: {
         '@typescript-eslint/non-nullable-type-assertion-style': 'off',
+        '@typescript-eslint/no-unnecessary-condition': 'off',
         '@typescript-eslint/no-misused-promises': [
           'error',
           { checksVoidReturn: false },
@@ -49,5 +50,6 @@ module.exports = {
     'react/self-closing-comp': 'error',
     'react/no-array-index-key': 'error',
     '@typescript-eslint/no-var-requires': 'off',
+    '@typescript-eslint/no-unnecessary-condition': 'off',
   },
 };

@@ -1,28 +1,25 @@
 import { Flex } from '@mantine/core';
-import useTickets from '../../../../../../queries/useTickets';
+import type { GetTicketsResponseItem } from 'blip-iframe';
 import AttendantInformation from './AttendantInformation';
 import ContactInformation from './ContactInformation';
 import TicketInformation from './TicketInformation';
 
 interface Props {
-  ticketId: string;
+  ticket: GetTicketsResponseItem;
 }
 
-export default function Information({ ticketId }: Props) {
-  const ticketsQuery = useTickets({
-    // TODO: Fix types
-    params: undefined,
-  });
-  const ticket = ticketsQuery.data?.items.find((t) => t.id === ticketId);
-
-  if (!ticket) {
-    return <div>Error: Ticket not found</div>;
-  }
-
+export default function Information({ ticket }: Props) {
   const attendantId = ticket.agentIdentity;
 
   return (
-    <Flex direction="column" gap="xl">
+    <Flex
+      direction="column"
+      gap="xl"
+      style={{
+        flex: 1,
+        overflow: 'auto',
+      }}
+    >
       <ContactInformation ticket={ticket} />
       <TicketInformation ticket={ticket} />
       {attendantId ? (
