@@ -88,7 +88,7 @@ export default function TicketsTable() {
           width: 100 * 2,
           ellipsis: true,
         },
-        { accessor: 'contact', width: 100 },
+        { accessor: 'contact', width: 100, textAlignment: 'center' },
         {
           accessor: 'sequentialId',
           title: 'Id',

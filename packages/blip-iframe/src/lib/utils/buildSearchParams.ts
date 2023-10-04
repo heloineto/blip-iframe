@@ -11,9 +11,9 @@ export default function buildSearchParams(
 
     if (value === undefined) continue;
 
-    const pre = index === 0 ? '?' : '&';
+    const prefix = strParams ? '?' : `${strParams}&`;
 
-    strParams = `${strParams}${pre}${key}=${encodeURIComponent(value)}`;
+    strParams = `${prefix}${key}=${encodeURIComponent(value)}`;
   }
 
   return strParams;

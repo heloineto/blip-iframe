@@ -5,7 +5,7 @@ import MasterKey from './MasterKey';
 
 export function KeysList() {
   const applicationQuery = useBlipQuery({
-    blipFn: () => blip.getApplication(),
+    blipFn: blip.getApplication,
     params: undefined,
   });
 

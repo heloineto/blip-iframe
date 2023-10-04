@@ -29,7 +29,15 @@ export default function MessagesContainer({ ticket }: Props) {
 
   return (
     <Box py="md">
-      <ul className="flex flex-col gap-3">
+      <ul
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '0.75rem',
+          listStyle: 'none',
+          padding: 0,
+        }}
+      >
         {messages.map((message) => (
           <Message key={message.id} message={message} />
         ))}

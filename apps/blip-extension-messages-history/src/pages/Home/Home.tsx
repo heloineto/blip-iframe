@@ -16,7 +16,7 @@ import MessagesHistory from './components/MessagesHistory';
 const queryClient = new QueryClient();
 
 export default function Extension() {
-  const [opened, { open, close }] = useDisclosure(true);
+  const [opened, { open, close }] = useDisclosure(false);
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: 'mantine-color-scheme',
     defaultValue: 'light',

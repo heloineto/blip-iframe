@@ -16,6 +16,7 @@ export default function MessagesHistory({ onCloseDrawer }: Props) {
   const [botKey, setBotKey] = useLocalStorage({
     key: 'BvMEc3N',
     defaultValue: '',
+    getInitialValueInEffect: true,
   });
 
   useEffect(() => {

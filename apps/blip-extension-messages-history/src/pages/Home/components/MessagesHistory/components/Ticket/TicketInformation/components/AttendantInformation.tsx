@@ -16,7 +16,7 @@ export default function AttendantInformation({ attendantId }: Props) {
   const attendant = attendantQuery.data;
 
   return (
-    <Flex direction="column" gap="sm">
+    <Flex direction="column" gap="sm" pb="sm">
       <Flex direction="column" gap="sm">
         <Title order={2} size="h4">
           Attendant information

@@ -20,6 +20,7 @@ export default function TicketHeaderContactInner({ name }: Props) {
             textOverflow: 'ellipsis',
             overflow: 'hidden',
             width: '100%',
+            textAlign: 'center',
           }}
         >
           {name}

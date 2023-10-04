@@ -36,8 +36,8 @@ export default async function getThreads({
       getFromOriginator,
       direction,
       refreshExpiredMedia,
-      $skip: skip,
       $take: take,
+      $skip: skip,
     },
   });
 

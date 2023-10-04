@@ -25,9 +25,7 @@ export default function SentMessageBubble({ message }: Props) {
               ? theme.colors.blue[8]
               : theme.colors.blue[6],
           color:
-            theme.colorScheme === 'dark'
-              ? theme.colors.dark[1]
-              : theme.colors.gray[0],
+            theme.colorScheme === 'dark' ? theme.white : theme.colors.gray[0],
           borderBottomRightRadius: 0,
           marginLeft: '5rem',
         }}

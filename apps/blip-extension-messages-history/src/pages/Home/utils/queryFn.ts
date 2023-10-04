@@ -14,5 +14,5 @@ export default async function blipQueryFn<TResponse, TError = unknown>(
   // eslint-disable-next-line @typescript-eslint/no-throw-literal
   if (error) throw error;
 
-  return response as TResponse;
+  return (response ?? null) as TResponse;
 }

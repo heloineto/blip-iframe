@@ -49,6 +49,22 @@ const blipFns = {
     // closeSidebar: () => {},
   },
   commands: {
+    TEST: () =>
+      blip.sendCommand({
+        command: {
+          method: 'get',
+          uri: 'lime://solutionslabrouter@msging.net/threads-merged/73990c0f-85af-41e0-b206-fdc6ca4a33fe.solutionslabrouter%400mn.io?$take=20&direction=desc&refreshExpiredMedia=true',
+        },
+      }),
+    getThreads: () =>
+      blip.getThreads({
+        ownerIdentity: 'solutionslabrouter@msging.net',
+        // getFromOriginator: false,
+        identity:
+          '73990c0f-85af-41e0-b206-fdc6ca4a33fe.solutionslabrouter@0mn.io',
+        merged: true,
+        take: 20,
+      }),
     getAccount: () => blip.getAccount(),
     getTickets: () => blip.getTickets(),
     getTicketsHistory: () =>
@@ -63,10 +79,6 @@ const blipFns = {
       blip.getTunnelAccount({
         identity: '3394098f-47a6-48ec-a154-d13484e511c8@tunnel.msging.net',
       }),
-    getThreads: () =>
-      blip.getThreads({
-        ownerIdentity: 'solutionslabrouter@msging.net',
-      }),
     getAttendants: () => blip.getAttendants(),
     getAttendant: () =>
       blip.getAttendant({
@@ -75,6 +87,8 @@ const blipFns = {
   },
 } as const;
 
+// lime://solutionslabrouter@msging.net/threads-merged/73990c0f-85af-41e0-b206-fdc6ca4a33fe.solutionslabrouter%400mn.io&direction=desc&refreshExpiredMedia=true&$take=20
+// lime://solutionslabrouter@msging.net/threads-merged/73990c0f-85af-41e0-b206-fdc6ca4a33fe.solutionslabrouter%400mn.io?$take=20&direction=desc&refreshExpiredMedia=true
 export type BlipFns = typeof blipFns;
 export type Category = keyof BlipFns;
 export type BlipFnName<TCategory extends Category> = keyof BlipFns[TCategory];
