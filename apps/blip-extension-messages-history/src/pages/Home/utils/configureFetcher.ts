@@ -1,16 +1,13 @@
-import { IframeMessageProxy, buildAuthorizationKey, imp } from 'blip-iframe';
+import { IframeMessageProxy, imp } from 'blip-iframe';
 
-export default function configureFetcher() {
-  const botShortName = process.env.REACT_APP_BOT_SHORT_NAME as string;
-  const botAccessKey = process.env.REACT_APP_BOT_ACCESS_KEY as string;
-
+export default function configureFetcher(authorizationKey: string) {
   imp.setFetcher(async (message) => {
     if (message.action !== 'sendCommand') {
       return await IframeMessageProxy.sendMessage(message);
     }
 
     const headers = {
-      Authorization: buildAuthorizationKey({ botShortName, botAccessKey }),
+      Authorization: authorizationKey,
       'Content-Type': 'application/json',
     };
 

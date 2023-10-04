@@ -1,6 +1,6 @@
 import { Message } from '../../types';
 
-const shouldLog = process.env.NODE_ENV === 'development' && true;
+const shouldLog = process.env.NODE_ENV === 'development' && false;
 
 function getId(message: Message) {
   return message.action === 'sendCommand'

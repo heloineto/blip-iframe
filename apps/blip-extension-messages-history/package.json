@@ -19,7 +19,12 @@
     "check": "npm run lint:fix && npm run format && npm run spell && npm run build && npm run test:coverage && npm run test:result"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.1",
     "@fontsource/nunito-sans": "^5.0.8",
+    "@mantine/core": "^6.0.21",
+    "@mantine/form": "^6.0.21",
+    "@mantine/hooks": "^6.0.21",
+    "@tabler/icons-react": "^2.29.0",
     "@tanstack/react-query": "^4.35.3",
     "blip-ds": "^1.246.2",
     "blip-iframe": "^0.0.5",
@@ -31,7 +36,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.2.0",
-    "react-router-dom": "^6.9.0"
+    "react-router-dom": "^6.9.0",
+    "zod": "^3.22.2"
   },
   "devDependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
@@ -42,9 +48,6 @@
     "@cspell/dict-pt-br": "^2.1.4",
     "@cypress/code-coverage": "^3.10.4",
     "@cypress/instrument-cra": "^1.4.0",
-    "@emotion/react": "^11.11.1",
-    "@mantine/core": "^6.0.21",
-    "@mantine/hooks": "^6.0.21",
     "@types/node": "^20.1.1",
     "@types/react": "^18.0.27",
     "@types/react-dom": "^18.0.10",
@@ -150,6 +153,7 @@
       "nunito",
       "Nunito",
       "prestart",
+      "tabler",
       "takenet",
       "tanstack"
     ]
