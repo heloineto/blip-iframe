@@ -26,7 +26,7 @@ export default function TicketHeader() {
     <div
       style={{
         display: 'grid',
-        gridTemplateColumns: '28px 214px 1px 107px 1px 107px',
+        gridTemplateColumns: '32px 210px 1px 107px 1px 107px',
         flexShrink: 0,
         alignItems: 'center',
         width: 480,
@@ -43,6 +43,7 @@ export default function TicketHeader() {
         onClick={() => {
           setSelectedTicket(null);
         }}
+        style={{ marginRight: 2 }}
       >
         <ArrowLeftOutline />
       </ActionIcon>

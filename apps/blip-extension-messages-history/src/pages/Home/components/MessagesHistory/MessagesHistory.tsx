@@ -1,5 +1,5 @@
 import { useLocalStorage } from '@mantine/hooks';
-import type { GetTicketsResponseItem } from 'blip-iframe';
+import { type GetTicketsResponseItem } from 'blip-iframe';
 import configureFetcher from 'pages/Home/utils/configureFetcher';
 import { useEffect, useState } from 'react';
 import { AuthForm } from './components/AuthForm';
@@ -37,6 +37,8 @@ export default function MessagesHistory({ onCloseDrawer }: Props) {
         selectedTicket,
         setSelectedTicket,
         onCloseDrawer,
+        botKey,
+        setBotKey,
       }}
     >
       {!botKey ? (

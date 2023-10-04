@@ -1,4 +1,4 @@
-import { Avatar, Flex, Text } from '@mantine/core';
+import { Avatar, Flex, Text, Tooltip } from '@mantine/core';
 
 interface Props {
   avatar?: string;
@@ -13,18 +13,20 @@ export default function TicketHeaderAttendantInner({ avatar, name }: Props) {
         <Text size="10px" fw={700} tt="uppercase" c="dimmed">
           Attendant
         </Text>
-        <Text
-          size="sm"
-          fw={500}
-          mt={-5}
-          style={{
-            whiteSpace: 'nowrap',
-            textOverflow: 'ellipsis',
-            overflow: 'hidden',
-          }}
-        >
-          {name}
-        </Text>
+        <Tooltip label={name} position="bottom-start">
+          <Text
+            size="sm"
+            fw={500}
+            mt={-5}
+            style={{
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+            }}
+          >
+            {name}
+          </Text>
+        </Tooltip>
       </Flex>
     </Flex>
   );

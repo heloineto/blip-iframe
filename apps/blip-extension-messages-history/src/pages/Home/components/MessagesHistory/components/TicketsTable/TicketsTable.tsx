@@ -1,6 +1,11 @@
-import { CloseOutline } from '@blip-ds/react-icons';
+import {
+  CloseOutline,
+  FilterOutline,
+  RefreshOutline,
+} from '@blip-ds/react-icons';
 import { ActionIcon, Flex, Stack, Text, Title, Tooltip } from '@mantine/core';
 import useMessagesHistory from '../../context/MessagesHistoryContext/useMessagesHistory';
+import { MoreOptions } from './components/MoreOptions';
 import TicketsDataTable from './components/TicketsDataTable';
 
 export default function TicketsTable() {
@@ -20,6 +25,17 @@ export default function TicketsTable() {
             <CloseOutline />
           </ActionIcon>
         </Tooltip>
+      </Flex>
+      <Flex justify="space-between" align="center">
+        <ActionIcon>
+          <FilterOutline size="1.125rem" />
+        </ActionIcon>
+        <Flex gap="sm">
+          <ActionIcon>
+            <RefreshOutline size="1.125rem" />
+          </ActionIcon>
+          <MoreOptions />
+        </Flex>
       </Flex>
       <TicketsDataTable />
     </Flex>

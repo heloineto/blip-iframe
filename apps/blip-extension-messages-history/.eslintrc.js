@@ -31,6 +31,8 @@ module.exports = {
       rules: {
         '@typescript-eslint/non-nullable-type-assertion-style': 'off',
         '@typescript-eslint/no-unnecessary-condition': 'off',
+        '@typescript-eslint/no-empty-interface': 'off',
+
         '@typescript-eslint/no-misused-promises': [
           'error',
           { checksVoidReturn: false },

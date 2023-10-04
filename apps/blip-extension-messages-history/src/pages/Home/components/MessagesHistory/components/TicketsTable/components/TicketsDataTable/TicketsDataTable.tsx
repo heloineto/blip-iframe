@@ -32,7 +32,7 @@ export default function TicketsTable() {
 
       return response.items;
     },
-    getNextPageParam: (lastPage, pages) => pages.length + 1,
+    getNextPageParam: (_, pages) => pages.length + 1,
   });
 
   const tickets = ticketsQuery.data?.pages.flat() ?? [];

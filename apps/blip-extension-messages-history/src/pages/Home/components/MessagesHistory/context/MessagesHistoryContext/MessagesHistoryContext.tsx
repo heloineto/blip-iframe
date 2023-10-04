@@ -8,6 +8,8 @@ export interface MessagesHistoryContextType {
   selectedTicket: GetTicketsResponseItem | null;
   setSelectedTicket: Dispatch<SetStateAction<GetTicketsResponseItem | null>>;
   onCloseDrawer: () => void;
+  setBotKey: Dispatch<SetStateAction<string>>;
+  botKey: string;
 }
 
 const MessagesHistoryContext = createContext<MessagesHistoryContextType | null>(
