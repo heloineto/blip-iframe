@@ -1,4 +1,4 @@
-import { sendCommand } from '../actions';
+import sendCommand from '../actions/sendCommand';
 
 export default async function getAccount() {
   return await sendCommand<GetAccountResponse>({

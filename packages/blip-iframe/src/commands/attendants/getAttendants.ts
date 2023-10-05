@@ -1,4 +1,4 @@
-import { sendCommand } from '../../actions';
+import sendCommand from '../../actions/sendCommand';
 
 // TODO: Fix, this does not work
 export default async function getAttendants() {

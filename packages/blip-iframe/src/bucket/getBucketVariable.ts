@@ -1,4 +1,4 @@
-import { sendCommand } from 'blip-iframe';
+import sendCommand from '../actions/sendCommand';
 
 export default async function getBucketVariable<TResponse>(
   variableKey: string

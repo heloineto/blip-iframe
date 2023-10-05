@@ -1,4 +1,4 @@
-import { sendCommand } from '../actions';
+import sendCommand from '../actions/sendCommand';
 
 export default async function getBot(fullIdentity: string) {
   return await sendCommand<GetBotResponse>({
