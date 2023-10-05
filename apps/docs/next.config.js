@@ -15,6 +15,15 @@ const nextConfig = {
   eslint: {
     ignoreDuringBuilds: true,
   },
+  redirects: async () => {
+    return [
+      {
+        source: '/',
+        destination: '/getting-started',
+        permanent: true,
+      },
+    ];
+  },
   webpack: (config, { isServer }) => {
     if (!isServer) {
       config.resolve = {

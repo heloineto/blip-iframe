@@ -1,4 +1,3 @@
-/* eslint-disable import/no-relative-packages */
 import React from 'react';
 import cx from 'clsx';
 import { IconChevronDown, IconExternalLink } from '@tabler/icons-react';
@@ -12,37 +11,23 @@ import {
   Text,
   Box,
 } from '@mantine/core';
-import {
-  HeaderControls,
-  ColorSchemeControl,
-  SearchMobileControl,
-} from '@mantine/ds';
+import { ColorSchemeControl, SearchMobileControl } from '@mantine/ds';
 import { Logo } from '@/components/Logo';
 import { searchHandlers } from '@/components/Search';
 import classes from './Header.module.css';
-import githubLink from '@/lib/constants/github-link';
-
-const packageJson = {
-  name: 'mantine',
-  private: true,
-  workspaces: ['src/*'],
-  version: '7.0.0-beta.5',
-  description: 'Mantine Components Monorepo',
-  main: 'index.js',
-  repository: 'https://github.com/mantinedev/mantine.git',
-  author: 'Vitaly Rtishchev <rtivital@gmail.com>',
-  license: 'MIT',
-  resolutions: {
-    '@types/react': '18.2.17',
-  },
-};
+import { meta } from '@/lib/constants/meta';
+import { HeaderControls } from '../HeaderControl';
 
 interface HeaderProps {
   navbarOpened: boolean;
   onNavbarToggle(): void;
 }
 
-const versions = [{ v: 'v1', name: '0.0.1', link: 'https://v1.mantine.dev/' }];
+const version = '0.0.5';
+
+const versions = [
+  { v: 'alpha', name: '0.0.5', link: 'https://v1.mantine.dev/' },
+];
 
 export function Header({ navbarOpened, onNavbarToggle }: HeaderProps) {
   const versionItems = versions.map((item) => (
@@ -77,7 +62,7 @@ export function Header({ navbarOpened, onNavbarToggle }: HeaderProps) {
             <Menu.Target>
               <UnstyledButton>
                 <Code fw="bold" className={classes.version}>
-                  <span>{packageJson.version}</span>
+                  <span>{version}</span>
                   <IconChevronDown
                     className={classes.versionChevron}
                     stroke={1.5}
@@ -93,7 +78,7 @@ export function Header({ navbarOpened, onNavbarToggle }: HeaderProps) {
         <HeaderControls
           className={classes.controls}
           onSearch={searchHandlers.open}
-          githubLink={githubLink}
+          githubLink={meta.githubLinks.code}
         />
       </header>
 

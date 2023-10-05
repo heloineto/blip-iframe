@@ -5,17 +5,17 @@ export const theme = createTheme({
   fontFamily: `${nunitoSans.style.fontFamily}, ${DEFAULT_THEME.fontFamily}`,
   fontFamilyMonospace: `Nunito Sans, Monaco, ${DEFAULT_THEME.fontFamilyMonospace}`,
   colors: {
-    cyan: [
-      '#e0ffff',
-      '#ccfcff',
-      '#9cf7ff',
-      '#68f3fe',
-      '#44eefe',
-      '#30ecfe',
-      '#1eecfe',
-      '#00d1e3',
-      '#00bbca',
-      '#00a2b1',
+    blue: [
+      '#e1f9ff',
+      '#ccedff',
+      '#9ad7ff',
+      '#64c1ff',
+      '#3baefe',
+      '#20a3fe',
+      '#099dff',
+      '#0088e4',
+      '#0079cd',
+      '#0069b6',
     ],
     'ocean-blue': [
       '#7AD1DD',
@@ -42,5 +42,4 @@ export const theme = createTheme({
       '#AD1374',
     ],
   },
-  primaryColor: 'cyan',
 });

@@ -1,7 +1,9 @@
 import React from 'react';
 import cx from 'clsx';
-import { DiscordIcon, GithubIcon, TwitterIcon, meta } from '@mantine/ds';
+import { DiscordIcon, GithubIcon, TwitterIcon } from '@mantine/ds';
 import classes from './SocialCards.module.css';
+import { meta } from '@/lib/constants/meta';
+import { Tooltip } from '@mantine/core';
 
 interface CardBaseProps extends React.ComponentPropsWithoutRef<'a'> {
   icon: 'discord' | 'twitter' | 'github';
@@ -16,9 +18,20 @@ const icons: Record<CardBaseProps['icon'], React.ReactNode> = {
   github: <GithubIcon size={30} className={classes.icon} />,
 };
 
-export function CardBase({ icon, title, description, className, ...others }: CardBaseProps) {
+export function CardBase({
+  icon,
+  title,
+  description,
+  className,
+  ...others
+}: CardBaseProps) {
   return (
-    <a className={cx(classes.card, className)} target="_blank" rel="noreferrer" {...others}>
+    <a
+      className={cx(classes.card, className)}
+      target="_blank"
+      rel="noreferrer"
+      {...others}
+    >
       {icons[icon]}
       <div className={classes.body}>
         <div className={classes.title}>{title}</div>
@@ -45,7 +58,7 @@ export function GitHubCard() {
     <CardBase
       icon="github"
       className={classes.github}
-      href={meta.gitHubLinks.discussions}
+      href={meta.githubLinks.discussions}
       title="Start a discussion"
       description="Request new features, ask questions and provide feedback with GitHub discussions"
     />
@@ -70,10 +83,20 @@ interface SocialCardsProps {
   twitter?: boolean;
 }
 
-export function SocialCards({ discord = true, github = true, twitter = true }: SocialCardsProps) {
+export function SocialCards({
+  discord = true,
+  github = true,
+  twitter = true,
+}: SocialCardsProps) {
   return (
     <div className={classes.cards}>
-      {discord && <DiscordCard />}
+      <Tooltip label="Coming soon...">
+        <div style={{ flex: 1 }}>
+          <div style={{ pointerEvents: 'none' }}>
+            {discord && <DiscordCard />}
+          </div>
+        </div>
+      </Tooltip>
       {github && <GitHubCard />}
       {twitter && <TwitterCard />}
     </div>

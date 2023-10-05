@@ -10,9 +10,16 @@ Install `blip-iframe` in your project:
 
 <InstallScript packages="blip-iframe" />
 
-## Example usage
+## Usage
 
-You can use `blip-iframe` with any framework or even vanilla JavaScript. Here's an simple example using React:
+You can use `blip-iframe` with any framework or even vanilla JavaScript.
+In this section, we'll show how to get started using React, but the same principles
+apply to any other tool or framework.
+
+### Usage inside the Blip platform
+
+If you're using `blip-iframe` inside Blip (ex.: Blip Extensions),
+you can use the API functions without any additional configuration, as such:
 
 ```jsx
 import { getBot } from 'blip-iframe';
@@ -24,7 +31,7 @@ export default function Component() {
 
   useEffect(() => {
     // Fetches the current bot. If an error occurs, the response will be null.
-    // The error is not thrown, but returned. This improves types and error awarness.
+    // The error is not thrown, but returned. This improves types and error awareness.
     getBot().then(({ response, error }) => {
       setLoading(false);
       setError(error);
@@ -41,15 +48,21 @@ export default function Component() {
 }
 ```
 
-> **`blip-iframe` only works if your web app is inside Blip**
+All set! Now you can use the `blip-iframe` API to make calls inside your application.
+
+> **This method only works if your web app is inside Blip**
 >
-> As the name of the package sugests, `blip-iframe` only works
-> in web applications rendered as an iframe inside Blip.
+> Using `blip-iframe` without setting up authentication only works
+> in web applications rendered as an iframe inside Blip, because the
+> authentication is done automatically by the platform.
 >
 > If you want to make the same calls in a standalone app,
-> it's recommended to use the fetch API instead.
+> follow the steps outlined below.
 
-All set! Now you can use the `blip-iframe` API to make calls inside your application.
+### Usage outside the Blip platform
+
+{/* TODO: */}
+Coming soon...
 
 ## Getting help
 

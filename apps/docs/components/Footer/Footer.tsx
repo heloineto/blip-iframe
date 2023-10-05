@@ -1,6 +1,13 @@
 import React from 'react';
 import cx from 'clsx';
-import { Container, Text, Group, Box, RemoveScroll } from '@mantine/core';
+import {
+  Container,
+  Text,
+  Group,
+  Box,
+  RemoveScroll,
+  Tooltip,
+} from '@mantine/core';
 import { TwitterButton, DiscordButton } from '@mantine/ds';
 import { Logo } from '../Logo/Logo';
 import { LinksGroup } from './LinksGroup/LinksGroup';
@@ -28,7 +35,8 @@ export function Footer({ withNavbar }: FooterProps) {
             <div className={classes.logoSection}>
               <Logo />
               <Text className={classes.description} fz="sm">
-                Build fully functional accessible web applications faster than ever
+                A type safe and intuitive API to communicate with the Blip
+                platform
               </Text>
             </div>
 
@@ -38,14 +46,19 @@ export function Footer({ withNavbar }: FooterProps) {
           <div className={classes.afterFooter}>
             <Group justify="space-between" wrap="wrap">
               <Text fz="xs" className={classes.afterFooterNote}>
-                Built by <a href="https://github.com/rtivital">Vitaly Rtishchev</a> and{' '}
-                <a href="https://github.com/mantinedev/mantine/graphs/contributors">
-                  these awesome people
-                </a>
+                Built by <a href="https://github.com/heloineto">Heloi Neto</a>.
+                Documentation forked from{' '}
+                <a href="https://github.com/mantinedev/mantine">Mantine</a>.
               </Text>
               <div className={classes.social}>
-                <DiscordButton className={classes.socialButton} />
-                <TwitterButton className={classes.socialButton} />
+                <Tooltip label="Coming soon...">
+                  <div style={{ flex: 1 }}>
+                    <div style={{ pointerEvents: 'none' }}>
+                      <DiscordButton className={classes.socialButton} />
+                    </div>
+                  </div>
+                </Tooltip>
+                {/* <TwitterButton className={classes.socialButton} /> */}
               </div>
             </Group>
           </div>
