@@ -347,10 +347,10 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
   //     MDX_DATA.TipTap,
   //   ],
   // },
-  {
-    group: 'changelog',
-    pages: [MDX_DATA.Changelog700, MDX_DATA.PreviousChangelogs],
-  },
+  // {
+  //   group: 'changelog',
+  //   pages: [MDX_DATA.Changelog700, MDX_DATA.PreviousChangelogs],
+  // },
 ];
 
 export const ALL_MDX_PAGES: Frontmatter[] = MDX_PAGES_GROUPS.reduce<

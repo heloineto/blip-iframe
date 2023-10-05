@@ -1,5 +1,5 @@
 import React from 'react';
-import { IconCompass, IconApi, IconHeartHandshake } from '@tabler/icons-react';
+import { IconCompass, IconApi } from '@tabler/icons-react';
 import { Box, ScrollArea, rem } from '@mantine/core';
 import { MDX_PAGES_GROUPS } from '@/mdx';
 import { NavbarMainLink } from './NavbarMainLink/NavbarMainLink';
@@ -74,7 +74,7 @@ export function Navbar({
           >
             API Overview
           </NavbarMainLink>
-          <NavbarMainLink
+          {/* <NavbarMainLink
             icon={
               <IconHeartHandshake
                 style={{ width: rem(25), height: rem(25) }}
@@ -85,7 +85,7 @@ export function Navbar({
             onNavbarClose={onNavbarClose}
           >
             Contribute
-          </NavbarMainLink>
+          </NavbarMainLink> */}
           <div className={classes.groups}>{groups}</div>
         </div>
       </ScrollArea>
