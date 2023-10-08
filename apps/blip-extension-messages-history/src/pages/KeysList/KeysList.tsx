@@ -11,12 +11,7 @@ export function KeysList() {
 
   if (applicationQuery.isLoading) {
     return (
-      <Center
-        style={{
-          height: '100vh',
-          width: '100vw',
-        }}
-      >
+      <Center style={{ height: '100vh', width: '100vw' }}>
         <Loader />
       </Center>
     );

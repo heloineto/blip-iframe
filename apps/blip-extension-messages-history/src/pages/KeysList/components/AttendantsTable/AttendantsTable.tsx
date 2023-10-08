@@ -4,7 +4,7 @@ import type { GetAttendantsItem } from 'blip-iframe';
 import { blip } from 'blip-iframe';
 import { DataTable } from 'mantine-datatable';
 import blipQueryFn from 'pages/Home/utils/queryFn';
-import { useEffect, useState } from 'react';
+import { useMemo, useState } from 'react';
 
 interface Props {
   selectedAttendant: GetAttendantsItem | null;
@@ -20,25 +20,22 @@ export function AttendantsTable({
   setSelectedAttendant,
 }: Props) {
   const [page, setPage] = useState(1);
-  const [records, setRecords] = useState<GetAttendantsItem[] | null>(null);
 
   const theme = useMantineTheme();
   const attendantsQuery = useQuery({
     queryKey: ['attendants'],
     queryFn: () => blipQueryFn(blip.getAttendants()),
-    onSuccess: (response) => {
-      if (!response) return;
-
-      setRecords(response.items.slice(0, PAGE_SIZE));
-    },
+    refetchOnWindowFocus: false,
+    staleTime: Infinity,
   });
 
-  useEffect(() => {
-    if (!attendantsQuery.data?.items) return;
+  const records = useMemo(() => {
+    if (!attendantsQuery.data?.items) return [];
 
     const from = (page - 1) * PAGE_SIZE;
     const to = from + PAGE_SIZE;
-    setRecords(attendantsQuery.data.items.slice(from, to));
+
+    return attendantsQuery.data.items.slice(from, to);
   }, [attendantsQuery.data?.items, page]);
 
   if (attendantsQuery.error) {
@@ -75,7 +72,7 @@ export function AttendantsTable({
             textAlignment: 'right',
           },
         ]}
-        totalRecords={attendantsQuery.data?.total ?? 0}
+        totalRecords={attendantsQuery.data?.items.length ?? 0}
         recordsPerPage={PAGE_SIZE}
         page={page}
         onPageChange={(p) => setPage(p)}
