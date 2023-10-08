@@ -12,7 +12,6 @@ export default function buildURI({
   prefix = '/',
 }: buildURIParams) {
   const searchParams = buildSearchParams(params);
-  console.log('searchParams', searchParams);
 
   const slug = (paths.filter((path) => !!path) as string[])
     .map((path) => encodeURIComponent(path))

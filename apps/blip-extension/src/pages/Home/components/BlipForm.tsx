@@ -2,9 +2,7 @@ import { Select } from '@mantine/core';
 import { useForm } from '@mantine/form';
 import { actions, commands } from 'blip-iframe';
 
-interface Props {}
-
-export default function BlipForm(props: Props) {
+export default function BlipForm() {
   const form = useForm({
     initialValues: {
       blipFn: '',

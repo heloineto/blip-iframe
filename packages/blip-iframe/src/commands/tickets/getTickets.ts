@@ -10,8 +10,6 @@ export interface GetTicketsParams extends GetListParams {}
 export async function getTicketsHistory({
   ...listParams
 }: GetTicketsParams = {}) {
-  console.log('listParams', listParams);
-
   const uri = buildURI({
     paths: ['tickets'],
     params: parseListParams(listParams),

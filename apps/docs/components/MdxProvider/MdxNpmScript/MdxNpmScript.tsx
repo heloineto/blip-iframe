@@ -19,8 +19,6 @@ export function MdxNpmScript({ yarnScript, npmScript }: MdxNpmScriptProps) {
     defaultValue: 0,
   });
 
-  console.log('tab', tab);
-
   return (
     <CodeHighlightTabs
       classNames={{ root: classes.root }}
