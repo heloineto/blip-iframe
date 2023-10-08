@@ -1,5 +1,5 @@
 import { Flex, Title } from '@mantine/core';
-import type { GetTicketsHistoryItem } from 'blip-iframe';
+import type { GetTicketsItem } from 'blip-iframe';
 import dayjs from 'dayjs';
 import { DataTable } from 'mantine-datatable';
 
@@ -14,7 +14,7 @@ function formatDate(date: string | undefined) {
 }
 
 interface Props {
-  ticket: GetTicketsHistoryItem;
+  ticket: GetTicketsItem;
 }
 
 export default function TicketInformation({ ticket }: Props) {

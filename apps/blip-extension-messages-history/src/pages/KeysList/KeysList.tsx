@@ -1,4 +1,4 @@
-import { Container, Loader } from '@mantine/core';
+import { Center, Container, Loader } from '@mantine/core';
 import { blip } from 'blip-iframe';
 import useBlipQuery from 'pages/Home/queries/useBlipQuery';
 import MasterKey from './MasterKey';
@@ -10,7 +10,16 @@ export function KeysList() {
   });
 
   if (applicationQuery.isLoading) {
-    return <Loader />;
+    return (
+      <Center
+        style={{
+          height: '100vh',
+          width: '100vw',
+        }}
+      >
+        <Loader />
+      </Center>
+    );
   }
 
   if (applicationQuery.error || !applicationQuery.data) {
@@ -26,7 +35,7 @@ export function KeysList() {
         width: '100vw',
       }}
     >
-      <Container style={{ display: 'flex', paddingTop: 64 }}>
+      <Container size="xl" style={{ display: 'flex' }}>
         <MasterKey application={application} />
       </Container>
     </div>

@@ -5,7 +5,7 @@ import { AuthForm } from './components/AuthForm';
 import Ticket from './components/Ticket';
 import TicketsTable from './components/TicketsTable';
 import MessagesHistoryProvider from './context/MessagesHistoryContext/MessagesHistoryProvider';
-import { buildAuthorizationKey, type GetTicketsHistoryItem } from 'blip-iframe';
+import { buildAuthorizationKey, type GetTicketsItem } from 'blip-iframe';
 import { useQuery } from '@tanstack/react-query';
 import { getBotData } from './components/AuthForm/lib/getBotData';
 
@@ -33,8 +33,9 @@ export default function MessagesHistory({ onCloseDrawer }: Props) {
     },
   });
 
-  const [selectedTicket, setSelectedTicket] =
-    useState<GetTicketsHistoryItem | null>(null);
+  const [selectedTicket, setSelectedTicket] = useState<GetTicketsItem | null>(
+    null
+  );
 
   return (
     <MessagesHistoryProvider

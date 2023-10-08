@@ -16,7 +16,7 @@ export default async function getTicketsHistory({
     params: { $filter: filter, $skip: skip, $take: take },
   });
 
-  return await sendCommand<GetTicketsHistoryResponse>({
+  return await sendCommand<GetTicketsResponse>({
     command: {
       method: 'get',
       to: 'postmaster@desk.msging.net',
@@ -25,7 +25,7 @@ export default async function getTicketsHistory({
   });
 }
 
-export interface GetTicketsHistoryResponse {
+export interface GetTicketsResponse {
   total: number;
   itemType: string;
   items: {

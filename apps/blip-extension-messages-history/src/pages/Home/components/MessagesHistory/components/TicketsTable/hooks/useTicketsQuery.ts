@@ -1,9 +1,6 @@
 import type { UseInfiniteQueryResult } from '@tanstack/react-query';
 import { useInfiniteQuery } from '@tanstack/react-query';
-import type {
-  GetTicketsHistoryItem,
-  GetTicketsHistoryResponse,
-} from 'blip-iframe';
+import type { GetTicketsItem, GetTicketsResponse } from 'blip-iframe';
 import { blip } from 'blip-iframe';
 import blipQueryFn from 'pages/Home/utils/queryFn';
 import { PAGE_SIZE } from '../components/TicketsDataTable/utils/components';
@@ -20,7 +17,7 @@ export function useTicketsQuery(attendant: string | null) {
           take: PAGE_SIZE,
           skip: PAGE_SIZE * pageParam,
         })
-      )) as GetTicketsHistoryResponse;
+      )) as GetTicketsResponse;
 
       return response.items;
     },
@@ -28,4 +25,4 @@ export function useTicketsQuery(attendant: string | null) {
   });
 }
 
-export type TicketsQuery = UseInfiniteQueryResult<GetTicketsHistoryItem[]>;
+export type TicketsQuery = UseInfiniteQueryResult<GetTicketsItem[]>;

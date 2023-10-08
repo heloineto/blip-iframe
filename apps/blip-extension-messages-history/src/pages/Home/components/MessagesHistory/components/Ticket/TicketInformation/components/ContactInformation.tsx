@@ -1,10 +1,10 @@
 import { Flex, Title } from '@mantine/core';
-import type { GetTicketsHistoryItem } from 'blip-iframe';
+import type { GetTicketsItem } from 'blip-iframe';
 import { DataTable } from 'mantine-datatable';
 import useContact from '../../../../../../queries/useContact';
 
 interface Props {
-  ticket: GetTicketsHistoryItem;
+  ticket: GetTicketsItem;
 }
 
 export default function ContactInformation({ ticket }: Props) {

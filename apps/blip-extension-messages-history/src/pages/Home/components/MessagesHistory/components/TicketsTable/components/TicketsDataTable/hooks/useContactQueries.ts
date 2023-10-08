@@ -1,9 +1,9 @@
 import { useQueries } from '@tanstack/react-query';
-import type { GetTicketsHistoryItem } from 'blip-iframe';
+import type { GetTicketsItem } from 'blip-iframe';
 import { blip } from 'blip-iframe';
 import blipQueryFn from 'pages/Home/utils/queryFn';
 
-export function useContactQueries(tickets: GetTicketsHistoryItem[]) {
+export function useContactQueries(tickets: GetTicketsItem[]) {
   return useQueries({
     queries: tickets.map((ticket) => {
       const identity = ticket.customerIdentity;

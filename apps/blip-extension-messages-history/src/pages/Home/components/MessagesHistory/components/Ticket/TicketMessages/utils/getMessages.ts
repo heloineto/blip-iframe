@@ -1,8 +1,8 @@
-import type { GetTicketsHistoryItem } from 'blip-iframe';
+import type { GetTicketsItem } from 'blip-iframe';
 import { blip } from 'blip-iframe';
 import blipQueryFn from 'pages/Home/utils/queryFn';
 
-export async function getMessages(ticket: GetTicketsHistoryItem) {
+export async function getMessages(ticket: GetTicketsItem) {
   const isTunnel = ticket.customerIdentity.endsWith('@tunnel.msging.net');
 
   if (!isTunnel) {
