@@ -3,9 +3,15 @@ import { ActionIcon, Flex, Stack, Text, Title, Tooltip } from '@mantine/core';
 import useMessagesHistory from '../../context/MessagesHistoryContext/useMessagesHistory';
 import { OptionsBar } from './components/OptionsBar/OptionsBar';
 import TicketsDataTable from './components/TicketsDataTable';
+import { useTicketsQuery } from './hooks/useTicketsQuery';
 
-export default function TicketsTable() {
+interface Props {
+  attendant: string | null;
+}
+
+export default function TicketsTable({ attendant }: Props) {
   const { onCloseDrawer } = useMessagesHistory();
+  const ticketsQuery = useTicketsQuery(attendant);
 
   return (
     <Flex direction="column" gap="sm" style={{ flex: 1 }}>
@@ -22,8 +28,8 @@ export default function TicketsTable() {
           </ActionIcon>
         </Tooltip>
       </Flex>
-      <OptionsBar />
-      <TicketsDataTable />
+      <OptionsBar ticketsQuery={ticketsQuery} />
+      <TicketsDataTable ticketsQuery={ticketsQuery} />
     </Flex>
   );
 }

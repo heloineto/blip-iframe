@@ -1,41 +1,24 @@
 import { useMantineTheme } from '@mantine/core';
-import { useInfiniteQuery } from '@tanstack/react-query';
-import type { GetTicketsHistoryResponse } from 'blip-iframe';
-import { blip } from 'blip-iframe';
 import { DataTable } from 'mantine-datatable';
-import blipQueryFn from 'pages/Home/utils/queryFn';
 import { useRef } from 'react';
 import useMessagesHistory from '../../../../context/MessagesHistoryContext/useMessagesHistory';
 import AttendantCell from './component/AttendantCell';
 import { useAttendantQueries } from './hooks/useAttendantQueries';
 import { useContactQueries } from './hooks/useContactQueries';
-import { PAGE_SIZE } from './utils/components';
 import getTicketRecords from './utils/getTicketRecords';
 import { placeholderRecords } from './utils/placeholderRecords';
+import type { TicketsQuery } from '../../hooks/useTicketsQuery';
 
-export default function TicketsTable() {
+interface Props {
+  ticketsQuery: TicketsQuery;
+}
+
+export default function TicketsTable({ ticketsQuery }: Props) {
   const theme = useMantineTheme();
   const { selectedTicket, setSelectedTicket } = useMessagesHistory();
   const scrollViewportRef = useRef<HTMLDivElement>(null);
 
-  const ticketsQuery = useInfiniteQuery({
-    queryKey: ['getTicketsHistory'],
-    queryFn: async ({ pageParam = 0 }) => {
-      const response = (await blipQueryFn(
-        blip.getTicketsHistory({
-          filter:
-            "storageDate ge datetimeoffset'2023-09-02T03:00:00.000Z' and storageDate le datetimeoffset'2023-10-04T02:59:00.000Z' and status ne 'Open' and status ne 'Waiting'",
-          take: PAGE_SIZE,
-          skip: PAGE_SIZE * pageParam,
-        })
-      )) as GetTicketsHistoryResponse;
-
-      return response.items;
-    },
-    getNextPageParam: (_, pages) => pages.length + 1,
-  });
-
-  const tickets = ticketsQuery.data?.pages.flat() ?? [];
+  const tickets = ticketsQuery.data?.pages?.flat() ?? [];
 
   const attendantQueries = useAttendantQueries(tickets);
   const contactQueries = useContactQueries(tickets);
@@ -88,7 +71,16 @@ export default function TicketsTable() {
           width: 100 * 2,
           ellipsis: true,
         },
-        { accessor: 'contact', width: 100, textAlignment: 'center' },
+        {
+          accessor: 'contact',
+          width: 100,
+          textAlignment: 'center',
+          cellsStyle: {
+            whiteSpace: 'nowrap',
+            textOverflow: 'ellipsis',
+            overflow: 'hidden',
+          },
+        },
         {
           accessor: 'sequentialId',
           title: 'Id',

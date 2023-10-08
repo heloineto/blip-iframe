@@ -9,7 +9,7 @@ export interface GetContactParams {
 /**
  * Gets contact information
  */
-export default async function getContact({ identity }: GetContactParams) {
+export async function getContact({ identity }: GetContactParams) {
   const uri = buildURI({
     paths: ['contacts', identity],
   });
@@ -17,7 +17,7 @@ export default async function getContact({ identity }: GetContactParams) {
   return await sendCommand<GetContactResponse>({
     command: {
       method: 'get',
-      uri: uri,
+      uri,
     },
   });
 }

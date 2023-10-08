@@ -1,11 +1,27 @@
-import sendCommand from '../actions/sendCommand';
+import { sendCommand } from 'blip-iframe';
+import {
+  GetListParams,
+  parseListParams,
+} from '../../lib/shared/parseListParams';
+import { buildURI } from '../../lib/utils';
 
-export default async function getTickets() {
+export interface GetTicketsParams extends GetListParams {}
+
+export async function getTicketsHistory({
+  ...listParams
+}: GetTicketsParams = {}) {
+  console.log('listParams', listParams);
+
+  const uri = buildURI({
+    paths: ['tickets'],
+    params: parseListParams(listParams),
+  });
+
   return await sendCommand<GetTicketsResponse>({
     command: {
       method: 'get',
       to: 'postmaster@desk.msging.net',
-      uri: '/tickets',
+      uri,
     },
   });
 }
@@ -13,16 +29,16 @@ export default async function getTickets() {
 export interface GetTicketsResponse {
   total: number;
   itemType: string;
-  items: GetTicketsResponseItem[];
+  items: GetTicketsItem[];
 }
 
-export interface GetTicketsResponseItem {
+export interface GetTicketsItem {
   id: string;
   sequentialId: number;
   ownerIdentity: string;
   customerIdentity: string;
   customerDomain: string;
-  agentIdentity?: string;
+  agentIdentity: string;
   provider: string;
   status: string;
   storageDate: string;

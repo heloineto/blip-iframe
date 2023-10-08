@@ -1,12 +1,13 @@
 import { useLocalStorage } from '@mantine/hooks';
-import { type GetTicketsResponseItem } from 'blip-iframe';
 import configureFetcher from 'pages/Home/utils/configureFetcher';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { AuthForm } from './components/AuthForm';
-import { getAuthorizationKey } from './components/AuthForm/lib/getAuthorizationKey';
 import Ticket from './components/Ticket';
 import TicketsTable from './components/TicketsTable';
 import MessagesHistoryProvider from './context/MessagesHistoryContext/MessagesHistoryProvider';
+import { buildAuthorizationKey, type GetTicketsHistoryItem } from 'blip-iframe';
+import { useQuery } from '@tanstack/react-query';
+import { getBotData } from './components/AuthForm/lib/getBotData';
 
 interface Props {
   onCloseDrawer: () => void;
@@ -19,18 +20,21 @@ export default function MessagesHistory({ onCloseDrawer }: Props) {
     getInitialValueInEffect: true,
   });
 
-  useEffect(() => {
-    if (!botKey) return;
-
-    void (async () => {
-      const authorizationKey = await getAuthorizationKey(botKey);
+  const botDataQuery = useQuery({
+    queryKey: ['getBotData', botKey],
+    queryFn: () => getBotData(botKey),
+    onSuccess: (botData) => {
+      const authorizationKey = buildAuthorizationKey({
+        botAccessKey: botData.accessKey,
+        botShortName: botData.shortName,
+      });
 
       configureFetcher(authorizationKey);
-    })();
-  }, [botKey]);
+    },
+  });
 
   const [selectedTicket, setSelectedTicket] =
-    useState<GetTicketsResponseItem | null>(null);
+    useState<GetTicketsHistoryItem | null>(null);
 
   return (
     <MessagesHistoryProvider
@@ -49,7 +53,15 @@ export default function MessagesHistory({ onCloseDrawer }: Props) {
           }}
         />
       ) : (
-        <>{!selectedTicket ? <TicketsTable /> : <Ticket />}</>
+        <>
+          {!selectedTicket ? (
+            <TicketsTable
+              attendant={botDataQuery.data?.metadata.attendant ?? null}
+            />
+          ) : (
+            <Ticket />
+          )}
+        </>
       )}
     </MessagesHistoryProvider>
   );

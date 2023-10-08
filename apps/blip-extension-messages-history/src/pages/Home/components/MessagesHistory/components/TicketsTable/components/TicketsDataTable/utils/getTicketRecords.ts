@@ -2,11 +2,11 @@ import type { UseQueryResult } from '@tanstack/react-query';
 import type {
   BlipContact,
   GetAttendantResponse,
-  GetTicketsResponseItem,
+  GetTicketsHistoryItem,
 } from 'blip-iframe';
 
 export default function getTicketRecords(
-  tickets: GetTicketsResponseItem[],
+  tickets: GetTicketsHistoryItem[],
   attendantQueries: UseQueryResult<GetAttendantResponse | null>[],
   contactQueries: UseQueryResult<BlipContact | null>[]
 ) {

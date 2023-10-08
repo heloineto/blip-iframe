@@ -10,13 +10,8 @@ export { default as getBots } from './getBots';
 export * from './getPublishedFlow';
 export { default as getPublishedFlow } from './getPublishedFlow';
 
-export * from './getTickets';
-export { default as getTickets } from './getTickets';
-
-export * from './getTicketsHistory';
-export { default as getTicketsHistory } from './getTicketsHistory';
-
 export * from './accounts';
 export * from './attendants';
 export * from './contacts';
 export * from './threads';
+export * from './tickets';

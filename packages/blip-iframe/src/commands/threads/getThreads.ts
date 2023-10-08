@@ -1,26 +1,26 @@
 import sendCommand from '../../actions/sendCommand';
+import { GetListParams } from '../../lib/shared/parseListParams';
 import buildURI from '../../lib/utils/buildURI';
 
-export interface GetThreadsParams {
+export interface GetThreadsParams extends GetListParams {
   identity?: string;
   storageDate?: string;
   messageId?: string;
   getFromOriginator?: boolean;
   merged?: boolean;
   ownerIdentity?: string;
-  skip?: number;
-  take?: number;
   direction?: 'desc' | 'asc';
   refreshExpiredMedia?: boolean;
 }
 
-export default async function getThreads({
+export async function getThreads({
   messageId,
   identity,
   storageDate,
   getFromOriginator,
   merged,
   ownerIdentity,
+  filter,
   skip,
   take,
   direction = 'desc',
@@ -36,6 +36,7 @@ export default async function getThreads({
       getFromOriginator,
       direction,
       refreshExpiredMedia,
+      $filter: filter,
       $take: take,
       $skip: skip,
     },

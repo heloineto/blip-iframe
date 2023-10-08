@@ -14,7 +14,7 @@ export interface GetNotificationsParams {
   refreshExpiredMedia?: boolean;
 }
 
-export default async function getNotifications({
+export async function getNotifications({
   messageId,
   identity,
   storageDate,

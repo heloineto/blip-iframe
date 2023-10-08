@@ -1,11 +1,11 @@
 import { Box } from '@mantine/core';
-import type { GetTicketsResponseItem } from 'blip-iframe';
+import type { GetTicketsHistoryItem } from 'blip-iframe';
 import useMessages from '../hooks/useMessages';
 import formatMessages from '../utils/formatMessages';
 import Message from './Message';
 
 interface Props {
-  ticket: GetTicketsResponseItem;
+  ticket: GetTicketsHistoryItem;
 }
 
 export default function MessagesContainer({ ticket }: Props) {

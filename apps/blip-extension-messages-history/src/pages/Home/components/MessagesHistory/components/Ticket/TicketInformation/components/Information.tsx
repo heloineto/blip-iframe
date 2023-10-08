@@ -1,11 +1,11 @@
 import { Flex } from '@mantine/core';
-import type { GetTicketsResponseItem } from 'blip-iframe';
+import type { GetTicketsHistoryItem } from 'blip-iframe';
 import AttendantInformation from './AttendantInformation';
 import ContactInformation from './ContactInformation';
 import TicketInformation from './TicketInformation';
 
 interface Props {
-  ticket: GetTicketsResponseItem;
+  ticket: GetTicketsHistoryItem;
 }
 
 export default function Information({ ticket }: Props) {

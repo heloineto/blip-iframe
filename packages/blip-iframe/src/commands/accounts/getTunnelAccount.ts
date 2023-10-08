@@ -5,9 +5,7 @@ export interface GetTunnelAccountParams {
   identity: string;
 }
 
-export default async function getTunnelAccount({
-  identity,
-}: GetTunnelAccountParams) {
+export async function getTunnelAccount({ identity }: GetTunnelAccountParams) {
   const uri = buildURI({
     paths: ['accounts', identity],
   });

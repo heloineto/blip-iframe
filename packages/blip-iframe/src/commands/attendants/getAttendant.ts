@@ -5,7 +5,7 @@ export interface GetAttendantParams {
 }
 
 // TODO: Figure out if agent is the same as attendant
-export default async function getAttendant({ identity }: GetAttendantParams) {
+export async function getAttendant({ identity }: GetAttendantParams) {
   const [name, domain] = identity.split('@');
 
   if (!name || !domain) {
@@ -24,7 +24,7 @@ export default async function getAttendant({ identity }: GetAttendantParams) {
   });
 }
 
-export type GetAttendantResponse = {
+export interface GetAttendantResponse {
   fullName: string;
   identity: string;
   email: string;
@@ -39,4 +39,4 @@ export type GetAttendantResponse = {
   };
   source: string;
   creationDate: string;
-};
+}

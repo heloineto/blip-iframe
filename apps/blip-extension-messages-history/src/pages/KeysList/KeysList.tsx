@@ -26,7 +26,7 @@ export function KeysList() {
         width: '100vw',
       }}
     >
-      <Container>
+      <Container style={{ display: 'flex', paddingTop: 64 }}>
         <MasterKey application={application} />
       </Container>
     </div>

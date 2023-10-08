@@ -9,5 +9,5 @@ export * from './bucket';
 export * from './commands';
 export * as commands from './commands';
 export { default as imp } from './imp';
-export * from './lib/utils';
+export * from './lib';
 export * from './types';

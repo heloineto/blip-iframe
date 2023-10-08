@@ -1,15 +1,42 @@
 import sendCommand from '../../actions/sendCommand';
+import {
+  GetListParams,
+  parseListParams,
+} from '../../lib/shared/parseListParams';
+import { buildURI } from '../../lib/utils';
 
-// TODO: Fix, this does not work
-export default async function getAttendants() {
+export interface GetAttendantsParams extends GetListParams {}
+
+export async function getAttendants({
+  ...listParams
+}: GetAttendantsParams = {}) {
+  const uri = buildURI({
+    paths: ['attendants'],
+    params: parseListParams(listParams),
+  });
+
   return await sendCommand<GetAttendantsResponse>({
-    destination: 'BlipService',
     command: {
       method: 'get',
-      to: 'postmaster@desk.blip.ai',
-      uri: '/attendants',
+      to: 'postmaster@desk.msging.net',
+      uri,
     },
   });
 }
 
-export type GetAttendantsResponse = unknown;
+export interface GetAttendantsResponse {
+  total: number;
+  itemType: string;
+  items: GetAttendantsItem[];
+}
+
+export interface GetAttendantsItem {
+  identity: string;
+  fullName: string;
+  email: string;
+  teams: string[];
+  status: string;
+  isEnabled: boolean;
+  agentSlots?: number;
+  lastServiceDate?: string;
+}
