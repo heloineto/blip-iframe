@@ -1,6 +1,6 @@
 {
   "name": "blip-iframe",
-  "version": "0.0.5",
+  "version": "0.0.7",
   "description": "A type safe and intuitive API to communicate with the Blip platform",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -15,8 +15,8 @@
     "build": "tsup src/index.ts --format esm,cjs --dts",
     "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
     "lint": "eslint \"src/**/*.ts*\"",
-    "clean": "rm -rf .turbo && rm -rf node_modules && rm -rf dist",
-    "prepublishOnly": "rm -rf dist && npm run build"
+    "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
+    "prepublishOnly": "rimraf dist && npm run build"
   },
   "repository": {
     "type": "git",
@@ -28,6 +28,7 @@
   },
   "homepage": "https://github.com/heloineto/blip-iframe#readme",
   "devDependencies": {
+    "rimraf": "^5.0.5",
     "tsconfig": "workspace:*",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6"

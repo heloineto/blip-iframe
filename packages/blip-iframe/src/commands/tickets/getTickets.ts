@@ -1,9 +1,9 @@
-import { sendCommand } from 'blip-iframe';
+import sendCommand from '../../actions/sendCommand';
 import {
   GetListParams,
   parseListParams,
 } from '../../lib/shared/parseListParams';
-import { buildURI } from '../../lib/utils';
+import buildURI from '../../lib/utils/buildURI';
 
 export interface GetTicketsParams extends GetListParams {}
 
