@@ -36,7 +36,7 @@ export default function MasterKey({ application }: Props) {
 
   return (
     <Stack pt="md">
-      <Title ta="center">Messages History</Title>
+      <Title ta="center">Histórico de mensagens</Title>
       <div
         style={{
           flex: 1,

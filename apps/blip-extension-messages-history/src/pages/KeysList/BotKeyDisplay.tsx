@@ -11,7 +11,7 @@ export function BotKeyDisplay({ masterKey }: Props) {
     <Stack spacing="md">
       <Stack spacing={0} h={81}>
         <Title order={2} size="h3">
-          Encrypted Bot Key
+          Chave criptografada
         </Title>
         <div>
           Copie a chave abaixo e insira na extensão de Message History no Desk
