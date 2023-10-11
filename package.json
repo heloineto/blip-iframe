@@ -5,7 +5,6 @@
     "build": "turbo run build",
     "dev": "turbo run dev",
     "dev:extension": "turbo run dev --filter=blip-extension --filter=blip-iframe",
-    "dev:desk": "turbo run dev --filter=blip-extension-messages-history --filter=blip-iframe",
     "dev:docs": "turbo run dev --filter=docs --filter=blip-extension --filter=blip-iframe",
     "lint": "turbo run lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\""
