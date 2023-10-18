@@ -45,7 +45,7 @@ export interface SendCommandParams {
  * @param params The parameters of the command
  * @returns The response of the command
  */
-export default async function sendCommand<
+export async function sendCommand<
   TResponse = unknown,
   TWrappedResponse extends WrappedSendCommandResponse<TResponse> = WrappedSendCommandResponse<TResponse>
 >(params: SendCommandParams) {

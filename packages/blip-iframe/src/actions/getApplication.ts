@@ -11,9 +11,7 @@ export interface GetApplicationParams {
 /**
  * Get details about a bot (application)
  */
-export default async function getApplication({
-  shortName,
-}: GetApplicationParams = {}) {
+export async function getApplication({ shortName }: GetApplicationParams = {}) {
   return await imp.sendMessage<GetApplicationResponse>({
     action: 'getApplication',
     content: shortName || undefined,

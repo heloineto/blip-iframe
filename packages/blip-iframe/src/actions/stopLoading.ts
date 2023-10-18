@@ -3,7 +3,7 @@ import imp from '../imp';
 /**
  * Stops showing the loading indicator in the Blip platform.
  */
-export default async function stopLoading() {
+export function stopLoading() {
   void imp.sendMessage({ action: 'stopLoading' });
 }
 

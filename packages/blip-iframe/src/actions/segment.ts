@@ -35,7 +35,7 @@ export interface SegmentParams {
 /**
  * Makes calls to the platform's analytics API.
  */
-export default async function segment(params: SegmentParams) {
+export async function segment(params: SegmentParams) {
   return await imp.sendMessage({
     action: 'segment',
     content: params,

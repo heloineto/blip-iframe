@@ -1,4 +1,4 @@
-import sendCommand from '../../actions/sendCommand';
+import { sendCommand } from '../../actions/sendCommand';
 import buildURI from '../../lib/utils/buildURI';
 
 export interface GetTunnelAccountParams {

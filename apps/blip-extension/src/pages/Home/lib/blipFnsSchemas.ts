@@ -1,4 +1,3 @@
-import { blip } from 'blip-iframe';
 import { getApplication } from './schemas/getApplication';
 
 export const blipFnsSchemas = {
@@ -38,7 +37,7 @@ export const blipFnsSchemas = {
     // unauthorizedAccess: () => {},
     // addTenantPrefixToUrl: () => {},
     // getTenantUrl: () => {},
-    getTenantPlan: () => blip.getTenantPlan({ tenantId: 'csgrowth' }),
+    // getTenantPlan: () => blip.getTenantPlan({ tenantId: 'csgrowth' }),
     // inviteUser: () => {},
     // changeLocation: () => {},
     // changePath: () => {},

@@ -1,6 +1,8 @@
 import { ShowNavbarRequest } from '../actions';
+import { AddTenantPrefixToUrlRequest } from '../actions/addTenantPrefixToUrl';
 import { GetApplicationRequest } from '../actions/getApplication';
 import { GetCurrentLanguageRequest } from '../actions/getCurrentLanguage';
+import { GetPermissionsObjectRequest } from '../actions/getPermissionsObject';
 import { GetTenantPlanRequest } from '../actions/getTenantPlan';
 import { HasPermissionRequest } from '../actions/hasPermissions';
 import { HeightChangeRequest } from '../actions/heightChange';
@@ -25,6 +27,8 @@ type Request =
   | ToastRequest
   | HideNavbarRequest
   | ShowNavbarRequest
-  | GetTenantPlanRequest;
+  | GetTenantPlanRequest
+  | AddTenantPrefixToUrlRequest
+  | GetPermissionsObjectRequest;
 
 export default Request;

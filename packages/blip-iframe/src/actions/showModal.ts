@@ -5,7 +5,7 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
  * a title, body, confirm and cancel button
  * @param content
  */
-export default async function showModal(content: ShowModalRequest['content']) {
+export async function showModal(content: ShowModalRequest['content']) {
   await IframeMessageProxy.sendMessage({
     action: 'showModal',
     content,

@@ -1,35 +1,24 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { imp } from 'blip-iframe';
 
 export interface GetTenantPlanParams {
-  tenantId: string;
+  tenantId?: string;
 }
 
 /**
- * Get details about a application
+ *
  */
-export default async function getTenantPlan({ tenantId }: GetTenantPlanParams) {
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'getTenantPlan',
-      content: { tenantId },
-    })) as WrappedGetTenantPlanResponse;
-
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
+export async function getTenantPlan({ tenantId }: GetTenantPlanParams = {}) {
+  return await imp.sendMessage<GetTenantPlanResponse>({
+    action: 'getTenantPlan',
+    content: { tenantId },
+  });
 }
 
 export interface GetTenantPlanRequest {
   action: 'getTenantPlan';
   content: {
-    tenantId: string;
+    tenantId?: string;
   };
-}
-
-export interface WrappedGetTenantPlanResponse {
-  response: GetTenantPlanResponse;
-  trackingProperties: { id: string };
 }
 
 export interface GetTenantPlanResponse {

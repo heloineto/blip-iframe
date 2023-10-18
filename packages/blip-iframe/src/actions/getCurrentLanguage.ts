@@ -3,7 +3,7 @@ import imp from '../imp';
 /**
  * Get the language of the current user account
  */
-export default async function getCurrentLanguage() {
+export async function getCurrentLanguage() {
   return await imp.sendMessage<GetCurrentLanguageResponse>({
     action: 'getCurrentLanguage',
   });

@@ -28,7 +28,7 @@ const blipFns = {
         buttontext: "I'm a button",
       }),
     // hasPermissions: () => {},
-    // getPermissionsObject: () => {},
+    getPermissionsObject: () => blip.getPermissionsObject(),
     // segment: () => {},
     // getUserContext: () => {},
     // getToken: () => {},
@@ -66,7 +66,7 @@ const blipFns = {
         take: 20,
       }),
     getAccount: () => blip.getAccount(),
-    getTickets: () => blip.getTickets(),
+    // getTickets: () => blip.getTickets(),
     getTicketsHistory: () =>
       blip.getTicketsHistory({
         // filter:

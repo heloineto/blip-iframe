@@ -36,7 +36,7 @@ export interface ToastParams {
  * Shows a toast notification on the Blip platform
  * with a message, title a type and the duration is in milliseconds
  */
-export default async function toast(params: ToastParams) {
+export function toast(params: ToastParams) {
   void imp.sendMessage({
     action: 'toast',
     content: params,

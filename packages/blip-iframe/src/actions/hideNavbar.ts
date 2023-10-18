@@ -5,7 +5,7 @@ import imp from '../imp';
  *
  * This can be useful if you want to create a full screen extension
  */
-export default async function hideNavbar() {
+export function hideNavbar() {
   void imp.sendMessage({
     action: 'hideNavbar',
   });

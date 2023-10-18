@@ -6,7 +6,7 @@ import imp from '../imp';
  * You will only see it take effect if the navigation
  * bar is hidden (Ex.: after calling `hideNavbar`)
  */
-export default async function showNavbar() {
+export function showNavbar() {
   void imp.sendMessage({
     action: 'showNavbar',
   });

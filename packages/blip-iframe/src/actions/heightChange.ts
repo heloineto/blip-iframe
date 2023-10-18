@@ -14,7 +14,7 @@ export interface HeightChangeParams {
  * So if you want the extension to take 100% of the remaining space,
  * pass 0 as the height
  */
-export default async function heightChange({ height }: HeightChangeParams) {
+export function heightChange({ height }: HeightChangeParams) {
   void imp.sendMessage({
     action: 'heightChange',
     content: height,
