@@ -1,6 +1,6 @@
 import imp from '../imp';
 
-interface ShowAlertParams {
+export interface ShowAlertParams {
   variant: string;
   icon: string;
   title: string;

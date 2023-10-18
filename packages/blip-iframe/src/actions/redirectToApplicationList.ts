@@ -1,10 +1,8 @@
-import { imp } from 'blip-iframe';
-
 // TODO: Verify, unknown
 export async function redirectToApplicationList() {
-  return imp.sendMessage<RedirectToApplicationListResponse>({
-    action: 'redirectToApplicationList',
-  });
+  // return imp.sendMessage<RedirectToApplicationListResponse>({
+  //   action: 'redirectToApplicationList',
+  // });
 }
 
 export interface RedirectToApplicationListRequest {

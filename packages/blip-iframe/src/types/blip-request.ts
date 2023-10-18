@@ -20,7 +20,7 @@ import { StopLoadingRequest } from '../actions/stopLoading';
 import { ToastRequest } from '../actions/toast';
 import { UnauthorizedAccessRequest } from '../actions/unauthorizedAccess';
 
-type Request =
+export type BlipRequest =
   | GetApplicationRequest
   | GetCurrentLanguageRequest
   | HasPermissionRequest
@@ -42,5 +42,3 @@ type Request =
   | ShowAlertRequest
   | RedirectToApplicationListRequest
   | UnauthorizedAccessRequest;
-
-export default Request;
