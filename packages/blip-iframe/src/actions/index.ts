@@ -2,6 +2,8 @@ export * from './getApplication';
 export * from './getCurrentLanguage';
 export * from './getPermissionsObject';
 export * from './getTenantPlan';
+export * from './getTenantUrl';
+export * from './getToken';
 export * from './hasPermissions';
 export * from './heightChange';
 export * from './hideNavbar';

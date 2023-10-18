@@ -1,0 +1,61 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.getPermissionsObject);
+
+## Usage
+
+The `getPermissionsObject` function fetches the permissions from the Blip Platform.
+This object contains information about the permissions available for different features and functionalities in the platform.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const { response, error } = await blip.getPermissionsObject();
+
+if (error) {
+  console.error(error); // An error happened during the request
+  return;
+}
+
+console.log(response); // The permissions object
+```
+
+## Parameters
+
+The `getPermissionsObject` function accepts no parameters.
+
+## Return type
+
+The `getPermissionsObject` function returns the following response:
+
+```ts
+export interface GetPermissionsObjectResponse {
+  payments: PermissionObject;
+  iaProviders: PermissionObject;
+  iaModel: PermissionObject;
+  iaEnhancement: PermissionObject;
+  channels: PermissionObject;
+  desk: PermissionObject;
+  users: PermissionObject;
+  scheduler: PermissionObject;
+  basicConfigurations: PermissionObject;
+  connectionInformations: PermissionObject;
+  resources: PermissionObject;
+  team: PermissionObject;
+  logMessages: PermissionObject;
+  builder: PermissionObject;
+  analysis: PermissionObject;
+  salesTools: PermissionObject;
+}
+
+export interface PermissionObject {
+  title: string;
+  claim: number;
+  id: string;
+  description: string;
+  hideInTemplate?: string[];
+}
+```

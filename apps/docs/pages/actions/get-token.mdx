@@ -1,0 +1,36 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.getToken);
+
+## Usage
+
+The `getToken` function is used to retrieve the JWT token of the current user.
+The JWT token can be used for authentication and authorization purposes when making requests to the Blip platform API.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const { response, error } = await blip.getToken();
+
+if (error) {
+  console.error(error); // An error happened during the request
+  return;
+}
+
+console.log(response); // The JWT token of the current user
+```
+
+## Parameters
+
+The `getToken` function does not accept any parameters.
+
+## Return type
+
+The `getToken` function returns the following response:
+
+```ts
+export type GetTokenResponse = string;
+```

@@ -19,6 +19,24 @@ export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
     source: 'actions/getCurrentLanguage.ts',
     docs: 'actions/get-current-language.mdx',
   },
+  getPermissionsObject: {
+    title: 'getPermissionsObject',
+    package: 'blip-iframe',
+    slug: '/actions/get-permissions-object',
+    description: 'Get the permissions object',
+    import: "import { getPermissionsObject } from 'blip-iframe';",
+    source: 'actions/getPermissionsObject.ts',
+    docs: 'actions/get-permissions-object.mdx',
+  },
+  getToken: {
+    title: 'getToken',
+    package: 'blip-iframe',
+    slug: '/actions/get-token',
+    description: 'Gets the JWT token of the current user',
+    import: "import { getToken } from 'blip-iframe';",
+    source: 'actions/getToken.ts',
+    docs: 'actions/get-token.mdx',
+  },
   heightChange: {
     title: 'heightChange',
     package: 'blip-iframe',
@@ -82,7 +100,6 @@ export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
     source: 'actions/stopLoading.ts',
     docs: 'actions/stop-loading.mdx',
   },
-
   toast: {
     title: 'toast',
     package: 'blip-iframe',

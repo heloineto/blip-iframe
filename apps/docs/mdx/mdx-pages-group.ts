@@ -7,6 +7,8 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     pages: [
       MDX_DATA.getApplication,
       MDX_DATA.getCurrentLanguage,
+      MDX_DATA.getPermissionsObject,
+      MDX_DATA.getToken,
       MDX_DATA.heightChange,
       MDX_DATA.hideNavbar,
       MDX_DATA.segment,
