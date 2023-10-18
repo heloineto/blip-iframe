@@ -4,9 +4,7 @@ export interface GetTenantPlanParams {
   tenantId: string;
 }
 
-/**
- *
- */
+// TODO: Verify, does not work
 export async function getTenantPlan({ tenantId }: GetTenantPlanParams) {
   return await imp.sendMessage<GetTenantPlanResponse>({
     action: 'getTenantPlan',

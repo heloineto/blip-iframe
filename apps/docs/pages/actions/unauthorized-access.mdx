@@ -1,0 +1,25 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.unauthorizedAccess);
+
+## Usage
+
+The `unauthorizedAccess` function is used to show an unauthorized access toast and redirect the user to the tenant's home page.
+This can be useful when a user tries to access a restricted page or perform an unauthorized action.
+
+## Example
+
+```ts
+import { imp } from 'blip-iframe';
+
+imp.unauthorizedAccess();
+```
+
+## Parameters
+
+The `unauthorizedAccess` function accepts no parameters.
+
+## Return type
+
+The `unauthorizedAccess` function does not return any value.

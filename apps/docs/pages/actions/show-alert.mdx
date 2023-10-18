@@ -1,0 +1,62 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.showAlert);
+
+## Usage
+
+The `showAlert` function is used to show a modal-like alert on the main platform with confirmation and cancellation buttons.
+The alert can be customized with a variant, icon, title, body, and button labels.
+This function returns a promise that resolves to `true` if the user confirms the alert, and `false` otherwise.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const params = {
+  variant: 'info',
+  icon: 'info',
+  title: 'Confirmation',
+  body: 'Are you sure you want to proceed?',
+  buttons: {
+    cancel: 'Cancel',
+    confirm: 'Confirm',
+  },
+};
+
+const { respose, error } = await blip.showAlert(params);
+
+if (error) {
+  console.error(error); // An error happened during the request
+  return;
+}
+
+if (respose) {
+  console.log('User confirmed');
+} else {
+  console.log('User canceled');
+}
+```
+
+## Parameters
+
+The `showAlert` function accepts the following parameters:
+
+```ts
+interface ShowAlertParams {
+  variant: string;
+  icon: string;
+  title: string;
+  body: string;
+  buttons: {
+    cancel?: string;
+    confirm: string;
+  };
+}
+```
+
+## Return type
+
+The `showAlert` function returns a promise that resolves to a boolean value indicating
+whether the user confirmed the alert `true` or canceled it `false`.

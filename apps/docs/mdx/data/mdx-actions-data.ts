@@ -73,6 +73,16 @@ export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
     source: 'actions/sendCommand.ts',
     docs: 'actions/send-command.mdx',
   },
+  showAlert: {
+    title: 'showAlert',
+    package: 'blip-iframe',
+    slug: '/actions/show-alert',
+    description:
+      'Shows a alert on the main platform with confirm and cancel buttons',
+    import: "import { showAlert } from 'blip-iframe';",
+    source: 'actions/showAlert.ts',
+    docs: 'actions/show-alert.mdx',
+  },
   showNavbar: {
     title: 'showNavbar',
     package: 'blip-iframe',
@@ -108,5 +118,15 @@ export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
     import: "import { toast } from 'blip-iframe';",
     source: 'actions/toast.ts',
     docs: 'actions/toast.mdx',
+  },
+  unauthorizedAccess: {
+    title: 'unauthorizedAccess',
+    package: 'blip-iframe',
+    slug: '/actions/unauthorized-access',
+    description:
+      "Shows an unauthorized access toast and redirects the user to the tenant's home page",
+    import: "import { unauthorizedAccess } from 'blip-iframe';",
+    source: 'actions/unauthorizedAccess.ts',
+    docs: 'actions/unauthorized-access.mdx',
   },
 };

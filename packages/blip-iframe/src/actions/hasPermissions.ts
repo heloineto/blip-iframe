@@ -3,6 +3,7 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
 export type Permissions = 'write';
 export type PermissionAreas = 'team';
 
+// TODO: Verify, incomplete
 export async function hasPermissions(
   permission: Permissions,
   area: PermissionAreas

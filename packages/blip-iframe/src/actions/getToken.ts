@@ -9,7 +9,7 @@ export function getToken() {
   });
 }
 
-export interface getTokenRequest {
+export interface GetTokenRequest {
   action: 'getToken';
 }
 
