@@ -1,4 +1,4 @@
-import { imp } from 'blip-iframe';
+import imp from '../imp';
 
 export interface GetTenantPlanParams {
   tenantId: string;

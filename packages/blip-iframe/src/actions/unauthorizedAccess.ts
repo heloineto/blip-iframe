@@ -1,4 +1,4 @@
-import { imp } from 'blip-iframe';
+import imp from '../imp';
 
 /**
  * Shows a unauthorized access toast and redirects the user to the
