@@ -1,0 +1,55 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.addTenantPrefixToUrl);
+
+## addTenantPrefixToUrl
+
+This function adds the tenant ID prefix to a given URL. By adding the tenant ID prefix,
+the URL is modified in a way that identifies the specific tenant associated with the URL.
+
+### Usage
+
+```ts
+import { addTenantPrefixToUrl } from 'blip-iframe';
+
+const url = 'https://example.com';
+const tenantId = 'tenant-id';
+
+const { response, error } = addTenantPrefixToUrl({ url, tenantId });
+
+if (error) {
+  console.error(error); // An error happened during the request
+  return;
+}
+
+console.log(response); // Output: 'https://tenant-id.example.com'
+```
+
+In this example, the `addTenantPrefixToUrl` function is used to add the tenant ID prefix (`tenant-id`)
+to the URL `https://example.com`. The resulting URL is `https://tenant-id.example.com`.
+
+### Parameters
+
+The `addTenantPrefixToUrl` function accepts the following parameters:
+
+```ts
+interface AddTenantPrefixToUrlParams {
+  /**
+   * The URL to add the tenant ID prefix to
+   */
+  url: string;
+  /**
+   * The tenant ID (optional). If not provided, the current tenant ID will be used.
+   */
+  tenantId?: string;
+}
+```
+
+### Return Value
+
+The `addTenantPrefixToUrl` function returns a URL string with the tenant ID prefix added.
+
+```ts
+type AddTenantPrefixToUrlResponse = string;
+```

@@ -35,7 +35,10 @@ const blipFns = {
     // getAccount: () => {},
     // sendApplicationRequest: () => {},
     unauthorizedAccess: () => blip.unauthorizedAccess(),
-    // addTenantPrefixToUrl: () => {},
+    addTenantPrefixToUrl: () =>
+      blip.addTenantPrefixToUrl({
+        url: 'https://www.google.com',
+      }),
     // getTenantUrl: () => blip.getTenantUrl({ tenantId: 'csgrowth' }),
     // getTenantPlan: () => blip.getTenantPlan({ tenantId: 'csgrowth' }),
     // inviteUser: () => {},

@@ -1,6 +1,15 @@
 import { Frontmatter } from '@/types';
 
 export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
+  addTenantPrefixToUrl: {
+    title: 'addTenantPrefixToUrl',
+    package: 'blip-iframe',
+    slug: '/actions/add-tenant-prefix-to-url',
+    description: 'Adds the tenant id prefix to a URL',
+    import: "import { addTenantPrefixToUrl } from 'blip-iframe';",
+    source: 'actions/addTenantPrefixToUrl.ts',
+    docs: 'actions/add-tenant-prefix-to-url.mdx',
+  },
   getApplication: {
     title: 'getApplication',
     package: 'blip-iframe',

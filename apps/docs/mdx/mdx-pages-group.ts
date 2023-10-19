@@ -5,6 +5,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
   {
     group: 'actions',
     pages: [
+      MDX_DATA.addTenantPrefixToUrl,
       MDX_DATA.getApplication,
       MDX_DATA.getCurrentLanguage,
       MDX_DATA.getPermissionsObject,
