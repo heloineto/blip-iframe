@@ -46,6 +46,15 @@ export const MDX_ACTIONS_DATA: Record<string, Frontmatter> = {
     source: 'actions/getToken.ts',
     docs: 'actions/get-token.mdx',
   },
+  hasPermissions: {
+    title: 'hasPermissions',
+    package: 'blip-iframe',
+    slug: '/actions/has-permissions',
+    description: 'Checks if the user has the specified permissions',
+    import: "import { hasPermissions } from 'blip-iframe';",
+    source: 'actions/hasPermissions.ts',
+    docs: 'actions/has-permissions.mdx',
+  },
   heightChange: {
     title: 'heightChange',
     package: 'blip-iframe',

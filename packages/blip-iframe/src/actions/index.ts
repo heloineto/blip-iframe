@@ -1,4 +1,5 @@
 export * from './addTenantPrefixToUrl';
+export * from './getAccount';
 export * from './getApplication';
 export * from './getCurrentLanguage';
 export * from './getPermissionsObject';

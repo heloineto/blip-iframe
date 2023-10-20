@@ -1,0 +1,72 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.hasPermissions);
+
+## Usage
+
+The `hasPermissions` function is used to check if the user has the specified permissions on the Blip platform.
+It can be used to conditionally display certain features or perform actions based on the user's permissions.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const params = {
+  permissionType: 'read',
+  customArea: 'payments',
+};
+
+const { response, error } = await blip.hasPermissions(params);
+
+if (error) {
+  console.error(error); // An error happened during the request
+  return;
+}
+
+console.log(response); // A boolean indicating if the user has the specified permissions
+```
+
+## Parameters
+
+The `hasPermissions` function accepts the following parameters:
+
+```ts
+export interface HasPermissionsParams {
+  permissionType: PermissionType;
+  customArea?: CustomArea;
+}
+
+export type PermissionType = 'write' | 'read' | string;
+
+export type CustomArea =
+  | 'payments'
+  | 'iaProviders'
+  | 'iaModel'
+  | 'iaEnhancement'
+  | 'channels'
+  | 'desk'
+  | 'users'
+  | 'scheduler'
+  | 'basicConfigurations'
+  | 'connectionInformations'
+  | 'resources'
+  | 'team'
+  | 'logMessages'
+  | 'builder'
+  | 'analysis'
+  | 'salesTools'
+  | 'dashboard'
+  | string;
+
+hasPermissions(params: HasPermissionsParams): Promise<boolean>;
+```
+
+## Return type
+
+The `hasPermissions` function returns the following response:
+
+```ts
+export type HasPermissionResponse = boolean;
+```

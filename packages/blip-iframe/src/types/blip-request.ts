@@ -1,4 +1,5 @@
 import { AddTenantPrefixToUrlRequest } from '../actions/addTenantPrefixToUrl';
+import { GetAccountRequest } from '../actions/getAccount';
 import { GetApplicationRequest } from '../actions/getApplication';
 import { GetCurrentLanguageRequest } from '../actions/getCurrentLanguage';
 import { GetPermissionsObjectRequest } from '../actions/getPermissionsObject';
@@ -41,4 +42,5 @@ export type BlipRequest =
   | GetUserContextRequest
   | ShowAlertRequest
   | RedirectToApplicationListRequest
-  | UnauthorizedAccessRequest;
+  | UnauthorizedAccessRequest
+  | GetAccountRequest;

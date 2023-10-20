@@ -37,7 +37,7 @@ interface GetApplicationParams {
   shortName?: string;
 }
 
-getApplication(GetApplicationParams | undefined);
+getApplication(params: GetApplicationParams | undefined): Promise<GetApplicationResponse>;
 ```
 
 ## Return type

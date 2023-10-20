@@ -4,6 +4,7 @@ export interface GetTenantUrlParams {
   tenantId?: string;
 }
 
+// TODO: Verify, does not work
 export function getTenantUrl({ tenantId }: GetTenantUrlParams = {}) {
   return imp.sendMessage<GetTenantUrlResponse>({
     action: 'getTenantUrl',

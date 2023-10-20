@@ -13,6 +13,7 @@ const blipFns = {
     // showChecklistModal: () => {},
     // showOverlayAndBlockScroll: () => {},
     // removeOverlayAndReleaseScroll: () => {},
+    getAccount: () => blip.getAccount(),
     getApplication: () => blip.getApplication(),
     getCurrentLanguage: () => blip.getCurrentLanguage(),
     hideNavbar: () => blip.hideNavbar(),
@@ -32,7 +33,6 @@ const blipFns = {
     // segment: () => {},
     getUserContext: () => blip.getUserContext(),
     getToken: () => blip.getToken(),
-    // getAccount: () => {},
     // sendApplicationRequest: () => {},
     unauthorizedAccess: () => blip.unauthorizedAccess(),
     addTenantPrefixToUrl: () =>
@@ -78,7 +78,6 @@ const blipFns = {
         merged: true,
         take: 20,
       }),
-    getAccount: () => blip.getAccount(),
     // getTickets: () => blip.getTickets(),
     getTicketsHistory: () =>
       blip.getTicketsHistory({
@@ -100,8 +99,6 @@ const blipFns = {
   },
 } as const;
 
-// lime://solutionslabrouter@msging.net/threads-merged/73990c0f-85af-41e0-b206-fdc6ca4a33fe.solutionslabrouter%400mn.io&direction=desc&refreshExpiredMedia=true&$take=20
-// lime://solutionslabrouter@msging.net/threads-merged/73990c0f-85af-41e0-b206-fdc6ca4a33fe.solutionslabrouter%400mn.io?$take=20&direction=desc&refreshExpiredMedia=true
 export type BlipFns = typeof blipFns;
 export type Category = keyof BlipFns;
 export type BlipFnName<TCategory extends Category> = keyof BlipFns[TCategory];

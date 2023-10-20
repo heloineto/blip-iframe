@@ -2,7 +2,7 @@ import imp from '../imp';
 
 /**
  * Fetches the permissions from the Blip Platform.
- * @returns { GetPermissionsObjectResponse } An object containing information about the permissions available for different features in the platform.
+ * @returns An object containing information about the permissions available for different features in the platform.
  */
 export function getPermissionsObject() {
   return imp.sendMessage<GetPermissionsObjectResponse>({

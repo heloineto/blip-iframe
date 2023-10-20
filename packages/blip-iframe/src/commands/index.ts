@@ -1,6 +1,3 @@
-export * from './getAccount';
-export { default as getAccount } from './getAccount';
-
 export * from './getBot';
 export { default as getBot } from './getBot';
 

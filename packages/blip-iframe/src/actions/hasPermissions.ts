@@ -1,39 +1,49 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import imp from '../imp';
 
-export type Permissions = 'write';
-export type PermissionAreas = 'team';
+export type PermissionType = 'write' | 'read' | (string & {});
+export type CustomArea =
+  | 'payments'
+  | 'iaProviders'
+  | 'iaModel'
+  | 'iaEnhancement'
+  | 'channels'
+  | 'desk'
+  | 'users'
+  | 'scheduler'
+  | 'basicConfigurations'
+  | 'connectionInformations'
+  | 'resources'
+  | 'team'
+  | 'logMessages'
+  | 'builder'
+  | 'analysis'
+  | 'salesTools'
+  | 'dashboard'
+  | (string & {});
 
-// TODO: Verify, incomplete
-export async function hasPermissions(
-  permission: Permissions,
-  area: PermissionAreas
-) {
-  try {
-    const { response } = (await IframeMessageProxy.sendMessage({
-      action: 'hasPermissions',
-      content: {
-        permissionType: permission,
-        customArea: area,
-      },
-    })) as WrappedHasPermissionResponse;
+export interface HasPermissionsParams {
+  permissionType: PermissionType;
+  customArea?: CustomArea;
+}
 
-    return { response, error: null };
-  } catch (error) {
-    return { response: null, error };
-  }
+/**
+ * Checks if the user has the specified permissions on the Blip platform
+ * @param params The permissions parameters to check
+ * @returns `true` if the user has the specified permissions, `false` otherwise
+ */
+export function hasPermissions(params: HasPermissionsParams) {
+  return imp.sendMessage<HasPermissionRequest>({
+    action: 'hasPermissions',
+    content: params,
+  });
 }
 
 export interface HasPermissionRequest {
   action: 'hasPermissions';
   content: {
-    permissionType: Permissions;
-    customArea: PermissionAreas;
+    permissionType: PermissionType;
+    customArea?: CustomArea;
   };
-}
-
-export interface WrappedHasPermissionResponse {
-  response: HasPermissionResponse;
-  trackingProperties: { id: string };
 }
 
 export type HasPermissionResponse = boolean;
