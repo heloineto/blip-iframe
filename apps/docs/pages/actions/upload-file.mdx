@@ -1,0 +1,57 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.uploadFile);
+
+## Usage
+
+The `uploadFile` function is used to upload a file to Blip's public media server.
+You can provide a file as a data URI string, a File object, or a Blob object.
+The function will return the URL of the uploaded file.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const file = new File(['Hello, world!'], 'filename.txt', {
+  type: 'text/plain',
+});
+
+const { response, error } = await blip.uploadFile({
+  file: file,
+  type: file.type,
+});
+
+if (error) {
+  console.error('File upload failed:', error);
+  return;
+}
+
+console.log('File uploaded successfully:', response);
+```
+
+## Parameters
+
+The `uploadFile` function accepts the following parameters:
+
+```ts
+export interface UploadFileParams {
+  /**
+   * The file to be uploaded. Can be a data URI string, a File or Blob object.
+   */
+  file: 'string' | File | Blob;
+  /**
+   * The type of the file.
+   */
+  type?: string;
+}
+```
+
+## Return type
+
+The `uploadFile` function returns the following response:
+
+```ts
+export type UploadFileResponse = string;
+```

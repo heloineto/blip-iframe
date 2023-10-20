@@ -20,6 +20,7 @@ import { StartLoadingRequest } from '../actions/startLoading';
 import { StopLoadingRequest } from '../actions/stopLoading';
 import { ToastRequest } from '../actions/toast';
 import { UnauthorizedAccessRequest } from '../actions/unauthorizedAccess';
+import { UploadFileRequest } from '../actions/uploadFile';
 
 export type BlipRequest =
   | GetApplicationRequest
@@ -43,4 +44,5 @@ export type BlipRequest =
   | ShowAlertRequest
   | RedirectToApplicationListRequest
   | UnauthorizedAccessRequest
-  | GetAccountRequest;
+  | GetAccountRequest
+  | UploadFileRequest;

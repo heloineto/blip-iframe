@@ -6,6 +6,7 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
     group: 'actions',
     pages: [
       MDX_DATA.addTenantPrefixToUrl,
+      MDX_DATA.getAccount,
       MDX_DATA.getApplication,
       MDX_DATA.getCurrentLanguage,
       MDX_DATA.getPermissionsObject,
@@ -16,11 +17,13 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
       MDX_DATA.segment,
       MDX_DATA.sendCommand,
       MDX_DATA.showAlert,
+      MDX_DATA.showModal,
       MDX_DATA.showNavbar,
       MDX_DATA.startLoading,
       MDX_DATA.stopLoading,
       MDX_DATA.toast,
       MDX_DATA.unauthorizedAccess,
+      MDX_DATA.uploadFile,
     ],
   },
   {

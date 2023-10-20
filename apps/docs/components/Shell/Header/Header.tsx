@@ -1,22 +1,21 @@
-import React from 'react';
-import cx from 'clsx';
-import { IconChevronDown, IconExternalLink } from '@tabler/icons-react';
-import {
-  Code,
-  Group,
-  Burger,
-  RemoveScroll,
-  Menu,
-  UnstyledButton,
-  Text,
-  Box,
-} from '@mantine/core';
-import { ColorSchemeControl, SearchMobileControl } from '@mantine/ds';
 import { Logo } from '@/components/Logo';
 import { searchHandlers } from '@/components/Search';
-import classes from './Header.module.css';
 import { meta } from '@/lib/constants/meta';
+import {
+  Box,
+  Burger,
+  Code,
+  Group,
+  Menu,
+  RemoveScroll,
+  Text,
+  UnstyledButton,
+} from '@mantine/core';
+import { ColorSchemeControl, SearchMobileControl } from '@mantine/ds';
+import { IconChevronDown, IconExternalLink } from '@tabler/icons-react';
+import cx from 'clsx';
 import { HeaderControls } from '../HeaderControl';
+import classes from './Header.module.css';
 
 interface HeaderProps {
   navbarOpened: boolean;
@@ -26,7 +25,11 @@ interface HeaderProps {
 const version = '0.0.5';
 
 const versions = [
-  { v: 'alpha', name: '0.0.5', link: 'https://v1.mantine.dev/' },
+  {
+    v: 'alpha',
+    name: '0.0.5',
+    link: 'https://blip-iframe-docs.vercel.app/getting-started',
+  },
 ];
 
 export function Header({ navbarOpened, onNavbarToggle }: HeaderProps) {

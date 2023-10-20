@@ -2,51 +2,36 @@ import { blip } from 'blip-iframe';
 
 const blipFns = {
   actions: {
-    // startLoading: () => {},
-    // stopLoading: () => {},
-    // heightChange: () => {},
-    // uploadFile: () => {},
-    // stateChangeSuccess: () => {},
-    // state: () => {},
-    // showModal: () => {},
-    // showStepperModal: () => {},
-    // showChecklistModal: () => {},
-    // showOverlayAndBlockScroll: () => {},
-    // removeOverlayAndReleaseScroll: () => {},
+    addTenantPrefixToUrl: () => {
+      return blip.addTenantPrefixToUrl({
+        url: 'https://example.com',
+      });
+    },
+    // changeLocation: () => {},
+    // changePath: () => {},
+    // changeSubheaderTitle: () => {},
+    // closeSidebar: () => {},
     getAccount: () => blip.getAccount(),
     getApplication: () => blip.getApplication(),
     getCurrentLanguage: () => blip.getCurrentLanguage(),
-    hideNavbar: () => blip.hideNavbar(),
-    sendCommand: () => {},
-    showNavbar: () => blip.showNavbar(),
-    // changeSubheaderTitle: () => {},
-    toast: () =>
-      blip.toast({
-        title: 'Hello World',
-        message: 'Hello World',
-        type: 'success',
-        duration: 1000,
-        buttontext: "I'm a button",
-      }),
-    // hasPermissions: () => {},
     getPermissionsObject: () => blip.getPermissionsObject(),
-    // segment: () => {},
-    getUserContext: () => blip.getUserContext(),
+    // getTenantPlan: () => blip.getTenantPlan({ tenantId: 'csgrowth' }), // DON'T WORK
+    // getTenantUrl: () => blip.getTenantUrl({ tenantId: 'csgrowth' }), // DON'T WORK
     getToken: () => blip.getToken(),
-    // sendApplicationRequest: () => {},
-    unauthorizedAccess: () => blip.unauthorizedAccess(),
-    addTenantPrefixToUrl: () =>
-      blip.addTenantPrefixToUrl({
-        url: 'https://www.google.com',
-      }),
-    // getTenantUrl: () => blip.getTenantUrl({ tenantId: 'csgrowth' }),
-    // getTenantPlan: () => blip.getTenantPlan({ tenantId: 'csgrowth' }),
+    getUserContext: () => blip.getUserContext(),
+    hasPermissions: () => blip.hasPermissions(),
+    heightChange: () => blip.heightChange({ height: 0 }),
+    hideNavbar: () => blip.hideNavbar(),
     // inviteUser: () => {},
-    // changeLocation: () => {},
-    // changePath: () => {},
-    // showUploadErrorToast: () => {},
-    showAlert: () =>
-      blip.showAlert({
+    // redirectProcessor: () => {},
+    // redirectToApplicationList: () => blip.redirectToApplicationList(),
+    // redirectToSubscriptionNotificationPayment: () => {},
+    // removeOverlayAndReleaseScroll: () => {},
+    segment: () => blip.segment({ method: 'createTrack', parameters: {} }),
+    // sendApplicationRequest: () => {},
+    sendCommand: () => {},
+    showAlert: () => {
+      return blip.showAlert({
         variant: 'danger',
         icon: 'air-balloon',
         title: 'Title',
@@ -55,11 +40,45 @@ const blipFns = {
           cancel: 'Cancel',
           confirm: 'Confirm',
         },
-      }),
-    redirectToApplicationList: () => blip.redirectToApplicationList(),
-    // redirectProcessor: () => {},
-    // redirectToSubscriptionNotificationPayment: () => {},
-    // closeSidebar: () => {},
+      });
+    },
+    // showChecklistModal: () => {},
+    showModal: () => {
+      return blip.showModal({
+        title: 'Delete Item',
+        body: 'Are you sure you want to delete this item?',
+        confirm: 'Delete',
+        cancel: 'Cancel',
+      });
+    },
+    showNavbar: () => blip.showNavbar(),
+    // showOverlayAndBlockScroll: () => {},
+    // showStepperModal: () => {},
+    // showUploadErrorToast: () => {},
+    startLoading: () => blip.startLoading(),
+    // state: () => {},
+    // stateChangeSuccess: () => {},
+    stopLoading: () => blip.stopLoading(),
+    toast: () => {
+      return blip.toast({
+        title: 'Hello World',
+        message: 'Hello World',
+        type: 'success',
+        duration: 1000,
+        buttontext: "I'm a button",
+      });
+    },
+    unauthorizedAccess: () => blip.unauthorizedAccess(),
+    uploadFile: () => {
+      const file = new File(['Hello, world!'], 'filename.txt', {
+        type: 'text/plain',
+      });
+
+      return blip.uploadFile({
+        file: file,
+        type: file.type,
+      });
+    },
   },
   commands: {
     TEST: () =>
@@ -86,7 +105,7 @@ const blipFns = {
         // take: 20,
         // skip: 0,
       }),
-    getContacts: blip.getContacts(),
+    getContacts: () => blip.getContacts(),
     getTunnelAccount: () =>
       blip.getTunnelAccount({
         identity: '3394098f-47a6-48ec-a154-d13484e511c8@tunnel.msging.net',

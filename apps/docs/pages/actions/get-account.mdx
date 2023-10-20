@@ -1,0 +1,46 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.getAccount);
+
+## Usage
+
+The `getAccount` function is used to retrieve details about the current user account.
+It provides information such as full name, email, phone number, photo URI, time zone name, culture, and creation date.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const { response, error } = await blip.getAccount();
+
+if (error) {
+  console.error(error); // An error happened during the request
+  return;
+}
+
+console.log(response); // The account details
+```
+
+## Parameters
+
+The `getAccount` function accepts no parameters.
+
+## Return type
+
+The `getAccount` function returns the following response:
+
+```ts
+export interface GetAccountResponse {
+  fullName: string;
+  alternativeAccount: string;
+  identity: string;
+  email: string;
+  phoneNumber: string;
+  photoUri: string;
+  timeZoneName: string;
+  culture: string;
+  creationDate: string;
+}
+```
