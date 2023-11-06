@@ -19,4 +19,13 @@ export const MDX_COMMANDS_DATA: Record<string, Frontmatter> = {
     source: 'commands/contacts/getContacts.ts',
     docs: 'commands/get-contacts.mdx',
   },
+  getTickets: {
+    title: 'getTickets',
+    package: 'blip-iframe',
+    slug: '/commands/get-tickets',
+    description: 'Get a list of tickets in the Blip platform',
+    import: "import { getTickets } from 'blip-iframe';",
+    source: 'commands/tickets/getTickets.ts',
+    docs: 'commands/get-tickets.mdx',
+  },
 };

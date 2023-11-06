@@ -7,9 +7,7 @@ import buildURI from '../../lib/utils/buildURI';
 
 export interface GetTicketsParams extends GetListParams {}
 
-export async function getTicketsHistory({
-  ...listParams
-}: GetTicketsParams = {}) {
+export async function getTickets({ ...listParams }: GetTicketsParams = {}) {
   const uri = buildURI({
     paths: ['tickets'],
     params: parseListParams(listParams),

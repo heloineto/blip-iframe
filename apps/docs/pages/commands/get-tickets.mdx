@@ -1,0 +1,78 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.getTickets);
+
+## Usage
+
+The `getTickets` function is used to get a list of tickets in the Blip platform.
+Tickets are records of customer interactions and issues.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const { response, error } = await blip.getTickets();
+
+if (error) {
+  console.error(error); // An error happened during the request
+  return;
+}
+
+console.log(response); // The list of tickets
+```
+
+## Parameters
+
+The `getTickets` function accepts the following parameters:
+
+```ts
+export interface GetTicketsParams {
+  filter?: string;
+  skip?: number;
+  take?: number;
+}
+```
+
+`GetListParams` is an interface that includes parameters for pagination and sorting. Please refer to the [documentation](/utils/parseListParams) for more information.
+
+## Return type
+
+The `getTickets` function returns the following response:
+
+```ts
+export interface GetTicketsResponse {
+  total: number;
+  itemType: string;
+  items: GetTicketsItem[];
+}
+```
+
+`GetTicketsItem` is an interface that represents an individual ticket and includes the following properties:
+
+```ts
+export interface GetTicketsItem {
+  id: string;
+  sequentialId: number;
+  ownerIdentity: string;
+  customerIdentity: string;
+  customerDomain: string;
+  agentIdentity: string;
+  provider: string;
+  status: string;
+  storageDate: string;
+  openDate: string;
+  closeDate: string;
+  statusDate: string;
+  externalId: string;
+  rating: number;
+  team: string;
+  unreadMessages: number;
+  closed: boolean;
+  closedBy: string;
+  firstResponseDate?: string;
+  priority: number;
+  isAutomaticDistribution: boolean;
+}
+```
