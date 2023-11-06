@@ -1,0 +1,65 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.getAttendants);
+
+## Usage
+
+The `getAttendants` function is used to get a list of attendants in the Blip platform.
+Attendants are individuals who handle customer inquiries and provide customer support.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const { response, error } = await blip.getAttendants();
+
+if (error) {
+  console.error(error); // An error happened during the request
+  return;
+}
+
+console.log(response); // The list of attendants
+```
+
+## Parameters
+
+The `getAttendants` function accepts the following parameters:
+
+```ts
+export interface GetAttendantsParams {
+  filter?: string;
+  skip?: number;
+  take?: number;
+}
+```
+
+`GetListParams` is an interface that includes parameters for pagination and sorting. Please refer to the [documentation](/utils/parseListParams) for more information.
+
+## Return type
+
+The `getAttendants` function returns the following response:
+
+```ts
+export interface GetAttendantsResponse {
+  total: number;
+  itemType: string;
+  items: GetAttendantsItem[];
+}
+```
+
+`GetAttendantsItem` is an interface that represents an individual attendant and includes the following properties:
+
+```ts
+export interface GetAttendantsItem {
+  identity: string;
+  fullName: string;
+  email: string;
+  teams: string[];
+  status: string;
+  isEnabled: boolean;
+  agentSlots?: number;
+  lastServiceDate?: string;
+}
+```

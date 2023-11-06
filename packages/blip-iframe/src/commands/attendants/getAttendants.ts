@@ -7,6 +7,11 @@ import { buildURI } from '../../lib/utils';
 
 export interface GetAttendantsParams extends GetListParams {}
 
+/**
+ * Gets a list of attendants in the Blip platform.
+ * @param params The getAttendants parameters.
+ * @returns A promise that resolves to a list of attendants.
+ */
 export async function getAttendants({
   ...listParams
 }: GetAttendantsParams = {}) {

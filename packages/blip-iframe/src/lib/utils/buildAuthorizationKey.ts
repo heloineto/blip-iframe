@@ -7,5 +7,10 @@ export default function buildAuthorizationKey({
   botShortName,
   botAccessKey,
 }: BuildAuthorizationKeyParams) {
-  return `Key ${btoa(`${botShortName}:${atob(botAccessKey)}`)}`;
+  try {
+    const result = `Key ${btoa(`${botShortName}:${atob(botAccessKey)}`)}`;
+    return { result, error: null };
+  } catch (error) {
+    return { result: null, error };
+  }
 }

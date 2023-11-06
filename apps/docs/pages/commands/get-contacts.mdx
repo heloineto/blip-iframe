@@ -1,0 +1,76 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.getContacts);
+
+## Usage
+
+The `getContacts` function is used to get information about contacts in the Blip platform.
+Contacts are individuals or entities that interact with your bot or application.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const { response, error } = await blip.getContacts();
+
+if (error) {
+  console.error(error); // An error happened during the request
+  return;
+}
+
+console.log(response); // The list of contacts
+```
+
+## Parameters
+
+The `getContacts` function accepts the following parameters:
+
+```ts
+export interface GetContactsParams {
+  filter?: string;
+  skip?: number;
+  take?: number;
+}
+```
+
+`GetListParams` is an interface that includes parameters for pagination and sorting. Please refer to the [documentation](/utils/parseListParams) for more information.
+
+## Return type
+
+The `getContacts` function returns the following response:
+
+```ts
+export interface GetContactsResponse {
+  total: number;
+  itemType: string;
+  items: BlipContact[];
+}
+```
+
+`BlipContact` is an interface that represents information about a contact and includes the following properties:
+
+```ts
+export interface BlipContact {
+  name?: string;
+  group?: string;
+  lastMessageDate: string;
+  lastUpdateDate: string;
+  identity: string;
+  extras?: {
+    isTestersGroup?: string;
+    typeOfCompile?: string;
+    authType?: string;
+    'tunnel.owner'?: string;
+    'tunnel.originator'?: string;
+    lastUsedTenants?: string;
+    cookies?: string;
+    acceptedPlugins?: string;
+  };
+  source: string;
+  email?: string;
+  phoneNumber?: string;
+  culture?: string;
+}
+```

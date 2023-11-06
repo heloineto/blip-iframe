@@ -9,7 +9,9 @@ import { BlipContact } from './_types';
 export interface GetContactsParams extends GetListParams {}
 
 /**
- * Gets contact information
+ * Gets contacts information
+ * @param params The getContacts parameters.
+ * @returns A promise that resolves to a list of contacts.
  */
 export async function getContacts({ ...listParams }: GetContactsParams = {}) {
   const uri = buildURI({

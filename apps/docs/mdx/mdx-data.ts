@@ -1,5 +1,6 @@
 import { Frontmatter } from '@/types';
 import { MDX_ACTIONS_DATA } from './data/mdx-actions-data';
+import { MDX_COMMANDS_DATA } from './data/mdx-commands-data';
 import { MDX_CORE_DATA } from './data/mdx-core-data';
 import { MDX_DATES_DATA } from './data/mdx-dates-data';
 import { MDX_FORM_DATA } from './data/mdx-form-data';
@@ -12,6 +13,7 @@ import { MDX_THEMING_DATA } from './data/mdx-theming-data';
 
 export const MDX_DATA: Record<string, Frontmatter> = {
   ...MDX_ACTIONS_DATA,
+  ...MDX_COMMANDS_DATA,
   ...MDX_META_DATA,
   ...MDX_THEMING_DATA,
   ...MDX_STYLES_DATA,
