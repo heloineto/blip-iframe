@@ -4,7 +4,7 @@ import {
   parseListParams,
 } from '../../lib/shared/parseListParams';
 import buildURI from '../../lib/utils/buildURI';
-import { BlipContact } from './_types';
+import { BlipContact } from './types';
 
 export interface GetContactsParams extends GetListParams {}
 

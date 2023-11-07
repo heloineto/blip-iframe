@@ -1,6 +1,6 @@
 import { sendCommand } from '../../actions/sendCommand';
 import buildURI from '../../lib/utils/buildURI';
-import { BlipContact } from './_types';
+import { BlipContact } from './types';
 
 export interface GetContactParams {
   identity: string;

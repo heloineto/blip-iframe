@@ -1,0 +1,60 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.getAttendant);
+
+## Usage
+
+The `getAttendant` function is used to fetch information about an attendant or agent in the Blip platform.
+This function retrieves details such as the full name, identity, email, phone number, photo URI, time zone, culture, extras, source, and creation date associated with the specified attendant or agent.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const identity = 'john@acme.com';
+const { response, error } = await blip.getAttendant({ identity });
+
+if (error) {
+  console.error(error); // An error occurred while fetching the attendant information
+  return;
+}
+
+console.log(response); // The attendant information
+```
+
+## Parameters
+
+The `getAttendant` function accepts the following parameter:
+
+```ts
+interface GetAttendantParams {
+  identity: string;
+}
+```
+
+- `identity` (string): The identity (username or email) of the attendant or agent.
+
+## Return type
+
+The `getAttendant` function returns the following response:
+
+```ts
+export interface GetAttendantResponse {
+  fullName: string;
+  identity: string;
+  email: string;
+  phoneNumber: string;
+  photoUri: string;
+  timeZoneName: string;
+  culture: string;
+  extras: {
+    lastUsedTenants: string;
+    cookies: string;
+    acceptedPlugins: string;
+  };
+  source: string;
+  creationDate: string;
+}
+```

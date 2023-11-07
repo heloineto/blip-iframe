@@ -28,7 +28,13 @@ export const MDX_PAGES_GROUPS: MdxPagesGroup[] = [
   },
   {
     group: 'commands',
-    pages: [MDX_DATA.getAttendants, MDX_DATA.getContacts, MDX_DATA.getTickets],
+    pages: [
+      MDX_DATA.getAttendants,
+      MDX_DATA.getAttendant,
+      MDX_DATA.getContacts,
+      MDX_DATA.getThreads,
+      MDX_DATA.getTickets,
+    ],
   },
   // {
   //   group: 'theming',

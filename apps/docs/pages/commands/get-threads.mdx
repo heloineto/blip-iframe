@@ -1,0 +1,132 @@
+import { Layout } from '@/layout';
+import { MDX_DATA } from '@/mdx';
+
+export default Layout(MDX_DATA.getThreads);
+
+## Usage
+
+The `getThreads` function is used to retrieve a list of threads in the Blip platform.
+Threads are individual conversations or interactions with users. This function allows you to filter and paginate the results.
+
+## Example
+
+```ts
+import { blip } from 'blip-iframe';
+
+const params = {
+  identity: 'your-identity',
+  storageDate: '2022-01-01',
+  take: 10,
+  skip: 0,
+};
+
+const { response, error } = await blip.getThreads(params);
+
+if (error) {
+  console.error(error);
+  return;
+}
+
+console.log(response); // The list of threads
+```
+
+## Parameters
+
+The `getThreads` function accepts the following parameters:
+
+```ts
+export interface GetThreadsParams extends GetListParams {
+  identity?: string;
+  storageDate?: string;
+  messageId?: string;
+  getFromOriginator?: boolean;
+  merged?: boolean;
+  ownerIdentity?: string;
+  direction?: 'desc' | 'asc';
+  refreshExpiredMedia?: boolean;
+}
+
+getThreads(GetThreadsParams);
+```
+
+Here is the description of each parameter:
+
+- `identity?: string`: The identity of the thread.
+- `storageDate?: string`: The storage date of the thread.
+- `messageId?: string`: The ID of the message associated with the thread.
+- `getFromOriginator?: boolean`: Indicates whether to retrieve threads from the originator.
+- `merged?: boolean`: Indicates whether to retrieve merged threads.
+- `ownerIdentity?: string`: The identity of the owner of the thread.
+- `direction?: 'desc' | 'asc'`: The direction of sorting the threads. Default is 'desc'.
+- `refreshExpiredMedia?: boolean`: Indicates whether to refresh expired media.
+
+For more information on the `GetListParams`, refer to the documentation of the `parseListParams` module.
+
+## Return type
+
+The `getThreads` function returns the following response:
+
+```ts
+export interface GetThreadsResponse {
+  total: number;
+  itemType: string;
+  items: GetThreadsItem[];
+}
+
+export interface GetThreadsItem {
+  id: string;
+  direction: string;
+  type: string;
+  content: GetThreadsContent | string;
+  date: string;
+  status?: string;
+  metadata?: GetThreadsMetadata;
+}
+
+export interface GetThreadsMetadata {
+  '#stateName'?: string;
+  '#stateId'?: string;
+  '#messageId'?: string;
+  '#previousStateId'?: string;
+  '#previousStateName'?: string;
+  '#uniqueId': string;
+  '#date_processed': string;
+  date_created: string;
+  '#tunnel.owner'?: string;
+  '#tunnel.originator'?: string;
+  '#tunnel.originalFrom'?: string;
+  '#tunnel.originalTo'?: string;
+  $originator?: string;
+  $claims?: string;
+  $internalId: string;
+  $originatorSessionRemoteNode: string;
+  '#messageKind'?: string;
+  $elapsedTimeToStorage: string;
+  '#messageEmitter'?: string;
+}
+
+export interface GetThreadsContent {
+  id: string;
+  sequentialId: number;
+  ownerIdentity: string;
+  customerIdentity: string;
+  customerDomain: string;
+  provider: string;
+  status: string;
+  storageDate: string;
+  externalId: string;
+  rating: number;
+  team: string;
+  unreadMessages: number;
+  closed: boolean;
+  customerInput: {
+    type: string;
+    value: string;
+  };
+  priority: number;
+}
+```
+
+The `GetThreadsResponse` object contains the total number of threads, the type of items in the response, and the list of thread items.
+Each thread item has properties such as `id`, `direction`, `type`, `content`, `date`, `status`, and `metadata`.
+The `metadata` object contains additional metadata properties, and the `content` object contains specific content properties related to the thread.
