@@ -5,7 +5,7 @@ export default function parseErrorString(error: string) {
     errorObject = JSON.parse(error);
   } catch (error) {
     return new Error(
-      'Unknown error. Error is a string but could not be parsed as JSON'
+      `Unknown error. Error is a string but could not be parsed as JSON \n Error: "${error}"`
     );
   }
 
@@ -17,7 +17,7 @@ export default function parseErrorString(error: string) {
     typeof code !== 'number'
   ) {
     return new Error(
-      'Unknown error. Error is a JSON string but has incorrect type'
+      `Unknown error. Error is a JSON string but has incorrect type \n Error: "${error}"`
     );
   }
 

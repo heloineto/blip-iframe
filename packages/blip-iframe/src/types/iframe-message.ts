@@ -1,7 +1,7 @@
 import { BlipRequest } from './blip-request';
 
 export interface IframeMessageProxyType {
-  config: (options?: Options) => IframeMessageProxyType;
+  config: (options?: ImpOptions) => IframeMessageProxyType;
   listen: () => void;
   stopListen: () => void;
   sendMessage: (payload: Message) => Promise<{
@@ -15,7 +15,7 @@ export type Message = BlipRequest & {
   fireAndForget?: boolean;
 };
 
-export interface Options {
+export interface ImpOptions {
   prefix?: string;
   caller?: string;
   receiveWindow?: Window;

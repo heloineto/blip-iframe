@@ -11,12 +11,12 @@ the URL is modified in a way that identifies the specific tenant associated with
 ### Usage
 
 ```ts
-import { addTenantPrefixToUrl } from 'blip-iframe';
+import { blip } from 'blip-iframe';
 
 const url = 'https://example.com';
 const tenantId = 'tenant-id';
 
-const { response, error } = addTenantPrefixToUrl({ url, tenantId });
+const { response, error } = blip.addTenantPrefixToUrl({ url, tenantId });
 
 if (error) {
   console.error(error); // An error happened during the request

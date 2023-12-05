@@ -1,7 +1,24 @@
-import { blip } from 'blip-iframe';
+import { blip, buildAuthorizationKey } from 'blip-iframe';
 
 const blipFns = {
   actions: {
+    getAuthorizationKey: async () => {
+      const { error, response } = await blip.getApplication();
+
+      if (error || !response) return error;
+
+      const { shortName, accessKey } = response;
+
+      return buildAuthorizationKey({
+        botShortName: shortName,
+        botAccessKey: accessKey,
+      });
+    },
+    // getApplicationUserAccounts: () => {
+    //   return blip.getApplicationUserAccounts({
+    //     shortName: 'testeheloi',
+    //   });
+    // },
     addTenantPrefixToUrl: () => {
       return blip.addTenantPrefixToUrl({
         url: 'https://example.com',

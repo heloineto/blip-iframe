@@ -8,6 +8,7 @@ export * from './getPublishedFlow';
 export { default as getPublishedFlow } from './getPublishedFlow';
 
 export * from './accounts';
+export * from './applications';
 export * from './attendants';
 export * from './contacts';
 export * from './threads';

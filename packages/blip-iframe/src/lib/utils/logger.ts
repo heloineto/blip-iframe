@@ -1,6 +1,6 @@
 import { Message } from '../../types';
 
-const shouldLog = process.env.NODE_ENV === 'development' && false;
+const isDev = process.env.NODE_ENV === 'development';
 
 function getId(message: Message) {
   return message.action === 'sendCommand'
@@ -8,7 +8,11 @@ function getId(message: Message) {
     : message.action;
 }
 
-function logger(message: Message) {
+function logger(message: Message, shouldLog = true) {
+  if (!shouldLog) {
+    return mockLogger();
+  }
+
   const id = getId(message);
 
   return {
@@ -32,4 +36,4 @@ function mockLogger() {
   };
 }
 
-export default shouldLog ? logger : mockLogger;
+export default isDev ? logger : mockLogger;

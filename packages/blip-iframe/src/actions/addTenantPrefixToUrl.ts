@@ -1,4 +1,4 @@
-import imp from '../imp';
+import { Options, sendMessage } from '../lib/shared/sendMessage';
 
 export interface AddTenantPrefixToUrlParams {
   /**
@@ -19,17 +19,20 @@ export interface AddTenantPrefixToUrlParams {
  * @param params The parameters for the function
  * @returns A url string with the tenant id prefix
  */
-export function addTenantPrefixToUrl({
-  url,
-  tenantId,
-}: AddTenantPrefixToUrlParams) {
-  return imp.sendMessage<AddTenantPrefixToUrlResponse>({
-    action: 'addTenantPrefixToUrl',
-    content: {
-      url,
-      tenantId,
+export function addTenantPrefixToUrl(
+  { url, tenantId }: AddTenantPrefixToUrlParams,
+  options?: Options
+) {
+  return sendMessage<AddTenantPrefixToUrlResponse>(
+    {
+      action: 'addTenantPrefixToUrl',
+      content: {
+        url,
+        tenantId,
+      },
     },
-  });
+    options
+  );
 }
 
 export interface AddTenantPrefixToUrlRequest {
