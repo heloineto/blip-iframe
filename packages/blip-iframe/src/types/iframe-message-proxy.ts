@@ -1,4 +1,4 @@
-import { BlipRequest } from './blip-request';
+import { IframeMessageProxyRequest } from "./iframe-message-proxy-request";
 
 export interface IframeMessageProxyType {
   config: (options?: ImpOptions) => IframeMessageProxyType;
@@ -10,7 +10,7 @@ export interface IframeMessageProxyType {
   }>;
 }
 
-export type Message = BlipRequest & {
+export type Message = IframeMessageProxyRequest & {
   caller?: string;
   fireAndForget?: boolean;
 };

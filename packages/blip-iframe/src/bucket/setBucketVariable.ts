@@ -1,6 +1,6 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 
-export default async function setBucketVariable<TVariable>(
+export async function setBucketVariable<TVariable>(
   variableKey: string,
   variable: TVariable
 ) {

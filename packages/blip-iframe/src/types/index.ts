@@ -1,2 +1,3 @@
-export * from './blip-request';
-export * from './iframe-message';
+export * from './iframe-message-proxy';
+export * from './iframe-message-proxy-request';
+

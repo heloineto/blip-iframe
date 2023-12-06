@@ -1,6 +1,6 @@
 import { sendCommand } from '../actions/sendCommand';
 
-export default async function getBucketVariable<TResponse>(
+export async function getBucketVariable<TResponse>(
   variableKey: string
 ) {
   return await sendCommand<TResponse>({

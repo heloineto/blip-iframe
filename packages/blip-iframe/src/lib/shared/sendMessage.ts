@@ -8,28 +8,30 @@ export interface WrappedResponse<TResponse> {
   trackingProperties: { id: string };
 }
 
+export type Client<TWrappedResponse> = (
+  message: Message
+) => Promise<TWrappedResponse>;
+
 export interface Options<
   TResponse = unknown,
   TWrappedResponse extends WrappedResponse<TResponse> = WrappedResponse<TResponse>
 > {
   debug?: boolean;
-  fetcher?: Fetcher<TWrappedResponse>;
+  client?: Client<TWrappedResponse>;
 }
 
-export type Fetcher<TWrappedResponse> = (
-  message: Message
-) => Promise<TWrappedResponse>;
+
 
 export async function sendMessage<
   TResponse = unknown,
   TWrappedResponse extends WrappedResponse<TResponse> = WrappedResponse<TResponse>
 >(message: Message, options?: Options) {
   const log = logger(message, options?.debug);
-  const fetcher = options?.fetcher ?? IframeMessageProxy.sendMessage;
+  const client = options?.client ?? IframeMessageProxy.sendMessage;
 
   try {
     log.request(message);
-    const { response } = (await fetcher(message)) as TWrappedResponse;
+    const { response } = (await client(message)) as TWrappedResponse;
     log.response(response);
 
     return { response, error: null };

@@ -10,7 +10,6 @@ import { GetUserContextRequest } from '../actions/getUserContext';
 import { HasPermissionRequest } from '../actions/hasPermissions';
 import { HeightChangeRequest } from '../actions/heightChange';
 import { HideNavbarRequest } from '../actions/hideNavbar';
-import { RedirectToApplicationListRequest } from '../actions/redirectToApplicationList';
 import { SegmentRequest } from '../actions/segment';
 import { SendCommandRequest } from '../actions/sendCommand';
 import { ShowAlertRequest } from '../actions/showAlert';
@@ -22,7 +21,7 @@ import { ToastRequest } from '../actions/toast';
 import { UnauthorizedAccessRequest } from '../actions/unauthorizedAccess';
 import { UploadFileRequest } from '../actions/uploadFile';
 
-export type BlipRequest =
+export type IframeMessageProxyRequest =
   | GetApplicationRequest
   | GetCurrentLanguageRequest
   | HasPermissionRequest
@@ -42,7 +41,6 @@ export type BlipRequest =
   | GetTokenRequest
   | GetUserContextRequest
   | ShowAlertRequest
-  | RedirectToApplicationListRequest
   | UnauthorizedAccessRequest
   | GetAccountRequest
   | UploadFileRequest;
