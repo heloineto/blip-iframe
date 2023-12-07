@@ -1,4 +1,4 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
 
 export type SegmentMethod =
   | 'createTrack'
@@ -36,8 +36,8 @@ export interface SegmentParams {
  * Makes calls to the platform's analytics API.
  * @param params The segment parameters
  */
-export async function segment(params: SegmentParams) {
-  return await imp.sendMessage({
+export function segment(params: SegmentParams) {
+  return sendMessage({
     action: 'segment',
     content: params,
   });

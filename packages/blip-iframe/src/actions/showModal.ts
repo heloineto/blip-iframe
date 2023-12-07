@@ -1,12 +1,15 @@
-import { IframeMessageProxy } from 'iframe-message-proxy';
+import { sendMessage } from '../lib';
 
 /**
  * Shows a modal dialog on the Blip platform with
  * a title, body, confirm and cancel button
  * @param params The modal parameters
  */
-export async function showModal(params: ShowModalRequest['content']) {
-  await IframeMessageProxy.sendMessage({
+export function showModal(
+  params: ShowModalRequest['content'],
+  sender = sendMessage
+) {
+  return sender({
     action: 'showModal',
     content: params,
   });

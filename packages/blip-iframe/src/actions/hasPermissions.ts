@@ -1,4 +1,4 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
 
 export type PermissionType = 'write' | 'read' | (string & {});
 export type CustomArea =
@@ -32,7 +32,7 @@ export interface HasPermissionsParams {
  * @returns `true` if the user has the specified permissions, `false` otherwise
  */
 export function hasPermissions(params: HasPermissionsParams) {
-  return imp.sendMessage<HasPermissionRequest>({
+  return sendMessage<HasPermissionRequest>({
     action: 'hasPermissions',
     content: params,
   });

@@ -1,4 +1,4 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
 
 export interface SendCommandParams {
   /**
@@ -45,11 +45,11 @@ export interface SendCommandParams {
  * @param params The parameters of the command
  * @returns The response of the command
  */
-export async function sendCommand<
+export function sendCommand<
   TResponse = unknown,
   TWrappedResponse extends WrappedSendCommandResponse<TResponse> = WrappedSendCommandResponse<TResponse>
->(params: SendCommandParams) {
-  return await imp.sendMessage<TResponse, TWrappedResponse>({
+>(params: SendCommandParams, sender = sendMessage) {
+  return sender<TResponse, TWrappedResponse>({
     action: 'sendCommand',
     content: params,
   });

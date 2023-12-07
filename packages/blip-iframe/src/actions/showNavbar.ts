@@ -1,4 +1,6 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
+
+export interface ShowNavbarParams {}
 
 /**
  * Shows the top navigation bar of the blip platform.
@@ -6,8 +8,8 @@ import imp from '../imp';
  * You will only see it take effect if the navigation
  * bar is hidden (Ex.: after calling `hideNavbar`)
  */
-export function showNavbar() {
-  void imp.sendMessage({
+export function showNavbar(params: ShowNavbarParams, sender = sendMessage) {
+  return sender({
     action: 'showNavbar',
   });
 }

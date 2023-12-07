@@ -1,4 +1,4 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
 
 export interface ShowAlertParams {
   variant: string;
@@ -16,8 +16,8 @@ export interface ShowAlertParams {
  * @param params The parameters for the alert.
  * @returns A promise that resolves to true if the user confirmed the alert, false otherwise.
  */
-export function showAlert(params: ShowAlertParams) {
-  return imp.sendMessage<ShowAlertResponse>({
+export function showAlert(params: ShowAlertParams, sender = sendMessage) {
+  return sender<ShowAlertResponse>({
     action: 'showAlert',
     content: params,
   });

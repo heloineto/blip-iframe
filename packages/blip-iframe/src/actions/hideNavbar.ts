@@ -1,4 +1,4 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
 
 /**
  * Hides the top navigation bar of the blip platform
@@ -6,7 +6,7 @@ import imp from '../imp';
  * This can be useful if you want to create a full screen extension
  */
 export function hideNavbar() {
-  void imp.sendMessage({
+  return sendMessage({
     action: 'hideNavbar',
   });
 }

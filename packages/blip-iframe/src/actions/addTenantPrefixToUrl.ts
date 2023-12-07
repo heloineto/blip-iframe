@@ -1,4 +1,4 @@
-import { Options, sendMessage } from '../lib/shared/sendMessage';
+import { sendMessage } from '../lib/shared/sendMessage';
 
 export interface AddTenantPrefixToUrlParams {
   /**
@@ -21,9 +21,9 @@ export interface AddTenantPrefixToUrlParams {
  */
 export function addTenantPrefixToUrl(
   { url, tenantId }: AddTenantPrefixToUrlParams,
-  options?: Options
+  sender = sendMessage
 ) {
-  return sendMessage<AddTenantPrefixToUrlResponse>(
+  return sender<AddTenantPrefixToUrlResponse>(
     {
       action: 'addTenantPrefixToUrl',
       content: {
@@ -31,7 +31,6 @@ export function addTenantPrefixToUrl(
         tenantId,
       },
     },
-    options
   );
 }
 

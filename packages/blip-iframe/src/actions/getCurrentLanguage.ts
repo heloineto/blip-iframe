@@ -1,10 +1,15 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
+
+export interface GetCurrentLanguageParams {}
 
 /**
  * Get the language of the current user account
  */
-export async function getCurrentLanguage() {
-  return await imp.sendMessage<GetCurrentLanguageResponse>({
+export function getCurrentLanguage(
+  params: GetCurrentLanguageParams,
+  sender = sendMessage
+) {
+  return sender<GetCurrentLanguageResponse>({
     action: 'getCurrentLanguage',
   });
 }

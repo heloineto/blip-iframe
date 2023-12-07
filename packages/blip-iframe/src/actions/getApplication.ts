@@ -1,4 +1,4 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
 
 export interface GetApplicationParams {
   /**
@@ -11,8 +11,8 @@ export interface GetApplicationParams {
 /**
  * Get details about a bot (application)
  */
-export async function getApplication({ shortName }: GetApplicationParams = {}) {
-  return await imp.sendMessage<GetApplicationResponse>({
+export function getApplication({ shortName }: GetApplicationParams = {}, sender = sendMessage) {
+  return sender<GetApplicationResponse>({
     action: 'getApplication',
     content: shortName || undefined,
   });

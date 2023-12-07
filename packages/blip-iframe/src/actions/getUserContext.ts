@@ -1,8 +1,8 @@
-import imp from '../imp';
+import { sendMessage } from "../lib";
 
 // TODO: Verify, does not work
 export function getUserContext() {
-  return imp.sendMessage<GetUserContextResponse>({
+  return sendMessage<GetUserContextResponse>({
     action: 'getUserContext',
   });
 }

@@ -1,10 +1,12 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
+
+export interface StopLoadingParams {}
 
 /**
  * Stops showing the loading indicator in the Blip platform.
  */
-export function stopLoading() {
-  void imp.sendMessage({ action: 'stopLoading' });
+export function stopLoading(params: StopLoadingParams, sender = sendMessage) {
+  return sender({ action: 'stopLoading' });
 }
 
 export interface StopLoadingRequest {

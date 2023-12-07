@@ -1,4 +1,4 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
 
 export type ToastType =
   | 'danger'
@@ -36,8 +36,8 @@ export interface ToastParams {
  * Shows a toast notification on the Blip platform
  * with a message, title a type and the duration is in milliseconds
  */
-export function toast(params: ToastParams) {
-  void imp.sendMessage({
+export function toast(params: ToastParams, sender = sendMessage) {
+  return sender({
     action: 'toast',
     content: params,
   });

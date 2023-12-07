@@ -1,4 +1,4 @@
 // TODO: implement (pretty huge potential)
-export default function sendApplicationRequest() {
+export function sendApplicationRequest() {
   return;
 }

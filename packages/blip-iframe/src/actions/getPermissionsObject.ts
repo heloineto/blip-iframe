@@ -1,11 +1,16 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
+
+export interface GetPermissionsObjectParams {}
 
 /**
  * Fetches the permissions from the Blip Platform.
  * @returns An object containing information about the permissions available for different features in the platform.
  */
-export function getPermissionsObject() {
-  return imp.sendMessage<GetPermissionsObjectResponse>({
+export function getPermissionsObject(
+  params: GetPermissionsObjectParams,
+  sender = sendMessage
+) {
+  return sender<GetPermissionsObjectResponse>({
     action: 'getPermissionsObject',
   });
 }

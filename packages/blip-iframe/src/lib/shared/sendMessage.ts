@@ -1,42 +1,23 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 import { Message } from '../../types';
 import { parseError } from '../utils';
-import logger from '../utils/logger';
 
 export interface WrappedResponse<TResponse> {
   response: TResponse;
   trackingProperties: { id: string };
 }
 
-export type Client<TWrappedResponse> = (
-  message: Message
-) => Promise<TWrappedResponse>;
-
-export interface Options<
-  TResponse = unknown,
-  TWrappedResponse extends WrappedResponse<TResponse> = WrappedResponse<TResponse>
-> {
-  debug?: boolean;
-  client?: Client<TWrappedResponse>;
-}
-
-
+export type Sender = <TResponse = unknown>(message: Message) => Promise<TResponse>;
 
 export async function sendMessage<
   TResponse = unknown,
   TWrappedResponse extends WrappedResponse<TResponse> = WrappedResponse<TResponse>
->(message: Message, options?: Options) {
-  const log = logger(message, options?.debug);
-  const client = options?.client ?? IframeMessageProxy.sendMessage;
+>(message: Message) {
 
   try {
-    log.request(message);
-    const { response } = (await client(message)) as TWrappedResponse;
-    log.response(response);
-
-    return { response, error: null };
+    const { response } = (await IframeMessageProxy.sendMessage(message)) as TWrappedResponse;
+    return { success: true, response } as const;
   } catch (error) {
-    log.error(error);
-    return { response: null, error: parseError(error) };
+    return { success: false, error: parseError(error) } as const;
   }
 }

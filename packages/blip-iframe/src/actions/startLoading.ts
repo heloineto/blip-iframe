@@ -1,10 +1,12 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
+
+export interface StartLoadingParams {}
 
 /**
  * Starts showing a loading indicator in the Blip platform.
  */
-export async function startLoading() {
-  void imp.sendMessage({ action: 'startLoading' });
+export function startLoading(params: StartLoadingParams, sender = sendMessage) {
+  return sender({ action: 'startLoading' });
 }
 
 export interface StartLoadingRequest {

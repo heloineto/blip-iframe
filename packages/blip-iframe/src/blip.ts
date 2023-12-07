@@ -1,13 +1,9 @@
 import * as actions from './actions';
-import * as bucket from './bucket';
 import * as commands from './commands';
 
-const blip = {
+export const blip = {
   actions,
   commands,
   ...actions,
   ...commands,
-  ...bucket,
 };
-
-export default blip;

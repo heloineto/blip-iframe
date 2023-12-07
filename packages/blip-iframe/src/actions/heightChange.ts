@@ -1,4 +1,4 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
 
 export interface HeightChangeParams {
   /**
@@ -15,7 +15,7 @@ export interface HeightChangeParams {
  * pass 0 as the height
  */
 export function heightChange({ height }: HeightChangeParams) {
-  void imp.sendMessage({
+  return sendMessage({
     action: 'heightChange',
     content: height,
   });

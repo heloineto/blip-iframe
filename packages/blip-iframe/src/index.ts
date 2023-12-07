@@ -3,8 +3,7 @@ import { IframeMessageProxyType } from './types';
 
 export const IframeMessageProxy = _IframeMessageProxy as IframeMessageProxyType;
 export * from './actions';
-export * from './bucket';
+export * from './blip';
 export * from './commands';
 export * from './lib';
 export * from './types';
-

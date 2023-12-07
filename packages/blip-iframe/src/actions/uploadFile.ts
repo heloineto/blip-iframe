@@ -1,4 +1,4 @@
-import imp from '../imp';
+import { sendMessage } from '../lib';
 
 export interface UploadFileParams {
   /**
@@ -16,8 +16,8 @@ export interface UploadFileParams {
  * @param params The file parameters to be uploaded.
  * @returns The URL of the uploaded file.
  */
-export function uploadFile(params: UploadFileParams) {
-  return imp.sendMessage<UploadFileResponse>({
+export function uploadFile(params: UploadFileParams, sender = sendMessage) {
+  return sender<UploadFileResponse>({
     action: 'uploadFile',
     content: params,
   });

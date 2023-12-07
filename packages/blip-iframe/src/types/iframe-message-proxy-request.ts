@@ -13,6 +13,7 @@ import { HideNavbarRequest } from '../actions/hideNavbar';
 import { SegmentRequest } from '../actions/segment';
 import { SendCommandRequest } from '../actions/sendCommand';
 import { ShowAlertRequest } from '../actions/showAlert';
+import { ShowChecklistModalRequest } from '../actions/showChecklistModal';
 import { ShowModalRequest } from '../actions/showModal';
 import { ShowNavbarRequest } from '../actions/showNavbar';
 import { StartLoadingRequest } from '../actions/startLoading';
@@ -43,4 +44,5 @@ export type IframeMessageProxyRequest =
   | ShowAlertRequest
   | UnauthorizedAccessRequest
   | GetAccountRequest
-  | UploadFileRequest;
+  | UploadFileRequest
+  | ShowChecklistModalRequest;
