@@ -5,7 +5,10 @@ export interface StartLoadingParams {}
 /**
  * Starts showing a loading indicator in the Blip platform.
  */
-export function startLoading(params: StartLoadingParams, sender = sendMessage) {
+export function startLoading(
+  params?: StartLoadingParams,
+  sender = sendMessage
+) {
   return sender({ action: 'startLoading' });
 }
 

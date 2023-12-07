@@ -7,7 +7,7 @@ export interface UnauthorizedAccessParams {}
  * tenant's home page.
  */
 export function unauthorizedAccess(
-  params: UnauthorizedAccessParams,
+  params?: UnauthorizedAccessParams,
   sender = sendMessage
 ) {
   return sender<UnauthorizedAccessResponse>({

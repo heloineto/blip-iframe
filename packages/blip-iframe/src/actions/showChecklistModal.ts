@@ -4,7 +4,7 @@ export interface ShowChecklistModalParams {}
 
 // TODO: Implement
 export function showChecklistModal(
-  params: ShowChecklistModalParams,
+  params?: ShowChecklistModalParams,
   sender = sendMessage
 ) {
   return sender<ShowChecklistModalResponse>({

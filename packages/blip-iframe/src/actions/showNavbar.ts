@@ -8,7 +8,7 @@ export interface ShowNavbarParams {}
  * You will only see it take effect if the navigation
  * bar is hidden (Ex.: after calling `hideNavbar`)
  */
-export function showNavbar(params: ShowNavbarParams, sender = sendMessage) {
+export function showNavbar(params?: ShowNavbarParams, sender = sendMessage) {
   return sender({
     action: 'showNavbar',
   });

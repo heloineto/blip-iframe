@@ -6,7 +6,7 @@ export interface GetTokenParams {}
  * Gets the JWT token of the current user
  * @returns The JWT token string of the current user
  */
-export function getToken(params: GetTokenParams, sender = sendMessage) {
+export function getToken(params?: GetTokenParams, sender = sendMessage) {
   return sender<GetTokenResponse>({
     action: 'getToken',
   });

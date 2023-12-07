@@ -7,7 +7,7 @@ export interface GetPermissionsObjectParams {}
  * @returns An object containing information about the permissions available for different features in the platform.
  */
 export function getPermissionsObject(
-  params: GetPermissionsObjectParams,
+  params?: GetPermissionsObjectParams,
   sender = sendMessage
 ) {
   return sender<GetPermissionsObjectResponse>({

@@ -6,7 +6,7 @@ export interface GetCurrentLanguageParams {}
  * Get the language of the current user account
  */
 export function getCurrentLanguage(
-  params: GetCurrentLanguageParams,
+  params?: GetCurrentLanguageParams,
   sender = sendMessage
 ) {
   return sender<GetCurrentLanguageResponse>({

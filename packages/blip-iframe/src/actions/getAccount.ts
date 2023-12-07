@@ -6,7 +6,7 @@ export interface GetAccountParams {}
  * Retrieves details about the current user account.
  * @returns The account details
  */
-export function getAccount(params: GetAccountParams, sender = sendMessage) {
+export function getAccount(params?: GetAccountParams, sender = sendMessage) {
   return sender<GetAccountResponse>({
     action: 'getAccount',
   });
