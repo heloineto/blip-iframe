@@ -1,4 +1,5 @@
 import { sendCommand } from '../../actions/sendCommand';
+import { PORTAL_POSTMASTER_URL } from '../../lib';
 import {
   GetListParams,
   parseListParams,
@@ -26,7 +27,7 @@ export async function getApplicationUserAccounts({
   return await sendCommand<GetApplicationUserAccountsResponse>({
     command: {
       method: 'get',
-      to: 'postmaster@portal.blip.ai',
+      to: PORTAL_POSTMASTER_URL,
       uri,
     },
   });

@@ -1,4 +1,5 @@
 import { sendCommand } from '../../actions/sendCommand';
+import { DESK_POSTMASTER_URL } from '../../lib';
 import {
   GetListParams,
   parseListParams,
@@ -23,7 +24,7 @@ export async function getAttendants({
   return await sendCommand<GetAttendantsResponse>({
     command: {
       method: 'get',
-      to: 'postmaster@desk.msging.net',
+      to: DESK_POSTMASTER_URL,
       uri,
     },
   });

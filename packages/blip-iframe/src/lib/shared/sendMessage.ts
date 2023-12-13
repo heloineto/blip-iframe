@@ -7,16 +7,19 @@ export interface WrappedResponse<TResponse> {
   trackingProperties: { id: string };
 }
 
-export type Sender = <TResponse = unknown>(message: Message) => Promise<TResponse>;
+export type Sender = <TResponse = unknown>(
+  message: Message
+) => Promise<TResponse>;
 
 export async function sendMessage<
   TResponse = unknown,
   TWrappedResponse extends WrappedResponse<TResponse> = WrappedResponse<TResponse>
 >(message: Message) {
-
   try {
-    const { response } = (await IframeMessageProxy.sendMessage(message)) as TWrappedResponse;
-    return { success: true, response } as const;
+    const { response } = (await IframeMessageProxy.sendMessage(
+      message
+    )) as TWrappedResponse;
+    return { success: true, data: response } as const;
   } catch (error) {
     return { success: false, error: parseError(error) } as const;
   }

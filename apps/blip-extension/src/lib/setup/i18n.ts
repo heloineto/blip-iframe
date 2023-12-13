@@ -11,10 +11,10 @@ void i18n
     type: 'languageDetector',
     async: true,
     detect: async (callback: (language: string) => void) => {
-      const { response } = await getCurrentLanguage();
+      const response = await getCurrentLanguage();
 
       const fallback = 'pt';
-      const language = response ?? fallback;
+      const language = response.data ?? fallback;
       const isSupported = ['en', 'es', 'pt'].includes(language);
 
       callback(isSupported ? language : fallback);
