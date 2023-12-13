@@ -1,6 +1,6 @@
 {
   "name": "blip-iframe",
-  "version": "0.0.7",
+  "version": "0.0.9",
   "description": "A type safe and intuitive API to communicate with the Blip platform",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
