@@ -15,19 +15,19 @@ export interface ToastParams {
    */
   type: ToastType;
   /**
-   * The message to be displayed in the toast.
+   * The message to be displayed in the toast
    */
   message: string;
   /**
-   * The title of the toast.
+   * The title of the toast
    */
   title?: string;
   /**
-   * The duration in milliseconds for which the toast should be displayed.
+   * The duration in milliseconds for which the toast should be displayed
    */
   duration?: number;
   /**
-   * The text to be displayed on the button of the toast.
+   * The text to be displayed on the button of the toast
    */
   buttontext?: string;
 }

@@ -12,9 +12,9 @@ export interface ShowAlertParams {
 }
 
 /**
- * Shows an modal-like alert on the main platform. It has two buttons, one for confirmation and one for cancelation.
- * @param params The parameters for the alert.
- * @returns A promise that resolves to true if the user confirmed the alert, false otherwise.
+ * Shows an modal-like alert on the main platform. It has two buttons, one for confirmation and one for cancelation
+ * @param params The parameters for the alert
+ * @returns A promise that resolves to true if the user confirmed the alert, false otherwise
  */
 export function showAlert(params: ShowAlertParams, sender = sendMessage) {
   return sender<ShowAlertResponse>({

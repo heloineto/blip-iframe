@@ -13,6 +13,11 @@ export interface GetThreadsParams extends GetListParams {
   refreshExpiredMedia?: boolean;
 }
 
+/**
+ * Gets the conversation threads
+ * @param params - The parameters for the function
+ * @returns
+ */
 export async function getThreads({
   messageId,
   identity,

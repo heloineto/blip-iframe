@@ -3,7 +3,7 @@ import { sendMessage } from '../lib';
 export interface ShowNavbarParams {}
 
 /**
- * Shows the top navigation bar of the blip platform.
+ * Shows the top navigation bar of the blip platform
  *
  * You will only see it take effect if the navigation
  * bar is hidden (Ex.: after calling `hideNavbar`)

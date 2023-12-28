@@ -8,6 +8,11 @@ import buildURI from '../../lib/utils/buildURI';
 
 export interface GetTicketsParams extends GetListParams {}
 
+/**
+ * Gets the tickets (as in the support tickets shown by Blip Desk)
+ * @param params - The parameters for the function
+ * @returns
+ */
 export async function getTickets({ ...listParams }: GetTicketsParams = {}) {
   const uri = buildURI({
     paths: ['tickets'],

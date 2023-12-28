@@ -2,7 +2,7 @@ import { sendMessage } from '../lib';
 
 export interface GetApplicationParams {
   /**
-   * The shortName (aka identity) of the bot to get details for.
+   * The shortName (aka identity) of the bot to get details for
    * Leave blank to get details for the current bot
    */
   shortName?: string;
@@ -11,7 +11,10 @@ export interface GetApplicationParams {
 /**
  * Get details about a bot (application)
  */
-export function getApplication({ shortName }: GetApplicationParams = {}, sender = sendMessage) {
+export function getApplication(
+  { shortName }: GetApplicationParams = {},
+  sender = sendMessage
+) {
   return sender<GetApplicationResponse>({
     action: 'getApplication',
     content: shortName || undefined,

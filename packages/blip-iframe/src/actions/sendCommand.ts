@@ -14,7 +14,7 @@ export interface SendCommandParams {
    */
   command: {
     /**
-     * The HTTP-like method to be used for the command.
+     * The HTTP-like method to be used for the command
      */
     method:
       | 'get'
@@ -25,7 +25,7 @@ export interface SendCommandParams {
       | 'unsubscribe'
       | 'observe';
     /**
-     * The Uniform Resource Identifier (URI) of the command.
+     * The Uniform Resource Identifier (URI) of the command
      */
     uri: string;
     to?: string;

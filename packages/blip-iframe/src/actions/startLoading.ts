@@ -3,7 +3,7 @@ import { sendMessage } from '../lib';
 export interface StartLoadingParams {}
 
 /**
- * Starts showing a loading indicator in the Blip platform.
+ * Starts showing a loading indicator in the Blip platform
  */
 export function startLoading(
   params?: StartLoadingParams,

@@ -5,16 +5,15 @@ export type SegmentMethod =
   | 'createApplicationTrack'
   | 'resetAccount'
   | 'setAccount'
-  | 'createApplicationTrack'
   | 'createOrganizationTrack';
 
 export interface SegmentParams {
   /**
-   * The analytics service method to be used.
+   * The analytics service method to be used
    */
   method: SegmentMethod;
   /**
-   * The method parameters.
+   * The method parameters
    */
   parameters: {
     /**
@@ -22,11 +21,11 @@ export interface SegmentParams {
      */
     trackEvent?: string;
     /**
-     * The payload data to be sent along with the event.
+     * The payload data to be sent along with the event
      */
     payload?: Record<string, unknown>;
     /**
-     * The application data to be sent along with the event.
+     * The application data to be sent along with the event
      */
     application?: Record<string, unknown>;
   };

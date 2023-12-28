@@ -3,7 +3,7 @@ import { sendMessage } from '../lib';
 export interface GetAccountParams {}
 
 /**
- * Retrieves details about the current user account.
+ * Retrieves details about the current user account
  * @returns The account details
  */
 export function getAccount(params?: GetAccountParams, sender = sendMessage) {

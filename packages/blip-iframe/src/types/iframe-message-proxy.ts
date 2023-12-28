@@ -1,4 +1,4 @@
-import { IframeMessageProxyRequest } from "./iframe-message-proxy-request";
+import { IframeMessageProxyRequest } from './iframe-message-proxy-request';
 
 export interface IframeMessageProxyType {
   config: (options?: ImpOptions) => IframeMessageProxyType;

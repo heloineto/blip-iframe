@@ -6,14 +6,14 @@ export interface AddTenantPrefixToUrlParams {
    */
   url: string;
   /**
-   * The tenant ID (optional). If not provided, the current tenant ID will be used.
+   * The tenant ID (optional). If not provided, the current tenant ID will be used
    */
   tenantId?: string;
 }
 
 /**
- * Adds the tenant id prefix to the url.
- * If no tenant id is provided, the current tenant id will be used.
+ * Adds the tenant id prefix to the url
+ * If no tenant id is provided, the current tenant id will be used
  *
  * Example: https://example.com -> https://tenant-id.example.com
  * @param params The parameters for the function
@@ -23,15 +23,13 @@ export function addTenantPrefixToUrl(
   { url, tenantId }: AddTenantPrefixToUrlParams,
   sender = sendMessage
 ) {
-  return sender<AddTenantPrefixToUrlResponse>(
-    {
-      action: 'addTenantPrefixToUrl',
-      content: {
-        url,
-        tenantId,
-      },
+  return sender<AddTenantPrefixToUrlResponse>({
+    action: 'addTenantPrefixToUrl',
+    content: {
+      url,
+      tenantId,
     },
-  );
+  });
 }
 
 export interface AddTenantPrefixToUrlRequest {

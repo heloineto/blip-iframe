@@ -1,4 +1,4 @@
-import { sendMessage } from "../lib";
+import { sendMessage } from '../lib';
 
 // TODO: Verify, does not work
 export function getUserContext() {

@@ -3,8 +3,8 @@ import { sendMessage } from '../lib';
 export interface GetPermissionsObjectParams {}
 
 /**
- * Fetches the permissions from the Blip Platform.
- * @returns An object containing information about the permissions available for different features in the platform.
+ * Fetches the permissions from the Blip Platform
+ * @returns An object containing information about the permissions available for different features in the platform
  */
 export function getPermissionsObject(
   params?: GetPermissionsObjectParams,
