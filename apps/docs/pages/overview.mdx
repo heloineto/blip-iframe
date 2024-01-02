@@ -1,12 +1,52 @@
 import { Layout } from '@/layout';
 import { MDX_DATA } from '@/mdx';
-import { StylesDemos, ThemingDemos } from '@/mantine-demos';
-import { TextInputStylesApi } from '@/mantine-styles-api';
-import { SelectorsTable, VariablesTable } from '@/components/StylesApiTable';
-import { ColorsGroup } from '@/components/ThemeColors';
 
 export default Layout(MDX_DATA.Overview);
 
-# API overview
+# Overview
 
-Coming soon...
+The Blip Iframe package provides a set of functionalities and APIs to interact
+with the Blip platform.
+This overview will introduce you to some of the key concepts and features of
+Blip Iframe.
+
+## Actions vs Commands
+
+Actions are functionalities provided by the Blip platform, designed to work
+within an iframe inside the Blip platform.
+Under the hood, they are invoked using the `blip-iframe-proxy` package and can only be
+triggered from within the Blip platform.
+
+Commands, on the other hand, are functionalities that can be created and called
+through the Blip API. They can be invoked both inside and outside the Blip platform,
+either as REST API calls, Websocket messages (Blip SDK) or as commands within the platform.
+
+Actions are specific to the Blip platform and the iframe context, while commands
+provide more flexibility and can be used in various environments.
+
+## API Functions
+
+Blip Iframe provides a set of functions that allow you to perform various
+actions and interact with the Blip platform. Some of the key functions include:
+
+- `getApplication`: Get details about a bot (application).
+- `getCurrentLanguage`: Get the language of the current user account.
+- `hideNavbar`: Hide the top navigation bar of the Blip platform.
+- `showNavbar`: Show the top navigation bar of the Blip platform.
+- `startLoading`: Start showing an overlay loading indicator on the Blip platform.
+- `toast`: Show a toast notification on the Blip platform.
+
+These functions provide a convenient and intuitive way to interact with the
+Blip platform and perform actions such as retrieving information, customizing
+the user interface, and displaying notifications.
+
+## Contributing
+
+Blip Iframe is an open-source project, and contributions from the community
+are welcome.
+If you encounter any issues, have suggestions for improvements,or would like
+to contribute code, please check out the [GitHub repository](https://github.com/heloineto/blip-iframe).
+
+We appreciate all contributions and feedback as we work to improve and enhance
+the Blip Iframe package. Together, we can build a better integration experience
+for the Blip platform.
