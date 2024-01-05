@@ -9,13 +9,11 @@ import { MDX_HOOKS_DATA } from './data/mdx-hooks-data';
 import { MDX_META_DATA } from './data/mdx-meta-data';
 import { MDX_OTHERS_DATA } from './data/mdx-others-data';
 import { MDX_STYLES_DATA } from './data/mdx-styles-data';
-import { MDX_THEMING_DATA } from './data/mdx-theming-data';
 
 export const MDX_DATA: Record<string, Frontmatter> = {
   ...MDX_ACTIONS_DATA,
   ...MDX_COMMANDS_DATA,
   ...MDX_META_DATA,
-  ...MDX_THEMING_DATA,
   ...MDX_STYLES_DATA,
   ...MDX_GUIDES_DATA,
   ...MDX_CORE_DATA,
