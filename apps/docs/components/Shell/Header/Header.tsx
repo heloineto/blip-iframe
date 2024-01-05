@@ -28,7 +28,7 @@ const versions = [
   {
     v: 'alpha',
     name: '0.0.5',
-    link: 'https://blip-iframe-docs.vercel.app/getting-started',
+    link: 'https://github.com/heloineto/blip-iframe',
   },
 ];
 

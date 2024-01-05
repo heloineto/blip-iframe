@@ -7,7 +7,7 @@ export const meta = {
   // discordColor: '',
   // twitterColor: '',
   githubLinks: {
-    code: '',
+    code: 'https://github.com/heloineto/blip-iframe',
     // mantineUi: '',
     discussions: 'https://github.com/heloineto/blip-iframe/discussions',
     // organization: '',
