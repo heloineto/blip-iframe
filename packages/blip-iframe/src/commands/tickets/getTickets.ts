@@ -1,5 +1,5 @@
 import { sendCommand } from '../../actions/sendCommand';
-import { DESK_POSTMASTER_URL } from '../../lib';
+import { DESK_POSTMASTER_URL, Sender } from '../../lib';
 import {
   GetListParams,
   parseListParams,
@@ -13,19 +13,25 @@ export interface GetTicketsParams extends GetListParams {}
  * @param params - The parameters for the function
  * @returns
  */
-export async function getTickets({ ...listParams }: GetTicketsParams = {}) {
+export async function getTickets(
+  { ...listParams }: GetTicketsParams = {},
+  sender?: Sender
+) {
   const uri = buildURI({
     paths: ['tickets'],
     params: parseListParams(listParams),
   });
 
-  return await sendCommand<GetTicketsResponse>({
-    command: {
-      method: 'get',
-      to: DESK_POSTMASTER_URL,
-      uri,
+  return await sendCommand<GetTicketsResponse>(
+    {
+      command: {
+        method: 'get',
+        to: DESK_POSTMASTER_URL,
+        uri,
+      },
     },
-  });
+    sender
+  );
 }
 
 export interface GetTicketsResponse {

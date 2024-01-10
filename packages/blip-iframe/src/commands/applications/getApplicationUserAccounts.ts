@@ -1,5 +1,6 @@
+// TODO: Add to docs
 import { sendCommand } from '../../actions/sendCommand';
-import { PORTAL_POSTMASTER_URL } from '../../lib';
+import { PORTAL_POSTMASTER_URL, Sender } from '../../lib';
 import {
   GetListParams,
   parseListParams,
@@ -7,30 +8,36 @@ import {
 import { buildURI } from '../../lib/utils';
 
 export interface ApplicationUserAccountsParams extends GetListParams {
+  /**
+   * The bot's shortName (aka identity)
+   */
   shortName: string;
 }
 
 /**
- * Gets a list of attendants in the Blip platform.
+ * Gets a list of users of a certain bot.
  * @param params The getApplicationUserAccounts parameters.
  * @returns A promise that resolves to a list of attendants.
  */
-export async function getApplicationUserAccounts({
-  shortName,
-  ...listParams
-}: ApplicationUserAccountsParams) {
+export async function getApplicationUserAccounts(
+  { shortName, ...listParams }: ApplicationUserAccountsParams,
+  sender?: Sender
+) {
   const uri = buildURI({
     paths: ['applications', `${shortName}@msging.net`, 'users', 'accounts'],
     params: parseListParams(listParams),
   });
 
-  return await sendCommand<GetApplicationUserAccountsResponse>({
-    command: {
-      method: 'get',
-      to: PORTAL_POSTMASTER_URL,
-      uri,
+  return await sendCommand<GetApplicationUserAccountsResponse>(
+    {
+      command: {
+        method: 'get',
+        to: PORTAL_POSTMASTER_URL,
+        uri,
+      },
     },
-  });
+    sender
+  );
 }
 
 export interface GetApplicationUserAccountsResponse {

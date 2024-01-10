@@ -1,4 +1,7 @@
+// TODO: Add to docs
+
 import { sendCommand } from '../../actions/sendCommand';
+import { Sender } from '../../lib';
 import buildURI from '../../lib/utils/buildURI';
 
 export interface GetNotificationsParams {
@@ -14,18 +17,21 @@ export interface GetNotificationsParams {
   refreshExpiredMedia?: boolean;
 }
 
-export async function getNotifications({
-  messageId,
-  identity,
-  storageDate,
-  getFromOriginator,
-  merged,
-  ownerIdentity,
-  skip,
-  take,
-  direction = 'desc',
-  refreshExpiredMedia = true,
-}: GetNotificationsParams) {
+export async function getNotifications(
+  {
+    messageId,
+    identity,
+    storageDate,
+    getFromOriginator,
+    merged,
+    ownerIdentity,
+    skip,
+    take,
+    direction = 'desc',
+    refreshExpiredMedia = true,
+  }: GetNotificationsParams,
+  sender?: Sender
+) {
   const uri = buildURI({
     prefix:
       ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}/` : '/',
@@ -41,12 +47,15 @@ export async function getNotifications({
     },
   });
 
-  return await sendCommand<GetNotificationsResponse>({
-    command: {
-      method: 'get',
-      uri: uri,
+  return await sendCommand<GetNotificationsResponse>(
+    {
+      command: {
+        method: 'get',
+        uri: uri,
+      },
     },
-  });
+    sender
+  );
 }
 
 export interface GetNotificationsResponse {

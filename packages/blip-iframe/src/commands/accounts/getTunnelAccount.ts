@@ -1,5 +1,6 @@
+// TODO: Add to docs
 import { sendCommand } from '../../actions/sendCommand';
-import { TUNNEL_POSTMASTER_URL, sendMessage } from '../../lib';
+import { Sender, TUNNEL_POSTMASTER_URL } from '../../lib';
 import buildURI from '../../lib/utils/buildURI';
 
 export interface GetTunnelAccountParams {
@@ -8,7 +9,7 @@ export interface GetTunnelAccountParams {
 
 export async function getTunnelAccount(
   { identity }: GetTunnelAccountParams,
-  sender = sendMessage
+  sender?: Sender
 ) {
   const uri = buildURI({
     paths: ['accounts', identity],

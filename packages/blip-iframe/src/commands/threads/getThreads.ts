@@ -1,4 +1,5 @@
 import { sendCommand } from '../../actions/sendCommand';
+import { Sender } from '../../lib';
 import { GetListParams } from '../../lib/shared/parseListParams';
 import buildURI from '../../lib/utils/buildURI';
 
@@ -18,19 +19,22 @@ export interface GetThreadsParams extends GetListParams {
  * @param params - The parameters for the function
  * @returns
  */
-export async function getThreads({
-  messageId,
-  identity,
-  storageDate,
-  getFromOriginator,
-  merged,
-  ownerIdentity,
-  filter,
-  skip,
-  take,
-  direction = 'desc',
-  refreshExpiredMedia = true,
-}: GetThreadsParams) {
+export async function getThreads(
+  {
+    messageId,
+    identity,
+    storageDate,
+    getFromOriginator,
+    merged,
+    ownerIdentity,
+    filter,
+    skip,
+    take,
+    direction = 'desc',
+    refreshExpiredMedia = true,
+  }: GetThreadsParams,
+  sender?: Sender
+) {
   const uri = buildURI({
     prefix:
       ownerIdentity && !getFromOriginator ? `lime://${ownerIdentity}/` : '/',
@@ -47,12 +51,15 @@ export async function getThreads({
     },
   });
 
-  return await sendCommand<GetThreadsResponse>({
-    command: {
-      method: 'get',
-      uri: uri,
+  return await sendCommand<GetThreadsResponse>(
+    {
+      command: {
+        method: 'get',
+        uri: uri,
+      },
     },
-  });
+    sender
+  );
 }
 
 export interface GetThreadsResponse {

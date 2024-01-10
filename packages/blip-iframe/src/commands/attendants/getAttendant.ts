@@ -1,27 +1,39 @@
 import { sendCommand } from '../../actions/sendCommand';
+import { Sender } from '../../lib';
 
 export interface GetAttendantParams {
+  /**
+   * The attendant's identity, formatted as "name@domain"
+   */
   identity: string;
 }
 
-// TODO: Figure out if agent is the same as attendant
-export async function getAttendant({ identity }: GetAttendantParams) {
+export async function getAttendant(
+  { identity }: GetAttendantParams,
+  sender?: Sender
+) {
   const [name, domain] = identity.split('@');
 
   if (!name || !domain) {
-    throw new Error(
-      `Invalid identity. Expected format: "name@domain", got "${identity}"`
-    );
+    return {
+      success: false,
+      error: new Error(
+        `Invalid identity. Expected format: "name@domain", got "${identity}"`
+      ),
+    };
   }
 
-  return await sendCommand<GetAttendantResponse>({
-    destination: 'BlipService',
-    command: {
-      method: 'get',
-      to: `postmaster@${domain}`,
-      uri: `lime://${domain}/accounts/${encodeURIComponent(name)}`,
+  return await sendCommand<GetAttendantResponse>(
+    {
+      destination: 'BlipService',
+      command: {
+        method: 'get',
+        to: `postmaster@${domain}`,
+        uri: `lime://${domain}/accounts/${encodeURIComponent(name)}`,
+      },
     },
-  });
+    sender
+  );
 }
 
 export interface GetAttendantResponse {

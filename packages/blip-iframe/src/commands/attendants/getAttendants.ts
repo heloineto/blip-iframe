@@ -1,5 +1,5 @@
 import { sendCommand } from '../../actions/sendCommand';
-import { DESK_POSTMASTER_URL } from '../../lib';
+import { DESK_POSTMASTER_URL, Sender } from '../../lib';
 import {
   GetListParams,
   parseListParams,
@@ -13,21 +13,25 @@ export interface GetAttendantsParams extends GetListParams {}
  * @param params The getAttendants parameters.
  * @returns A promise that resolves to a list of attendants.
  */
-export async function getAttendants({
-  ...listParams
-}: GetAttendantsParams = {}) {
+export async function getAttendants(
+  { ...listParams }: GetAttendantsParams = {},
+  sender?: Sender
+) {
   const uri = buildURI({
     paths: ['attendants'],
     params: parseListParams(listParams),
   });
 
-  return await sendCommand<GetAttendantsResponse>({
-    command: {
-      method: 'get',
-      to: DESK_POSTMASTER_URL,
-      uri,
+  return await sendCommand<GetAttendantsResponse>(
+    {
+      command: {
+        method: 'get',
+        to: DESK_POSTMASTER_URL,
+        uri,
+      },
     },
-  });
+    sender
+  );
 }
 
 export interface GetAttendantsResponse {

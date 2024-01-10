@@ -1,4 +1,5 @@
 import { sendCommand } from '../../actions/sendCommand';
+import { Sender } from '../../lib';
 import {
   GetListParams,
   parseListParams,
@@ -13,18 +14,24 @@ export interface GetContactsParams extends GetListParams {}
  * @param params - The parameters for the function
  * @returns A promise that resolves to a list of contacts.
  */
-export async function getContacts({ ...listParams }: GetContactsParams = {}) {
+export async function getContacts(
+  { ...listParams }: GetContactsParams = {},
+  sender?: Sender
+) {
   const uri = buildURI({
     paths: ['contacts'],
     params: parseListParams(listParams),
   });
 
-  return await sendCommand<GetContactsResponse>({
-    command: {
-      method: 'get',
-      uri,
+  return await sendCommand<GetContactsResponse>(
+    {
+      command: {
+        method: 'get',
+        uri,
+      },
     },
-  });
+    sender
+  );
 }
 
 export interface GetContactsResponse {
