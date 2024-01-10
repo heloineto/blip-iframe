@@ -22,7 +22,13 @@ export type CustomArea =
   | (string & {});
 
 export interface HasPermissionsParams {
+  /**
+   * The permission type to check
+   */
   permissionType: PermissionType;
+  /**
+   * The custom area to check
+   */
   customArea?: CustomArea;
 }
 
@@ -31,8 +37,11 @@ export interface HasPermissionsParams {
  * @param params The permissions parameters to check
  * @returns `true` if the user has the specified permissions, `false` otherwise
  */
-export function hasPermissions(params: HasPermissionsParams) {
-  return sendMessage<HasPermissionRequest>({
+export function hasPermissions(
+  params: HasPermissionsParams,
+  sender = sendMessage
+) {
+  return sender<HasPermissionRequest>({
     action: 'hasPermissions',
     content: params,
   });

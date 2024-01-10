@@ -35,8 +35,8 @@ export interface SegmentParams {
  * Makes calls to the platform's analytics API.
  * @param params The segment parameters
  */
-export function segment(params: SegmentParams) {
-  return sendMessage({
+export function segment(params: SegmentParams, sender = sendMessage) {
+  return sender({
     action: 'segment',
     content: params,
   });

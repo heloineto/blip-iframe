@@ -1,22 +1,29 @@
 import { sendCommand } from '../../actions/sendCommand';
+import { TUNNEL_POSTMASTER_URL, sendMessage } from '../../lib';
 import buildURI from '../../lib/utils/buildURI';
 
 export interface GetTunnelAccountParams {
   identity: string;
 }
 
-export async function getTunnelAccount({ identity }: GetTunnelAccountParams) {
+export async function getTunnelAccount(
+  { identity }: GetTunnelAccountParams,
+  sender = sendMessage
+) {
   const uri = buildURI({
     paths: ['accounts', identity],
   });
 
-  return await sendCommand<GetTunnelAccountResponse>({
-    command: {
-      method: 'get',
-      to: 'postmaster@tunnel.msging.net',
-      uri: uri,
+  return await sendCommand<GetTunnelAccountResponse>(
+    {
+      command: {
+        method: 'get',
+        to: TUNNEL_POSTMASTER_URL,
+        uri: uri,
+      },
     },
-  });
+    sender
+  );
 }
 
 export type GetTunnelAccountResponse = {

@@ -14,8 +14,11 @@ export interface HeightChangeParams {
  * So if you want the extension to take 100% of the remaining space,
  * pass 0 as the height.
  */
-export function heightChange({ height }: HeightChangeParams) {
-  return sendMessage({
+export function heightChange(
+  { height }: HeightChangeParams,
+  sender = sendMessage
+) {
+  return sender({
     action: 'heightChange',
     content: height,
   });
