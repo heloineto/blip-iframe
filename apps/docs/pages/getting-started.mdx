@@ -16,26 +16,32 @@ You can use `blip-iframe` with any framework or even vanilla JavaScript.
 In this section, we'll show how to get started using React, but the same principles
 apply to any other tool or framework.
 
-### Usage inside the Blip platform
+### Usage with Iframe Message Proxy (default)
 
 If you're using `blip-iframe` inside Blip (ex.: Blip Extensions),
-you can use the API functions without any additional configuration, as such:
+using Iframe Message Proxy is the recommended way to go. Luckily, this is
+also the default you can use the API commands and actions without any additional configuration,
+as such:
 
 ```jsx
-import { getBot } from 'blip-iframe';
+import { useState, useEffect } from 'react';
+import { blip } from 'blip-iframe';
 
 export default function Component() {
-  const [bot, setBot] = useState(null);
+  const [application, setApplication] = useState(null);
   const [error, setError] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Fetches the current bot. If an error occurs, the response will be null.
+    // Fetches data about the current bot. If an error occurs, the data will be null.
     // The error is not thrown, but returned. This improves types and error awareness.
-    getBot().then(({ response, error }) => {
+    blip.getApplication().then((response) => {
       setLoading(false);
-      setError(error);
-      setBot(response);
+      if (!response.success) {
+        setError(response.error);
+      } else {
+        setApplication(response.data);
+      }
     });
   }, []);
 
@@ -44,9 +50,12 @@ export default function Component() {
   if (error) return <>An error ocurred!</>;
 
   // Shows data about the current bot
-  return <pre>{JSON.stringify(bot, null, 2)}</pre>;
+  return <pre>{JSON.stringify(application, null, 2)}</pre>;
 }
 ```
+
+Under the hood, `blip-iframe` will send the 'getApplication' action
+using the Iframe Message Proxy, and properly type the response.
 
 All set! Now you can use the `blip-iframe` API to make calls inside your application.
 
@@ -59,9 +68,22 @@ All set! Now you can use the `blip-iframe` API to make calls inside your applica
 > If you want to make the same calls in a standalone app,
 > follow the steps outlined below.
 
-### Usage outside the Blip platform
+### Usage with the REST API
 
-{/* TODO: */}
+To use `blip-iframe` in a standalone application, you need to use the REST API.
+In order to do that, you need to create a sender function. This function will
+take the commands parameters and send them using whatever method you like, in
+this case, the REST API.
+
+This function should be passed as the second parameters of any `blip-iframe`
+helper function.
+
+#### Sender function using fetch and the REST API
+
+Coming soon...
+
+### Usage with using the Blip SDK
+
 Coming soon...
 
 ## Getting help

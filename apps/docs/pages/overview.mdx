@@ -10,6 +10,25 @@ with the Blip platform.
 This overview will introduce you to some of the key concepts and features of
 Blip Iframe.
 
+## Why use Blip Iframe?
+
+There are three main ways to make calls to the blip API. They are:
+
+- `iframe-message-proxy`: Can send commands and actions, only works inside the blip platform (iframe context, such as an extension);
+- `blip-dsk`: Works inside and outside the Blip platform, requires more configuration to use;
+- REST API: Works inside and outside the Blip platform, can only send commands.
+
+The main reasons to use Blip Iframe instead of the other options are:
+
+- **Write less code**: Blip Iframe removes all the boilerplate and makes calls very simple and concise.
+- **Type-safe API**: Blip Iframe is written in TypeScript and provides types to
+  all the parameters and responses.
+- **Documentation on the IDE**: Blip Iframe uses JSDoc for documentation of all the
+  functions, parameters and types. You can see the documentation directly
+  on your IDE. You won't have to wonder what parameters an request needs,
+  and what those parameters are.
+- **Error awareness**: Blip Iframe provides a consistent way to handle errors. [Learn more](#handling-errors)
+
 ## Actions vs Commands
 
 Actions are functionalities provided by the Blip platform, designed to work
@@ -24,21 +43,88 @@ either as REST API calls, Websocket messages (Blip SDK) or as commands within th
 Actions are specific to the Blip platform and the iframe context, while commands
 provide more flexibility and can be used in various environments.
 
-## API Functions
+### Calling an action
 
-Blip Iframe provides a set of functions that allow you to perform various
-actions and interact with the Blip platform. Some of the key functions include:
+```jsx
+import { blip } from 'blip-iframe';
 
-- `getApplication`: Get details about a bot (application).
-- `getCurrentLanguage`: Get the language of the current user account.
-- `hideNavbar`: Hide the top navigation bar of the Blip platform.
-- `showNavbar`: Show the top navigation bar of the Blip platform.
-- `startLoading`: Start showing an overlay loading indicator on the Blip platform.
-- `toast`: Show a toast notification on the Blip platform.
+async function main() {
+  const response = await blip.getApplication();
 
-These functions provide a convenient and intuitive way to interact with the
-Blip platform and perform actions such as retrieving information, customizing
-the user interface, and displaying notifications.
+  if (!response.success) {
+    console.log('An error occurred:', response.error);
+  } else {
+    console.log('Application:', response.data);
+  }
+}
+```
+
+Under the hood, `blip-iframe` will send the 'getApplication' action
+using the `iframe-message-proxy` package, and properly type the response.
+
+### Calling a command
+
+```jsx
+import { blip } from 'blip-iframe';
+
+async function main() {
+  const response = await blip.getAttendants();
+
+  if (!response.success) {
+    console.log('An error occurred:', response.error);
+  } else {
+    console.log('Attendants:', response.data);
+  }
+}
+```
+
+### Calling a custom command
+
+Sometimes you may want to call a command that's not yet available in the
+`blip-iframe` package. In this case, you can use the `sendCommand` function
+to send a custom command.
+
+```jsx
+import { blip } from 'blip-iframe';
+
+async function main() {
+  // You can define the type of the response as a type parameter
+  const response = await blip.sendCommand<{ example: string }[]>({
+    command: {
+      method: 'get',
+      to: 'postmaster@portal.blip.ai',
+      uri: '/example',
+    },
+  });
+
+  if (!response.success) {
+    console.log('An error occurred:', response.error);
+  } else {
+    console.log('Command response:', response.data);
+  }
+}
+```
+
+## Handling errors
+
+Blip Iframe provides a consistent way to handle errors. All the functions
+return a response object with the following structure:
+
+```ts
+interface Response<T> {
+  success: boolean;
+  data?: T;
+  error?: Error;
+}
+```
+
+The `success` property indicates whether the request was successful or not.
+If the request was successful, the `data` property will contain the response
+data. If the request failed, the `error` property will contain an error object
+with information about the error.
+
+The error returned from the Blip API can be a string or something else.
+Blip Iframe will parse the error and return an JavaScript `Error` object.
 
 ## Contributing
 

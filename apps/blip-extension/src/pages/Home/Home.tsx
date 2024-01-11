@@ -1,43 +1,20 @@
-import { ScrollArea } from '@mantine/core';
 import { useState } from 'react';
-import BlipFnView from './components/BlipFnView';
-import blipFns from './lib/blipFns';
-
-
+import { Navbar } from './components/Navbar';
+import { ResponseViewer } from './components/ResponseViewer';
 
 const Home = () => {
-  const [selectedFn, setSelectedFn] = useState<{
-    category: string;
-    name: string;
-  } | null>(null);
+  const [section, setSection] = useState<'actions' | 'commands'>('actions');
+  const [active, setActive] = useState('Billing');
 
   return (
-    <div className="flex grow gap-10">
-      <ScrollArea className="h-screen w-[350px] overflow-auto">
-        {Object.entries(blipFns).map(([category, fns]) => (
-          <div key={category} className="flex flex-col gap-3">
-            <h2>{category}</h2>
-            {Object.entries(fns).map(([name]) => (
-              <button
-                key={name}
-                type="button"
-                className="w-full rounded-lg bg-slate-500 px-3 py-2 text-white"
-                onClick={() => setSelectedFn({ category, name })}
-              >
-                {name}
-              </button>
-            ))}
-          </div>
-        ))}
-      </ScrollArea>
-      <div className="grow">
-        {selectedFn ? (
-          <BlipFnView
-            //@ts-expect-error -- ignore
-            blipFn={selectedFn}
-          />
-        ) : null}
-      </div>
+    <div className="bg-dark-9 flex h-screen overflow-auto text-slate-50">
+      <Navbar
+        section={section}
+        onChangeSection={setSection}
+        active={active}
+        onChangeActive={setActive}
+      />
+      <ResponseViewer />
     </div>
   );
 };

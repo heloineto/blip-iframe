@@ -52,5 +52,6 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'error',
     'react/self-closing-comp': 'error',
     'react/no-array-index-key': 'error',
+    'tailwindcss/no-custom-classname': 'off',
   },
 };
