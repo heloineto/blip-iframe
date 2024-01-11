@@ -1,25 +1,12 @@
-import { SegmentedControl } from '@mantine/core';
+import { ScrollArea, SegmentedControl } from '@mantine/core';
 import clsx from 'clsx';
-import { actions } from '../../utils/actions';
-
-const functions = {
-  actions,
-  commands: [
-    { value: 'Orders' },
-    { value: 'Receipts' },
-    { value: 'Reviews' },
-    { value: 'Messages' },
-    { value: 'Customers' },
-    { value: 'Refunds' },
-    { value: 'Files' },
-  ],
-};
+import { functions } from '../../utils/functions';
 
 interface Props {
   section: 'actions' | 'commands';
   onChangeSection: (section: 'actions' | 'commands') => void;
-  active: string;
-  onChangeActive: (active: string) => void;
+  active: string | null;
+  onChangeActive: (active: string | null) => void;
 }
 
 export function Navbar({
@@ -29,8 +16,8 @@ export function Navbar({
   section,
 }: Props) {
   return (
-    <nav className="p-md border-r-dark-4 flex w-[300px] flex-col border-0 border-r border-solid bg-[var(--mantine-color-body)]">
-      <div>
+    <nav className="pt-md gap-md border-r-dark-4 flex w-[300px] shrink-0 flex-col border-0 border-r border-solid bg-[var(--mantine-color-body)]">
+      <div className="px-md">
         <SegmentedControl
           value={section}
           onChange={onChangeSection}
@@ -43,24 +30,28 @@ export function Navbar({
         />
       </div>
 
-      <div className="mt-xl grow">
-        {functions[section].map((blipFunction) => (
-          <button
-            type="button"
-            className={clsx(
-              'text-dark-1 py-xs px-sm flex grow cursor-pointer items-center rounded-sm border-0 bg-transparent text-sm font-medium',
-              active ? '' : ''
-            )}
-            key={blipFunction.value}
-            onClick={(event) => {
-              event.preventDefault();
-              onChangeActive(blipFunction.value);
-            }}
-          >
-            <span>{blipFunction.value}</span>
-          </button>
-        ))}
-      </div>
+      <ScrollArea>
+        <div className="px-md pb-md flex flex-col">
+          {functions[section].map((blipFunction) => (
+            <button
+              type="button"
+              className={clsx(
+                'py-xs px-sm flex grow cursor-pointer items-center rounded-sm border-0 text-sm font-medium',
+                active === blipFunction.value
+                  ? 'bg-blue-light text-blue-light-color'
+                  : 'hover:bg-dark-6 text-dark-1 bg-transparent hover:text-white'
+              )}
+              key={blipFunction.value}
+              onClick={(event) => {
+                event.preventDefault();
+                onChangeActive(blipFunction.value);
+              }}
+            >
+              {blipFunction.value}
+            </button>
+          ))}
+        </div>
+      </ScrollArea>
     </nav>
   );
 }

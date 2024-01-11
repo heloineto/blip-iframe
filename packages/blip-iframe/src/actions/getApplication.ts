@@ -31,7 +31,7 @@ export interface GetApplicationResponse {
   name: string;
   description: string;
   accessKey: string;
-  imageUri: string;
+  imageUri?: string;
   template: string;
   tenantId: string;
   created: string;
@@ -42,7 +42,7 @@ export interface GetApplicationResponse {
     permissionClaim: number;
     permissionAction: number;
   }[];
-  applicationDomainActivations: unknown[];
   channels: unknown[];
   applicationJson: Record<string, unknown>;
+  applicationDomainActivations?: unknown[];
 }
