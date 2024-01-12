@@ -22,12 +22,12 @@ interface HeaderProps {
   onNavbarToggle(): void;
 }
 
-const version = '0.0.5';
+const version = '1.0.0';
 
 const versions = [
   {
-    v: 'alpha',
-    name: '0.0.5',
+    v: 'v1',
+    name: '1.0.0',
     link: 'https://github.com/heloineto/blip-iframe',
   },
 ];
