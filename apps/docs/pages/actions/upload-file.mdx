@@ -18,17 +18,17 @@ const file = new File(['Hello, world!'], 'filename.txt', {
   type: 'text/plain',
 });
 
-const { response, error } = await blip.uploadFile({
+const response = await blip.uploadFile({
   file: file,
   type: file.type,
 });
 
-if (error) {
-  console.error('File upload failed:', error);
+if (!response.success) {
+  console.error('File upload failed:', response.error);
   return;
 }
 
-console.log('File uploaded successfully:', response);
+console.log('File uploaded successfully:', response.data); // The URL of the uploaded file
 ```
 
 ## Parameters
@@ -53,5 +53,5 @@ export interface UploadFileParams {
 The `uploadFile` function returns the following response:
 
 ```ts
-export type UploadFileResponse = string;
+export type UploadFileResponse = string; // The URL of the uploaded file
 ```

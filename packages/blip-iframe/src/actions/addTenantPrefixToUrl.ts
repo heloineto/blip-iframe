@@ -2,7 +2,7 @@ import { sendMessage } from '../lib/shared/sendMessage';
 
 export interface AddTenantPrefixToUrlParams {
   /**
-   * The URL to add the tenant ID prefix to
+   * The URL to add the tenant ID prefix to.
    */
   url: string;
   /**
@@ -13,7 +13,7 @@ export interface AddTenantPrefixToUrlParams {
 
 /**
  * Adds the tenant id prefix to the url
- * If no tenant id is provided, the current tenant id will be used
+ * If no tenant id is provided, the current tenant id will be used.
  *
  * Example: https://example.com -> https://tenant-id.example.com
  * @param params The parameters for the function

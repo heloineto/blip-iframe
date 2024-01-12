@@ -16,14 +16,14 @@ import { blip } from 'blip-iframe';
 const url = 'https://example.com';
 const tenantId = 'tenant-id';
 
-const { response, error } = blip.addTenantPrefixToUrl({ url, tenantId });
+const response = await blip.addTenantPrefixToUrl({ url, tenantId });
 
-if (error) {
-  console.error(error); // An error happened during the request
+if (!response.success) {
+  console.error(response.error); // An error happened during the request
   return;
 }
 
-console.log(response); // Output: 'https://tenant-id.example.com'
+console.log(response.data); // Output: 'https://tenant-id.example.com'
 ```
 
 In this example, the `addTenantPrefixToUrl` function is used to add the tenant ID prefix (`tenant-id`)

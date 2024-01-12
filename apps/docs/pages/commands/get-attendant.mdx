@@ -14,14 +14,14 @@ This function retrieves details such as the full name, identity, email, phone nu
 import { blip } from 'blip-iframe';
 
 const identity = 'john@acme.com';
-const { response, error } = await blip.getAttendant({ identity });
+const response = await blip.getAttendant({ identity });
 
-if (error) {
-  console.error(error); // An error occurred while fetching the attendant information
+if (!response.success) {
+  console.error(response.error); // An error occurred while fetching the attendant information
   return;
 }
 
-console.log(response); // The attendant information
+console.log(response.data); // The attendant information
 ```
 
 ## Parameters

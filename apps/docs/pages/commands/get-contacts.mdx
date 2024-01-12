@@ -13,14 +13,14 @@ Contacts are individuals or entities that interact with your bot or application.
 ```ts
 import { blip } from 'blip-iframe';
 
-const { response, error } = await blip.getContacts();
+const response = await blip.getContacts();
 
-if (error) {
-  console.error(error); // An error happened during the request
+if (!response.success) {
+  console.error(response.error); // An error happened during the request
   return;
 }
 
-console.log(response); // The list of contacts
+console.log(response.data); // The list of contacts
 ```
 
 ## Parameters

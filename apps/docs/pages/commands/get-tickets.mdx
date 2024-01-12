@@ -13,14 +13,14 @@ Tickets are records of customer interactions and issues.
 ```ts
 import { blip } from 'blip-iframe';
 
-const { response, error } = await blip.getTickets();
+const response = await blip.getTickets();
 
-if (error) {
-  console.error(error); // An error happened during the request
+if (!response.success) {
+  console.error(response.error); // An error happened during the request
   return;
 }
 
-console.log(response); // The list of tickets
+console.log(response.data); // The list of tickets
 ```
 
 ## Parameters

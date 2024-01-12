@@ -1,3 +1,5 @@
+// TODO: Document util functions
+
 export interface BuildAuthorizationKeyParams {
   botShortName: string;
   botAccessKey: string;

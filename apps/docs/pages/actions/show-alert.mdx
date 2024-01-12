@@ -25,14 +25,14 @@ const params = {
   },
 };
 
-const { respose, error } = await blip.showAlert(params);
+const respose = await blip.showAlert(params);
 
-if (error) {
-  console.error(error); // An error happened during the request
+if (!respose.success) {
+  console.error(respose.error); // An error happened during the request
   return;
 }
 
-if (respose) {
+if (respose.data) {
   console.log('User confirmed');
 } else {
   console.log('User canceled');

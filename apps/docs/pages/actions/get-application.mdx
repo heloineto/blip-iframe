@@ -14,14 +14,14 @@ It is very likely that the information you need is available in the application 
 ```ts
 import { blip } from 'blip-iframe';
 
-const { response, error } = await blip.getApplication(); // Get info about the current bot
+const response = await blip.getApplication(); // Get info about the current bot
 
-if (error) {
-  console.error(error); // An error happened during the request
+if (!response.success) {
+  console.error(response.error); // An error happened during the request
   return;
 }
 
-console.log(response); // The application object
+console.log(response.data); // The application object
 ```
 
 ## Parameters
@@ -31,7 +31,7 @@ The `getApplication` function accepts the following parameters:
 ```ts
 interface GetApplicationParams {
   /**
-   * The shortName (aka identity) of the bot to get details for.
+   * The shortName (aka identity) of the bot to get details for
    * Leave blank to get details for the current bot
    */
   shortName?: string;

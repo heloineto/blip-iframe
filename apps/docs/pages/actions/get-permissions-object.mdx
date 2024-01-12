@@ -13,14 +13,14 @@ This object contains information about the permissions available for different f
 ```ts
 import { blip } from 'blip-iframe';
 
-const { response, error } = await blip.getPermissionsObject();
+const response = await blip.getPermissionsObject();
 
-if (error) {
-  console.error(error); // An error happened during the request
+if (!response.success) {
+  console.error(response.error); // An error happened during the request
   return;
 }
 
-console.log(response); // The permissions object
+console.log(response.data); // The permissions object
 ```
 
 ## Parameters

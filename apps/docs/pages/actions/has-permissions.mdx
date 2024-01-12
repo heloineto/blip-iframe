@@ -18,14 +18,14 @@ const params = {
   customArea: 'payments',
 };
 
-const { response, error } = await blip.hasPermissions(params);
+const response = await blip.hasPermissions(params);
 
-if (error) {
-  console.error(error); // An error happened during the request
+if (!response.success) {
+  console.error(response.error); // An error happened during the request
   return;
 }
 
-console.log(response); // A boolean indicating if the user has the specified permissions
+console.log(response.data); // A boolean indicating if the user has the specified permissions
 ```
 
 ## Parameters

@@ -20,14 +20,14 @@ const params = {
   skip: 0,
 };
 
-const { response, error } = await blip.getThreads(params);
+const response = await blip.getThreads(params);
 
-if (error) {
-  console.error(error);
+if (!response.success) {
+  console.error(response.error);
   return;
 }
 
-console.log(response); // The list of threads
+console.log(response.data); // The list of threads
 ```
 
 ## Parameters

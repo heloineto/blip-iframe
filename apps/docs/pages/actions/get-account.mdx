@@ -13,14 +13,14 @@ It provides information such as full name, email, phone number, photo URI, time 
 ```ts
 import { blip } from 'blip-iframe';
 
-const { response, error } = await blip.getAccount();
+const response = await blip.getAccount();
 
-if (error) {
-  console.error(error); // An error happened during the request
+if (!response.success) {
+  console.error(response.error); // An error happened during the request
   return;
 }
 
-console.log(response); // The account details
+console.log(response.data); // The account details
 ```
 
 ## Parameters

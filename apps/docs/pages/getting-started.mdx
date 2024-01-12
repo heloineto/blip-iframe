@@ -76,11 +76,44 @@ take the commands parameters and send them using whatever method you like, in
 this case, the REST API.
 
 This function should be passed as the second parameters of any `blip-iframe`
-helper function.
+helper function. See the example below.
 
 #### Sender function using fetch and the REST API
 
-Coming soon...
+```ts
+import type { Message, Sender } from 'blip-iframe';
+import { blip } from 'blip-iframe';
+import { v4 as uuidv4 } from 'uuid';
+
+const sender: Sender = async <TResponse = unknown>(message: Message) => {
+  if (message.action !== 'sendCommand') {
+    return {
+      success: false,
+      error: new Error("The REST API doesn't support actions, only commands"),
+    } as const;
+  }
+
+  const response = await fetch('https://msging.net/commands', {
+    method: 'POST',
+    headers: {
+      Authorization: 'Key your-authorization-key',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({ id: uuidv4(), ...message.content.command }),
+  });
+
+  if (!response.ok) {
+    return { success: false, error: new Error(response.statusText) } as const;
+  }
+
+  const { resource } = (await response.json()) as { resource: TResponse };
+
+  return { success: true, data: resource } as const;
+};
+
+// Call any command using the sender function as the second parameter
+blip.getTickets({ skip: 0, take: 20 }, sender);
+```
 
 ### Usage with using the Blip SDK
 

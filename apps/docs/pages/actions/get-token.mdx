@@ -13,14 +13,14 @@ The JWT token can be used for authentication and authorization purposes when mak
 ```ts
 import { blip } from 'blip-iframe';
 
-const { response, error } = await blip.getToken();
+const response = await blip.getToken();
 
-if (error) {
-  console.error(error); // An error happened during the request
+if (!response.success) {
+  console.error(response.error); // An error happened during the request
   return;
 }
 
-console.log(response); // The JWT token of the current user
+console.log(response.data); // The JWT token of the current user
 ```
 
 ## Parameters

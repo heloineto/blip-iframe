@@ -1,4 +1,6 @@
+import type { Message, Sender } from 'blip-iframe';
 import { blip } from 'blip-iframe';
+import { v4 as uuidv4 } from 'uuid';
 
 export const commands = [
   {
@@ -6,12 +8,73 @@ export const commands = [
     fn: () => {
       return blip.getThreads({
         ownerIdentity: 'solutionslabrouter@msging.net',
-        // getFromOriginator: false,
+        getFromOriginator: false,
         identity:
           '73990c0f-85af-41e0-b206-fdc6ca4a33fe.solutionslabrouter@0mn.io',
         merged: true,
         take: 20,
       });
+    },
+  },
+
+  {
+    value: 'Usage With Fetch',
+    fn: () => {
+      const sender: Sender = async <TResponse = unknown>(message: Message) => {
+        if (message.action !== 'sendCommand') {
+          return {
+            success: false,
+            error: new Error(
+              'The REST API does not supports actions, only commands'
+            ),
+          };
+        }
+
+        const response = await fetch('https://msging.net/commands', {
+          method: 'POST',
+          headers: {
+            Authorization: 'Key dGVzdGVoZWxvaTp3NVhGSnlGS1lIZTA1QkxldnJ4SA==',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            id: uuidv4(),
+            ...message.content.command,
+          }),
+        });
+
+        if (!response.ok) {
+          return {
+            success: false,
+            error: new Error(response.statusText),
+          } as const;
+        }
+
+        const { resource } = (await response.json()) as {
+          resource: TResponse;
+        };
+
+        return { success: true, data: resource } as const;
+      };
+
+      return blip.getTickets({ skip: 0, take: 20 }, sender);
+    },
+  },
+  {
+    value: 'Test',
+    fn: async () => {
+      const url = 'https://example.com';
+      const tenantId = 'tenant-id';
+
+      const response = await blip.addTenantPrefixToUrl({ url, tenantId });
+
+      if (!response.success) {
+        console.error(response.error); // An error happened during the request
+        return;
+      }
+
+      console.log(response.data); // Output: 'https://tenant-id.example.com'},
+
+      return response;
     },
   },
   // getTickets: () => blip.getTickets(),
