@@ -16,7 +16,6 @@ export const commands = [
       });
     },
   },
-
   {
     value: 'Usage With Fetch',
     fn: () => {
