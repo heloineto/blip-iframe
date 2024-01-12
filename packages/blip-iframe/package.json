@@ -1,6 +1,6 @@
 {
   "name": "blip-iframe",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A type safe and intuitive API to communicate with the Blip platform",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -22,7 +22,12 @@
     "type": "git",
     "url": "git+https://github.com/heloineto/blip-iframe.git"
   },
-  "keywords": [],
+  "keywords": [
+    "blip",
+    "chatbot",
+    "iframe",
+    "sdk"
+  ],
   "bugs": {
     "url": "https://github.com/heloineto/blip-iframe/issues"
   },
