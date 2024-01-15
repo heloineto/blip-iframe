@@ -1,8 +1,28 @@
 import type { Message, Sender } from 'blip-iframe';
 import { blip } from 'blip-iframe';
 import { v4 as uuidv4 } from 'uuid';
+import { getAttendantsSchema } from './schemas/getAttendantsSchema';
+import { getContactsSchema } from './schemas/getContactsSchema';
+import { getTicketsSchema } from './schemas/getTickets';
 
 export const commands = [
+  {
+    value: 'getAttendants',
+    fn: () => blip.getAttendants(),
+    schema: getAttendantsSchema,
+  },
+  {
+    value: 'getAttendant',
+    fn: () =>
+      blip.getAttendant({
+        identity: 'heloi.neto%40blip.ai@blip.ai',
+      }),
+  },
+  {
+    value: 'getContacts',
+    fn: () => blip.getContacts(),
+    schema: getContactsSchema,
+  },
   {
     value: 'getThreads',
     fn: () => {
@@ -15,6 +35,11 @@ export const commands = [
         take: 20,
       });
     },
+  },
+  {
+    value: 'getTickets',
+    fn: () => blip.getTickets(),
+    schema: getTicketsSchema,
   },
   {
     value: 'Usage With Fetch',
@@ -58,25 +83,6 @@ export const commands = [
       return blip.getTickets({ skip: 0, take: 20 }, sender);
     },
   },
-  {
-    value: 'Test',
-    fn: async () => {
-      const url = 'https://example.com';
-      const tenantId = 'tenant-id';
-
-      const response = await blip.addTenantPrefixToUrl({ url, tenantId });
-
-      if (!response.success) {
-        console.error(response.error); // An error happened during the request
-        return;
-      }
-
-      console.log(response.data); // Output: 'https://tenant-id.example.com'},
-
-      return response;
-    },
-  },
-  // getTickets: () => blip.getTickets(),
   // getTicketsHistory: () =>
   //   blip.getTicketsHistory({
   //     // filter:

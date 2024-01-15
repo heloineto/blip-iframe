@@ -59,7 +59,7 @@ export async function getNotifications(
 }
 
 export interface GetNotificationsResponse {
-  total: number;
+  total?: number;
   itemType: string;
   items: unknown[];
 }

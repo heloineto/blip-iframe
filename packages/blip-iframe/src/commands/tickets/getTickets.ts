@@ -51,15 +51,16 @@ export interface GetTicketsItem {
   status: string;
   storageDate: string;
   openDate: string;
-  closeDate: string;
   statusDate: string;
   externalId: string;
   rating: number;
   team: string;
   unreadMessages: number;
   closed: boolean;
-  closedBy: string;
-  firstResponseDate?: string;
   priority: number;
   isAutomaticDistribution: boolean;
+  distributionType?: string;
+  closeDate?: string;
+  closedBy?: string;
+  firstResponseDate?: string;
 }

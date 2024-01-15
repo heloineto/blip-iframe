@@ -35,7 +35,7 @@ export async function getContacts(
 }
 
 export interface GetContactsResponse {
-  total: number;
+  total?: number;
   itemType: string;
   items: BlipContact[];
 }

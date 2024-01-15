@@ -41,7 +41,7 @@ export async function getApplicationUserAccounts(
 }
 
 export interface GetApplicationUserAccountsResponse {
-  total: number;
+  total?: number;
   itemType: string;
   items: GetApplicationUserAccountsItem[];
 }

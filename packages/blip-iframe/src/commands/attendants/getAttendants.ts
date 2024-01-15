@@ -35,7 +35,7 @@ export async function getAttendants(
 }
 
 export interface GetAttendantsResponse {
-  total: number;
+  total?: number;
   itemType: string;
   items: GetAttendantsItem[];
 }
