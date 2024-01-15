@@ -1,4 +1,4 @@
-export interface BlipContact {
+export interface Contact {
   name?: string;
   group?: string;
   lastMessageDate: string;

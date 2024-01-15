@@ -5,7 +5,7 @@ import {
   parseListParams,
 } from '../../lib/shared/parseListParams';
 import buildURI from '../../lib/utils/buildURI';
-import { BlipContact } from './types';
+import { Contact } from './types';
 
 export interface GetContactsParams extends GetListParams {}
 
@@ -37,5 +37,7 @@ export async function getContacts(
 export interface GetContactsResponse {
   total?: number;
   itemType: string;
-  items: BlipContact[];
+  items: GetContactsItem[];
 }
+
+export type GetContactsItem = Contact;

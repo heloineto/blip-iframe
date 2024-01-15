@@ -2,7 +2,7 @@
 import { sendCommand } from '../../actions/sendCommand';
 import { Sender } from '../../lib';
 import buildURI from '../../lib/utils/buildURI';
-import { BlipContact } from './types';
+import { Contact } from './types';
 
 export interface GetContactParams {
   /**
@@ -33,4 +33,4 @@ export async function getContact(
   );
 }
 
-export type GetContactResponse = BlipContact;
+export type GetContactResponse = Contact;
