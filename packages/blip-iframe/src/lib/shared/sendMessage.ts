@@ -9,15 +9,19 @@ export interface WrappedResponse<TResponse> {
 
 export type Sender = typeof sendMessage;
 
+export type SenderReturnSuccess<TResponse> = {
+  success: true;
+  data: TResponse;
+};
+
+export type SenderReturnError = {
+  success: false;
+  error: Error;
+};
+
 export type SenderReturn<TResponse> =
-  | {
-      success: true;
-      data: TResponse;
-    }
-  | {
-      success: false;
-      error: Error;
-    };
+  | SenderReturnSuccess<TResponse>
+  | SenderReturnError;
 
 export const sendMessage = async <
   TResponse = unknown,
