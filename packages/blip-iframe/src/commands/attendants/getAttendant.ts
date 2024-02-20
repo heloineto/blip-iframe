@@ -1,5 +1,5 @@
 import { sendCommand } from '../../actions/sendCommand';
-import { Sender } from '../../lib';
+import { ResponseError, Sender } from '../../lib';
 
 export interface GetAttendantParams {
   /**
@@ -20,7 +20,7 @@ export async function getAttendant(
       error: new Error(
         `Invalid identity. Expected format: "name@domain", got "${identity}"`
       ),
-    };
+    } as ResponseError;
   }
 
   return await sendCommand<GetAttendantResponse>(

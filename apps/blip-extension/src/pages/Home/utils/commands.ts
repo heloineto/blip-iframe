@@ -44,7 +44,7 @@ export const commands = [
   {
     value: 'Usage With Fetch',
     fn: () => {
-      const sender: Sender = async <TResponse = unknown>(message: Message) => {
+      const sender: Sender = async <TData = unknown>(message: Message) => {
         if (message.action !== 'sendCommand') {
           return {
             success: false,
@@ -74,7 +74,7 @@ export const commands = [
         }
 
         const { resource } = (await response.json()) as {
-          resource: TResponse;
+          resource: TData;
         };
 
         return { success: true, data: resource } as const;

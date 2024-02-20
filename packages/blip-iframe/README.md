@@ -81,7 +81,7 @@ import type { Message, Sender } from 'blip-iframe';
 import { blip } from 'blip-iframe';
 import { v4 as uuidv4 } from 'uuid';
 
-const sender: Sender = async <TResponse = unknown>(message: Message) => {
+const sender: Sender = async <TData = unknown>(message: Message) => {
   if (message.action !== 'sendCommand') {
     return {
       success: false,
@@ -102,7 +102,7 @@ const sender: Sender = async <TResponse = unknown>(message: Message) => {
     return { success: false, error: new Error(response.statusText) } as const;
   }
 
-  const { resource } = (await response.json()) as { resource: TResponse };
+  const { resource } = (await response.json()) as { resource: TData };
 
   return { success: true, data: resource } as const;
 };

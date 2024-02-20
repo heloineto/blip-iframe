@@ -2,33 +2,31 @@ import { IframeMessageProxy } from 'iframe-message-proxy';
 import { Message } from '../../types';
 import { parseError } from '../utils';
 
-export interface WrappedResponse<TResponse> {
-  response: TResponse;
+export interface WrappedResponse<TData> {
+  response: TData;
   trackingProperties: { id: string };
 }
 
 export type Sender = typeof sendMessage;
 
-export type SenderReturnSuccess<TResponse> = {
+export type ResponseSuccess<TData> = {
   success: true;
-  data: TResponse;
+  data: TData;
 };
 
-export type SenderReturnError = {
+export type ResponseError = {
   success: false;
   error: Error;
 };
 
-export type SenderReturn<TResponse> =
-  | SenderReturnSuccess<TResponse>
-  | SenderReturnError;
+export type Response<TData> = ResponseSuccess<TData> | ResponseError;
 
 export const sendMessage = async <
-  TResponse = unknown,
-  TWrappedResponse extends WrappedResponse<TResponse> = WrappedResponse<TResponse>
+  TData = unknown,
+  TWrappedResponse extends WrappedResponse<TData> = WrappedResponse<TData>
 >(
   message: Message
-): Promise<SenderReturn<TResponse>> => {
+): Promise<Response<TData>> => {
   try {
     const { response } = (await IframeMessageProxy.sendMessage(
       message

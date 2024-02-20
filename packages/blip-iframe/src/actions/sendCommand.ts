@@ -149,10 +149,10 @@ export interface SendCommandParams {
  * @returns The response of the command
  */
 export function sendCommand<
-  TResponse = unknown,
-  TWrappedResponse extends WrappedSendCommandResponse<TResponse> = WrappedSendCommandResponse<TResponse>
+  TData = unknown,
+  TWrappedResponse extends WrappedSendCommandResponse<TData> = WrappedSendCommandResponse<TData>
 >(params: SendCommandParams, sender = sendMessage) {
-  return sender<TResponse, TWrappedResponse>({
+  return sender<TData, TWrappedResponse>({
     action: 'sendCommand',
     content: params,
   });
@@ -191,7 +191,7 @@ export interface SendCommandRequest {
   };
 }
 
-export interface WrappedSendCommandResponse<TResponse> {
-  response: TResponse;
+export interface WrappedSendCommandResponse<TData> {
+  response: TData;
   trackingProperties: { id: string };
 }
