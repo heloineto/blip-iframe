@@ -1,5 +1,5 @@
 import type { Message, Sender } from 'blip-iframe';
-import { blip } from 'blip-iframe';
+import { IframeMessageProxy, blip } from 'blip-iframe';
 import { v4 as uuidv4 } from 'uuid';
 import { getAttendantsSchema } from './schemas/getAttendantsSchema';
 import { getContactsSchema } from './schemas/getContactsSchema';
@@ -82,6 +82,50 @@ export const commands = [
 
       return blip.getTickets({ skip: 0, take: 20 }, sender);
     },
+  },
+  {
+    value: 'getBots',
+    fn: () =>
+      blip.sendCommand({
+        command: {
+          to: 'postmaster@portal.blip.ai',
+          method: 'get',
+          uri: '/tenants/csgrowth/applications',
+          id: '29582366-b6c8-4025-92d6-0fc60fc1a20f',
+          metadata: {
+            'blip_portal.email': 'heloi.neto@blip.ai',
+          },
+        },
+      }),
+  },
+  {
+    value: 'With IframeMessageProxy',
+    fn: () =>
+      IframeMessageProxy.sendMessage({
+        action: 'sendCommand',
+        content: {
+          command: {
+            to: 'postmaster@portal.blip.ai',
+            method: 'get',
+            uri: '/tenants/csgrowth/applications',
+          },
+        },
+      }),
+  },
+  {
+    value: 'With Blip SDK',
+    fn: () =>
+      IframeMessageProxy.sendMessage({
+        action: 'sendCommand',
+        content: {
+          destination: 'BlipService',
+          command: {
+            to: 'postmaster@portal.blip.ai',
+            method: 'get',
+            uri: '/tenants/csgrowth/applications',
+          },
+        },
+      }),
   },
   // getTicketsHistory: () =>
   //   blip.getTicketsHistory({
