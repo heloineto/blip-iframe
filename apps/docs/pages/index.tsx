@@ -1,3 +1,12 @@
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
+
 export default function Home() {
-  return <>Home page</>;
+  const router = useRouter();
+
+  useEffect(() => {
+    router.push('/getting-started');
+  }, []);
+
+  return null;
 }
