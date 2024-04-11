@@ -107,7 +107,7 @@ export interface SendCommandParams {
      * may be present in the method delete. In a command response, must be
      * present in successfully processed command with the method get.
      */
-    resource?: string;
+    resource?: unknown;
     /**
      * Result status of the command processing. Mandatory in response commands.
      *
@@ -179,7 +179,7 @@ export interface SendCommandRequest {
         | 'observe';
       uri: string;
       type?: string;
-      resource?: string;
+      resource?: unknown;
       status?: 'success' | 'failure';
       reason?: {
         code: number;

@@ -17,6 +17,31 @@ export function Navbar({
 }: Props) {
   return (
     <nav className="pt-md gap-md border-r-dark-4 flex w-[300px] shrink-0 flex-col border-0 border-r border-solid bg-[var(--mantine-color-body)]">
+      {/* <button
+        type="button"
+        className={clsx(
+          'py-xs px-sm flex grow cursor-pointer items-center rounded-sm border-0 text-sm font-medium',
+          'hover:bg-dark-6 text-dark-1 bg-transparent hover:text-white'
+        )}
+        onClick={async () => {
+          const response = await blip.getBotAccount();
+
+          if (!response.success) {
+            return;
+          }
+
+          const account = {
+            ...response.data,
+            fullName: 'New Account Name 2',
+          };
+
+          const setResponse = await blip.setBotAccount({ account });
+
+          console.log('response', response, 'set response', setResponse);
+        }}
+      >
+        Test function
+      </button> */}
       <div className="px-md">
         <SegmentedControl
           value={section}

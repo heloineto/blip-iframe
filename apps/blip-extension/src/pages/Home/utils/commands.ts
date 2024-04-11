@@ -42,6 +42,11 @@ export const commands = [
     schema: getTicketsSchema,
   },
   {
+    value: 'getBotAccount',
+    fn: () => blip.getBotAccount(),
+  },
+  // TODO: Add setBotAccount
+  {
     value: 'Usage With Fetch',
     fn: () => {
       const sender: Sender = async <TData = unknown>(message: Message) => {
