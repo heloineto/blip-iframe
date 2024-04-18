@@ -1,55 +1,55 @@
 {
-  "name": "blip-iframe",
-  "version": "1.0.2",
-  "description": "A type safe and intuitive API to communicate with the Blip platform",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
-  "sideEffects": false,
-  "license": "MIT",
-  "files": [
-    "dist/**"
-  ],
   "author": "Heloi Neto",
-  "scripts": {
-    "build": "tsup src/index.ts --format esm,cjs --dts",
-    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
-    "lint": "eslint \"src/**/*.ts*\"",
-    "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
-    "prepublishOnly": "rimraf dist && npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/heloineto/blip-iframe.git"
-  },
-  "keywords": [
-    "blip",
-    "chatbot",
-    "iframe",
-    "sdk"
-  ],
   "bugs": {
     "url": "https://github.com/heloineto/blip-iframe/issues"
   },
-  "homepage": "https://github.com/heloineto/blip-iframe#readme",
+  "dependencies": {
+    "iframe-message-proxy": "^1.2.0"
+  },
+  "description": "A type safe and intuitive API to communicate with the Blip platform",
   "devDependencies": {
     "rimraf": "^5.0.5",
     "tsconfig": "workspace:*",
     "tsup": "^7.2.0",
     "typescript": "^5.1.6"
   },
-  "dependencies": {
-    "iframe-message-proxy": "^1.2.0"
-  },
+  "files": [
+    "dist/**"
+  ],
+  "homepage": "https://github.com/heloineto/blip-iframe#readme",
+  "keywords": [
+    "blip",
+    "chatbot",
+    "iframe",
+    "sdk"
+  ],
+  "license": "MIT",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "name": "blip-iframe",
   "prettier": {
-    "singleQuote": true,
-    "trailingComma": "es5",
     "endOfLine": "auto",
+    "semi": true,
+    "singleQuote": true,
     "tabWidth": 2,
-    "useTabs": false,
-    "semi": true
+    "trailingComma": "es5",
+    "useTabs": false
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/heloineto/blip-iframe.git"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format esm,cjs --dts",
+    "clean": "rimraf .turbo && rimraf node_modules && rimraf dist",
+    "dev": "tsup src/index.ts --format esm,cjs --watch --dts",
+    "lint": "eslint \"src/**/*.ts*\"",
+    "prepublishOnly": "rimraf dist && npm run build"
+  },
+  "sideEffects": false,
+  "types": "./dist/index.d.ts",
+  "version": "1.1.2"
 }

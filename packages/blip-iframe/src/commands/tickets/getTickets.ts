@@ -6,7 +6,9 @@ import {
 } from '../../lib/shared/parseListParams';
 import buildURI from '../../lib/utils/buildURI';
 
-export interface GetTicketsParams extends GetListParams {}
+export interface GetTicketsParams extends GetListParams {
+  status?: string[];
+}
 
 /**
  * Gets the tickets (as in the support tickets shown by Blip Desk)
