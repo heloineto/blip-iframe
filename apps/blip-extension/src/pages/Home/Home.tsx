@@ -8,7 +8,12 @@ const Home = () => {
   const [active, setActive] = useState<string | null>(null);
 
   const blipFunction = useMemo(
-    () => (active ? functions[section].find((f) => f.value === active) : null),
+    () =>
+      active
+        ? (functions[section].find(
+            (f) => f.value === active
+          ) as (typeof functions)['actions'][number])
+        : null,
     [section, active]
   );
 

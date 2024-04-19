@@ -1,6 +1,6 @@
-import parseErrorString from './parseErrorString';
+import { parseErrorString } from './parseErrorString';
 
-export default function parseError(error: unknown) {
+export function parseError(error: unknown) {
   if (error instanceof Error) {
     return error;
   }

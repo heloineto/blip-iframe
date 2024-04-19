@@ -11,11 +11,13 @@
   "editor.formatOnSave": true,
   "cSpell.words": [
     "clsx",
+    "datetimeoffset",
     "Heloi",
     "iframe",
     "Informations",
     "mantine",
     "procurationem",
+    "substringof",
     "tsup"
   ],
   "[javascript]": {

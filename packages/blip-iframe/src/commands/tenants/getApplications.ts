@@ -1,7 +1,7 @@
 // TODO: Document
 import { sendCommand } from '../../actions/sendCommand';
 import { PORTAL_POSTMASTER_URL, Sender } from '../../lib';
-import buildURI from '../../lib/utils/buildURI';
+import { buildURI } from '../../lib/utils/buildURI';
 
 export interface GetApplicationsParams {
   /**

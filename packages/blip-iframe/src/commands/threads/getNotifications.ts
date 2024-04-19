@@ -2,7 +2,7 @@
 
 import { sendCommand } from '../../actions/sendCommand';
 import { Sender } from '../../lib';
-import buildURI from '../../lib/utils/buildURI';
+import { buildURI } from '../../lib/utils/buildURI';
 
 export interface GetNotificationsParams {
   identity?: string;

@@ -1,6 +1,6 @@
 import { IframeMessageProxy } from 'iframe-message-proxy';
 import { Message } from '../../types';
-import { parseError } from '../utils';
+import { parseError } from '../utils/parseError';
 
 export interface WrappedResponse<TData> {
   response: TData;

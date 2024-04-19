@@ -4,7 +4,7 @@ import {
   GetListParams,
   parseListParams,
 } from '../../lib/shared/parseListParams';
-import buildURI from '../../lib/utils/buildURI';
+import { buildURI } from '../../lib/utils/buildURI';
 import { Contact } from './types';
 
 export interface GetContactsParams extends GetListParams {}

@@ -1,7 +1,7 @@
 import { sendCommand } from '../../actions/sendCommand';
 import { Sender } from '../../lib';
 import { GetListParams } from '../../lib/shared/parseListParams';
-import buildURI from '../../lib/utils/buildURI';
+import { buildURI } from '../../lib/utils/buildURI';
 
 export interface GetThreadsParams extends GetListParams {
   identity?: string;

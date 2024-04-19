@@ -1,4 +1,4 @@
-export default function parseErrorString(error: string) {
+export function parseErrorString(error: string) {
   let errorObject: Record<string, unknown>;
 
   try {

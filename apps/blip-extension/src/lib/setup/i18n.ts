@@ -14,7 +14,7 @@ void i18n
       const response = await getCurrentLanguage();
 
       const fallback = 'pt';
-      const language = response.data ?? fallback;
+      const language = response.success ? response.data : fallback;
       const isSupported = ['en', 'es', 'pt'].includes(language);
 
       callback(isSupported ? language : fallback);

@@ -1,7 +1,7 @@
 // TODO: Add to docs
 import { sendCommand } from '../../actions/sendCommand';
 import { Sender, TUNNEL_POSTMASTER_URL } from '../../lib';
-import buildURI from '../../lib/utils/buildURI';
+import { buildURI } from '../../lib/utils/buildURI';
 
 export interface GetTunnelAccountParams {
   identity: string;

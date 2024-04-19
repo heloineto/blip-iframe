@@ -1,7 +1,7 @@
 // TODO: Add to docs
 import { sendCommand } from '../../actions/sendCommand';
 import { Sender } from '../../lib';
-import buildURI from '../../lib/utils/buildURI';
+import { buildURI } from '../../lib/utils/buildURI';
 import { BotAccount } from './types';
 
 export interface GetBotAccountParams {}

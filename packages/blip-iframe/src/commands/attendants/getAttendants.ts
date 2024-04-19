@@ -4,7 +4,7 @@ import {
   GetListParams,
   parseListParams,
 } from '../../lib/shared/parseListParams';
-import { buildURI } from '../../lib/utils';
+import { buildURI } from '../../lib/utils/buildURI';
 
 export interface GetAttendantsParams extends GetListParams {}
 

@@ -5,7 +5,7 @@ export interface BuildAuthorizationKeyParams {
   botAccessKey: string;
 }
 
-export default function buildAuthorizationKey({
+export function buildAuthorizationKey({
   botShortName,
   botAccessKey,
 }: BuildAuthorizationKeyParams) {

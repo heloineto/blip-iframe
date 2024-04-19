@@ -6,11 +6,7 @@ export interface buildURIParams {
   prefix?: string;
 }
 
-export default function buildURI({
-  paths,
-  params,
-  prefix = '/',
-}: buildURIParams) {
+export function buildURI({ paths, params, prefix = '/' }: buildURIParams) {
   const searchParams = buildSearchParams(params);
 
   const slug = (paths.filter((path) => !!path) as string[])
