@@ -1,4 +1,9 @@
-export function orFilter<T extends string | number>(
+export function eq(name: string, value: string | number | undefined) {
+  if (!value) return '';
+  return `${name} eq ${typeof value === 'string' ? `'${value}'` : value}`;
+}
+
+export function or<T extends string | number>(
   name: string,
   items: T | T[] | undefined,
   {
@@ -13,11 +18,11 @@ export function orFilter<T extends string | number>(
   if (_items.length === 0) return '';
 
   return `(${_items
-    .map((item) => (getQuery ? getQuery(item) : `${name} eq '${item}'`))
+    .map((item) => (getQuery ? getQuery(item) : eq(name, item)))
     .join(' or ')})`;
 }
 
-export function andFilter<T extends string | number>(
+export function and<T extends string | number>(
   name: string,
   items: T | T[] | undefined,
   {
@@ -32,11 +37,11 @@ export function andFilter<T extends string | number>(
   if (_items.length === 0) return '';
 
   return `${_items
-    .map((item) => (getQuery ? getQuery(item) : `${name} eq '${item}'`))
+    .map((item) => (getQuery ? getQuery(item) : eq(name, item)))
     .join(' and ')}`;
 }
 
-export function dateFilter(
+export function date(
   name: string,
   date: Date | null | [Date | null, Date | null] | undefined
 ) {
@@ -54,4 +59,12 @@ export function dateFilter(
       : null;
 
   return [startFilter, endFilter].filter(Boolean).join(' and ');
+}
+
+export function substring(name: string, value: string | number) {
+  return `substringof('${value}',${name})`;
+}
+
+export function startsWith(name: string, value: string | number) {
+  return `startswith(${name},'${value}')`;
 }

@@ -23,6 +23,7 @@ export const getAttendantsSchema = z.object({
   }),
 });
 
+// TODO: Fix
 assert<
   Equals<
     z.infer<typeof getAttendantsSchema>,

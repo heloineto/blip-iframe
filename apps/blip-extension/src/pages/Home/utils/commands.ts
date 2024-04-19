@@ -3,9 +3,27 @@ import { IframeMessageProxy, blip } from 'blip-iframe';
 import { v4 as uuidv4 } from 'uuid';
 import { getAttendantsSchema } from './schemas/getAttendantsSchema';
 import { getContactsSchema } from './schemas/getContactsSchema';
+import { getTeamsAndAgentsOnlineSchema } from './schemas/getTeamsAndAgentsOnlineSchema';
+import { getTeamsSchema } from './schemas/getTeamsSchema';
 import { getTicketsSchema } from './schemas/getTickets';
 
 export const commands = [
+  {
+    value: 'getTeams',
+    fn: () => blip.getTeams(),
+    schema: getTeamsSchema,
+  },
+  {
+    value: 'getTeamsAndAgentsOnline',
+    fn: () => blip.getTeamsAndAgentsOnline(),
+    schema: getTeamsAndAgentsOnlineSchema,
+  },
+  {
+    value: 'getTeamsAttendants',
+    fn: () => blip.getAttendants(),
+    schema: getAttendantsSchema,
+  },
+
   {
     value: 'getAttendants',
     fn: () => blip.getAttendants(),
