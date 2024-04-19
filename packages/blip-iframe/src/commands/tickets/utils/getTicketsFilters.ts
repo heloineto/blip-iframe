@@ -1,7 +1,7 @@
-import { TicketStatuses } from './constants';
+import { TicketStatus } from './constants';
 
 export interface GetTicketFilters {
-  status?: (TicketStatuses | (string & {}))[];
+  status?: (TicketStatus | (string & {}))[];
   /** Filters by one or more attendant identities */
   attendant?: string | string[];
   /** Filters by one or more contact identities */

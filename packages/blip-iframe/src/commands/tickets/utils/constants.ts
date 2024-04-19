@@ -9,10 +9,10 @@ export const ticketStatuses = [
   'Transferred',
 ] as const;
 
-export type TicketStatuses = typeof ticketStatuses[number];
+export type TicketStatus = typeof ticketStatuses[number];
 
 export const ticketStatusToLabel: Record<
-  TicketStatuses | (string & {}),
+  TicketStatus | (string & {}),
   | {
       en: string;
       pt: string;
@@ -63,7 +63,7 @@ export const ticketStatusToLabel: Record<
 };
 
 export function getTicketStatusLabel(
-  status: TicketStatuses | (string & {}),
+  status: TicketStatus | (string & {}),
   language: 'en' | 'pt' | 'es' = 'pt'
 ) {
   const label = ticketStatusToLabel[status];

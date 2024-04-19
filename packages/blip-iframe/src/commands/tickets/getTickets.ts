@@ -2,6 +2,7 @@ import { sendCommand } from '../../actions/sendCommand';
 import { DESK_POSTMASTER_URL, Sender } from '../../lib';
 import { GetListParams } from '../../lib/shared/parseListParams';
 import { buildURI } from '../../lib/utils/buildURI';
+import { TicketStatus } from './utils';
 import { GetTicketFilters } from './utils/getTicketsFilters';
 
 export interface GetTicketsParams extends GetListParams, GetTicketFilters {}
@@ -50,7 +51,7 @@ export interface GetTicketsItem {
   customerDomain: string;
   agentIdentity: string;
   provider: string;
-  status: string;
+  status: TicketStatus;
   storageDate: string;
   openDate: string;
   statusDate: string;

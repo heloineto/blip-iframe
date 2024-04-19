@@ -15,7 +15,7 @@ export interface GetListParams {
 
 export function parseListParams({ filter, take, skip }: GetListParams) {
   return {
-    $filter: filter,
+    $filter: filter || undefined,
     $skip: skip,
     $take: take,
   };
