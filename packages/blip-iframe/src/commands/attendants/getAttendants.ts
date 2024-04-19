@@ -5,6 +5,7 @@ import {
   parseListParams,
 } from '../../lib/shared/parseListParams';
 import { buildURI } from '../../lib/utils/buildURI';
+import { AttendantStatus } from './utils/constants';
 
 export interface GetAttendantsParams extends GetListParams {}
 
@@ -45,7 +46,7 @@ export interface GetAttendantsItem {
   fullName: string;
   email: string;
   teams: string[];
-  status: string;
+  status: AttendantStatus;
   isEnabled: boolean;
   agentSlots?: number;
   lastServiceDate?: string;

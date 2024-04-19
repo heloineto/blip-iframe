@@ -1,4 +1,9 @@
-export const attendantStatuses = ['Online', 'Away', 'Invisible', 'Offline'];
+export const attendantStatuses = [
+  'Online',
+  'Away',
+  'Invisible',
+  'Offline',
+] as const;
 
 export type AttendantStatus = typeof attendantStatuses[number];
 
@@ -44,4 +49,18 @@ export function getAttendantStatusLabel(
   }
 
   return status;
+}
+
+export const attendantStatusToColor: Record<
+  AttendantStatus | (string & {}),
+  string | undefined
+> = {
+  Online: 'green',
+  Away: 'yellow',
+  Invisible: 'violet',
+  Offline: 'gray',
+};
+
+export function getAttendantStatusColor(status: string) {
+  return attendantStatusToColor[status] ?? 'gray';
 }

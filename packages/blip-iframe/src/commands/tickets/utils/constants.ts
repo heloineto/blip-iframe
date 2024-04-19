@@ -74,3 +74,21 @@ export function getTicketStatusLabel(
 
   return status;
 }
+
+export const ticketStatusToColor: Record<
+  TicketStatus | (string & {}),
+  string | undefined
+> = {
+  None: 'gray',
+  Waiting: 'yellow',
+  Assigned: 'cyan',
+  Open: 'blue',
+  ClosedClient: 'violet',
+  ClosedClientInactivity: 'grape',
+  ClosedAttendant: 'cyan',
+  Transferred: 'orange',
+};
+
+export function getTicketStatusColor(status: string) {
+  return ticketStatusToColor[status] ?? 'gray';
+}
