@@ -49,6 +49,10 @@ export function date(
 
   const [start, end] = Array.isArray(date) ? date : [date, null];
 
+  if (end) {
+    end.setUTCHours(23, 59, 59, 999);
+  }
+
   const startFilter =
     start instanceof Date
       ? `${name} ge datetimeoffset'${start.toISOString()}'`

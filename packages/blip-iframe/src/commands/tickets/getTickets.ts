@@ -3,9 +3,8 @@ import { DESK_POSTMASTER_URL, Sender } from '../../lib';
 import { GetListParams } from '../../lib/shared/parseListParams';
 import { buildURI } from '../../lib/utils/buildURI';
 import { TicketStatus } from './utils';
-import { GetTicketFilters } from './utils/getTicketsFilters';
 
-export interface GetTicketsParams extends GetListParams, GetTicketFilters {}
+export interface GetTicketsParams extends GetListParams {}
 
 /**
  * Gets the tickets (as in the support tickets shown by Blip Desk)

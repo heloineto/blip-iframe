@@ -1,4 +1,4 @@
-export default function buildSearchParams(
+export function buildSearchParams(
   params?: Record<string, string | boolean | number | undefined>
 ) {
   if (!params) return '';

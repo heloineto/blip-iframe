@@ -1,4 +1,4 @@
-import buildSearchParams from './buildSearchParams';
+import { buildSearchParams } from './buildSearchParams';
 
 export interface buildURIParams {
   paths: (string | undefined)[];
