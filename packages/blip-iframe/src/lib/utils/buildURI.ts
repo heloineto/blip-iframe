@@ -1,17 +1,21 @@
 import { buildSearchParams } from './buildSearchParams';
 
-export interface buildURIParams {
+export interface BuildURIParams {
   paths: (string | undefined)[];
   params?: Record<string, string | boolean | number | undefined>;
   prefix?: string;
 }
 
-export function buildURI({ paths, params, prefix = '/' }: buildURIParams) {
+export type BuildParams = Partial<BuildURIParams>;
+
+export function buildURI({ paths, params, prefix = '/' }: BuildURIParams) {
   const searchParams = buildSearchParams(params);
 
   const slug = (paths.filter((path) => !!path) as string[])
     .map((path) => encodeURIComponent(path))
     .join('/');
 
-  return `${prefix}${slug}${searchParams}`;
+  return `${
+    prefix.endsWith('/') ? prefix : `${prefix}/`
+  }${slug}${searchParams}`;
 }

@@ -1,13 +1,10 @@
 import { sendCommand } from '../../actions/sendCommand';
 import { DESK_POSTMASTER_URL, Sender } from '../../lib';
-import {
-  GetListParams,
-  parseListParams,
-} from '../../lib/shared/parseListParams';
-import { buildURI } from '../../lib/utils/buildURI';
+import { ListParams } from '../../lib/shared/parseListParams';
+import { BuildParams, buildURI } from '../../lib/utils/buildURI';
 import { AttendantStatus } from './utils/constants';
 
-export interface GetAttendantsParams extends GetListParams {}
+export interface GetAttendantsParams extends ListParams, BuildParams {}
 
 /**
  * Gets a list of attendants in the Blip platform.
@@ -15,12 +12,17 @@ export interface GetAttendantsParams extends GetListParams {}
  * @returns A promise that resolves to a list of attendants.
  */
 export async function getAttendants(
-  { ...listParams }: GetAttendantsParams = {},
+  { take, skip, filter, ...buildPrams }: GetAttendantsParams = {},
   sender?: Sender
 ) {
   const uri = buildURI({
     paths: ['attendants'],
-    params: parseListParams(listParams),
+    params: {
+      $filter: filter || undefined,
+      $skip: skip,
+      $take: take,
+    },
+    ...buildPrams,
   });
 
   return await sendCommand<GetAttendantsResponse>(

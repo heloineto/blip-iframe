@@ -1,12 +1,7 @@
 import { sendCommand } from '../../actions';
-import {
-  buildURI,
-  DESK_POSTMASTER_URL,
-  GetListParams,
-  Sender,
-} from '../../lib';
+import { buildURI, DESK_POSTMASTER_URL, ListParams, Sender } from '../../lib';
 
-export interface GetTeamsAndAgentsOnlineParams extends GetListParams {}
+export interface GetTeamsAndAgentsOnlineParams extends ListParams {}
 
 /**
  *
@@ -20,7 +15,7 @@ export async function getTeamsAndAgentsOnline(
   const uri = buildURI({
     paths: ['teams', 'agents-online'],
     params: {
-      $filter: filter,
+      $filter: filter || undefined,
       $skip: skip,
       $take: take,
     },

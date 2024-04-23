@@ -1,10 +1,10 @@
 import { sendCommand } from '../../actions/sendCommand';
 import { DESK_POSTMASTER_URL, Sender } from '../../lib';
-import { GetListParams } from '../../lib/shared/parseListParams';
+import { ListParams } from '../../lib/shared/parseListParams';
 import { buildURI } from '../../lib/utils/buildURI';
 import { TicketStatus } from './utils';
 
-export interface GetTicketsParams extends GetListParams {}
+export interface GetTicketsParams extends ListParams {}
 
 /**
  * Gets the tickets (as in the support tickets shown by Blip Desk)
@@ -18,7 +18,7 @@ export async function getTickets(
   const uri = buildURI({
     paths: ['tickets'],
     params: {
-      $filter: filter,
+      $filter: filter || undefined,
       $skip: skip,
       $take: take,
     },

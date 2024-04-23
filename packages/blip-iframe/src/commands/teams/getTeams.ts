@@ -1,12 +1,13 @@
 import { sendCommand } from '../../actions';
 import {
+  BuildParams,
   buildURI,
   DESK_POSTMASTER_URL,
-  GetListParams,
+  ListParams,
   Sender,
 } from '../../lib';
 
-export interface GetTeamsParams extends GetListParams {}
+export interface GetTeamsParams extends ListParams, BuildParams {}
 
 /**
  * Gets the teams (as in the queues of teams shown by Blip Desk)
@@ -14,16 +15,17 @@ export interface GetTeamsParams extends GetListParams {}
  * @returns
  */
 export async function getTeams(
-  { filter, skip, take }: GetTeamsParams = {},
+  { filter, skip, take, ...buildParams }: GetTeamsParams = {},
   sender?: Sender
 ) {
   const uri = buildURI({
     paths: ['teams'],
     params: {
-      $filter: filter,
+      $filter: filter || undefined,
       $skip: skip,
       $take: take,
     },
+    ...buildParams,
   });
 
   const response = await sendCommand<GetTeamsResponse>(

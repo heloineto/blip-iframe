@@ -1,13 +1,10 @@
 // TODO: Add to docs
 import { sendCommand } from '../../actions/sendCommand';
 import { PORTAL_POSTMASTER_URL, Sender } from '../../lib';
-import {
-  GetListParams,
-  parseListParams,
-} from '../../lib/shared/parseListParams';
+import { ListParams, parseListParams } from '../../lib/shared/parseListParams';
 import { buildURI } from '../../lib/utils/buildURI';
 
-export interface ApplicationUserAccountsParams extends GetListParams {
+export interface ApplicationUserAccountsParams extends ListParams {
   /**
    * The bot's shortName (aka identity)
    */

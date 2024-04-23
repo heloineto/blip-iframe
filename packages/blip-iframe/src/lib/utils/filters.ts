@@ -1,3 +1,27 @@
+export type ODataOperator =
+  | 'eq'
+  | 'ne'
+  | 'gt'
+  | 'ge'
+  | 'lt'
+  | 'le'
+  | 'and'
+  | 'or'
+  | 'not'
+  | 'add'
+  | 'sub'
+  | 'mul'
+  | 'div'
+  | 'mod';
+
+export type ODataFunction =
+  | 'substringof'
+  | 'substringof'
+  | 'startswith'
+  | 'not substringof';
+
+export type ODataModifier = ODataOperator | ODataFunction;
+
 export function eq(name: string, value: string | number | undefined) {
   if (!value) return '';
   return `${name} eq ${typeof value === 'string' ? `'${value}'` : value}`;

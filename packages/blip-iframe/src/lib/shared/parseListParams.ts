@@ -1,4 +1,4 @@
-export interface GetListParams {
+export interface ListParams {
   /**
    * OData filter (see https://docs.microsoft.com/en-us/odata/concepts/queryoptions-overview#filter)
    */
@@ -13,7 +13,7 @@ export interface GetListParams {
   take?: number;
 }
 
-export function parseListParams({ filter, take, skip }: GetListParams) {
+export function parseListParams({ filter, take, skip }: ListParams) {
   return {
     $filter: filter || undefined,
     $skip: skip,

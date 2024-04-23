@@ -1,13 +1,10 @@
 import { sendCommand } from '../../actions/sendCommand';
 import { Sender } from '../../lib';
-import {
-  GetListParams,
-  parseListParams,
-} from '../../lib/shared/parseListParams';
-import { buildURI } from '../../lib/utils/buildURI';
+import { ListParams } from '../../lib/shared/parseListParams';
+import { BuildParams, buildURI } from '../../lib/utils/buildURI';
 import { Contact } from './types';
 
-export interface GetContactsParams extends GetListParams {}
+export interface GetContactsParams extends ListParams, BuildParams {}
 
 /**
  * Gets contacts information
@@ -15,12 +12,17 @@ export interface GetContactsParams extends GetListParams {}
  * @returns A promise that resolves to a list of contacts.
  */
 export async function getContacts(
-  { ...listParams }: GetContactsParams = {},
+  { filter, skip, take, ...buildParams }: GetContactsParams = {},
   sender?: Sender
 ) {
   const uri = buildURI({
     paths: ['contacts'],
-    params: parseListParams(listParams),
+    params: {
+      $filter: filter || undefined,
+      $skip: skip,
+      $take: take,
+    },
+    ...buildParams,
   });
 
   return await sendCommand<GetContactsResponse>(
