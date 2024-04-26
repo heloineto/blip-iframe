@@ -2,9 +2,9 @@ import { sendCommand } from '../../actions';
 import {
   BuildParams,
   buildURI,
-  DESK_POSTMASTER_URL,
   ListParams,
   Sender,
+  TO_DESK_URL,
 } from '../../lib';
 
 export interface GetTeamsParams extends ListParams, BuildParams {}
@@ -12,6 +12,7 @@ export interface GetTeamsParams extends ListParams, BuildParams {}
 /**
  * Gets the teams (as in the queues of teams shown by Blip Desk)
  * @param params - The parameters for the function
+ * @param sender Override the function that sends the command. By default it uses IframeMessageProxy
  * @returns
  */
 export async function getTeams(
@@ -21,7 +22,7 @@ export async function getTeams(
   const uri = buildURI({
     paths: ['teams'],
     params: {
-      $filter: filter || undefined,
+      $filter: filter,
       $skip: skip,
       $take: take,
     },
@@ -32,7 +33,7 @@ export async function getTeams(
     {
       command: {
         method: 'get',
-        to: DESK_POSTMASTER_URL,
+        to: TO_DESK_URL,
         uri,
       },
     },

@@ -1,6 +1,6 @@
 // TODO: Document
 import { sendCommand } from '../../actions/sendCommand';
-import { PORTAL_POSTMASTER_URL, Sender } from '../../lib';
+import { Sender, TO_PORTAL_URL } from '../../lib';
 import { buildURI } from '../../lib/utils/buildURI';
 
 export interface GetApplicationsParams {
@@ -23,7 +23,7 @@ export async function getApplications(
       destination: 'BlipService',
       command: {
         method: 'get',
-        to: PORTAL_POSTMASTER_URL,
+        to: TO_PORTAL_URL,
         uri,
       },
     },

@@ -1,5 +1,5 @@
 import { sendCommand } from '../../actions/sendCommand';
-import { DESK_POSTMASTER_URL, Sender } from '../../lib';
+import { Sender, TO_DESK_URL } from '../../lib';
 import { ListParams } from '../../lib/shared/parseListParams';
 import { BuildParams, buildURI } from '../../lib/utils/buildURI';
 import { AttendantStatus } from './utils/constants';
@@ -18,7 +18,7 @@ export async function getAttendants(
   const uri = buildURI({
     paths: ['attendants'],
     params: {
-      $filter: filter || undefined,
+      $filter: filter,
       $skip: skip,
       $take: take,
     },
@@ -29,7 +29,7 @@ export async function getAttendants(
     {
       command: {
         method: 'get',
-        to: DESK_POSTMASTER_URL,
+        to: TO_DESK_URL,
         uri,
       },
     },

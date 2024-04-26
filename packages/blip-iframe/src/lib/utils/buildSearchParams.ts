@@ -9,7 +9,7 @@ export function buildSearchParams(
   for (let index = 0; index < entries.length; index++) {
     const [key, value] = entries[index];
 
-    if (value === undefined) continue;
+    if (value === undefined || value === null || value === '') continue;
 
     const prefix = !strParams ? '?' : `${strParams}&`;
 

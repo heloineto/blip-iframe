@@ -1,13 +1,54 @@
 import type { Message, Sender } from 'blip-iframe';
-import { IframeMessageProxy, blip } from 'blip-iframe';
+import { blip } from 'blip-iframe';
 import { v4 as uuidv4 } from 'uuid';
+import type { BlipFunction } from './functions';
 import { getAttendantsSchema } from './schemas/getAttendantsSchema';
 import { getContactsSchema } from './schemas/getContactsSchema';
 import { getTeamsAndAgentsOnlineSchema } from './schemas/getTeamsAndAgentsOnlineSchema';
 import { getTeamsSchema } from './schemas/getTeamsSchema';
 import { getTicketsSchema } from './schemas/getTickets';
 
-export const commands = [
+export const commands: BlipFunction[] = [
+  {
+    value: 'test',
+    fn: () => {
+      return blip.sendCommand({
+        command: {
+          method: 'get',
+          to: 'postmaster@analytics.msging.net',
+          uri: `/metrics/active-messages/NI`,
+        },
+      });
+    },
+  },
+  {
+    value: 'getPlans',
+    fn: () => blip.getPlans(),
+  },
+  {
+    value: 'getEventTrackCount',
+    fn: () =>
+      blip.getEventTracks({
+        startDate: '2024-01-25T00:00:00.000Z',
+        endDate: '2024-04-26T00:00:00.000Z',
+        category: 'Name Generated',
+      }),
+  },
+  {
+    value: 'getEventTracks',
+    fn: () =>
+      blip.getEventTracks({
+        category: 'Name Generated',
+      }),
+  },
+  {
+    value: 'getEventTrackCategories',
+    fn: () => blip.getEventTrackCategories(),
+  },
+  {
+    value: 'getTenantPlan',
+    fn: () => blip.getTenantPlan({ tenantId: 'csgrowth' }),
+  },
   {
     value: 'getTeams',
     fn: () => blip.getTeams(),
@@ -18,12 +59,6 @@ export const commands = [
     fn: () => blip.getTeamsAndAgentsOnline(),
     schema: getTeamsAndAgentsOnlineSchema,
   },
-  {
-    value: 'getTeamsAttendants',
-    fn: () => blip.getAttendants(),
-    schema: getAttendantsSchema,
-  },
-
   {
     value: 'getAttendants',
     fn: () => blip.getAttendants(),
@@ -121,35 +156,35 @@ export const commands = [
         },
       }),
   },
-  {
-    value: 'With IframeMessageProxy',
-    fn: () =>
-      IframeMessageProxy.sendMessage({
-        action: 'sendCommand',
-        content: {
-          command: {
-            to: 'postmaster@portal.blip.ai',
-            method: 'get',
-            uri: '/tenants/csgrowth/applications',
-          },
-        },
-      }),
-  },
-  {
-    value: 'With Blip SDK',
-    fn: () =>
-      IframeMessageProxy.sendMessage({
-        action: 'sendCommand',
-        content: {
-          destination: 'BlipService',
-          command: {
-            to: 'postmaster@portal.blip.ai',
-            method: 'get',
-            uri: '/tenants/csgrowth/applications',
-          },
-        },
-      }),
-  },
+  // {
+  //   value: 'With IframeMessageProxy',
+  //   fn: () =>
+  //     IframeMessageProxy.sendMessage({
+  //       action: 'sendCommand',
+  //       content: {
+  //         command: {
+  //           to: 'postmaster@portal.blip.ai',
+  //           method: 'get',
+  //           uri: '/tenants/csgrowth/applications',
+  //         },
+  //       },
+  //     }),
+  // },
+  // {
+  //   value: 'With Blip SDK',
+  //   fn: () =>
+  //     IframeMessageProxy.sendMessage({
+  //       action: 'sendCommand',
+  //       content: {
+  //         destination: 'BlipService',
+  //         command: {
+  //           to: 'postmaster@portal.blip.ai',
+  //           method: 'get',
+  //           uri: '/tenants/csgrowth/applications',
+  //         },
+  //       },
+  //     }),
+  // },
   // getTicketsHistory: () =>
   //   blip.getTicketsHistory({
   //     // filter:

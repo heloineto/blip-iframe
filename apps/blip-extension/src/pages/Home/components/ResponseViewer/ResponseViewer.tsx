@@ -16,8 +16,13 @@ interface Props {
 export function ResponseViewer({ section, blipFunction }: Props) {
   const query = useQuery({
     queryKey: [section, blipFunction.value],
-    queryFn: () => blipFunction.fn(),
-    // retry: false,
+    queryFn: async () => {
+      const response = (await blipFunction.fn()) ?? null;
+      if (!response.success) {
+        console.error(response.error);
+      }
+      return response;
+    },
     refetchOnWindowFocus: false,
   });
 
@@ -26,14 +31,28 @@ export function ResponseViewer({ section, blipFunction }: Props) {
   }
 
   if (query.isError) {
-    return <ErrorState query={query} error={query.error} />;
+    return (
+      <ErrorState
+        className="grow"
+        radius={0}
+        query={query}
+        error={query.error}
+      />
+    );
   }
 
   if (!query.data) {
-    return <EmptyState />;
+    return (
+      <EmptyState
+        title="No data returned"
+        description="The function returned no data"
+      />
+    );
   }
 
-  console.log(query.data);
+  // if(query.data.success === false) {
+  //   query.data.error =
+  // }
 
   return (
     <div className="m-md flex grow">

@@ -1,10 +1,10 @@
 import { sendCommand } from '../../actions/sendCommand';
-import { DESK_POSTMASTER_URL, Sender } from '../../lib';
+import { Sender, TO_DESK_URL } from '../../lib';
 import { ListParams } from '../../lib/shared/parseListParams';
-import { buildURI } from '../../lib/utils/buildURI';
+import { BuildParams, buildURI } from '../../lib/utils/buildURI';
 import { TicketStatus } from './utils';
 
-export interface GetTicketsParams extends ListParams {}
+export interface GetTicketsParams extends ListParams, BuildParams {}
 
 /**
  * Gets the tickets (as in the support tickets shown by Blip Desk)
@@ -12,23 +12,24 @@ export interface GetTicketsParams extends ListParams {}
  * @returns
  */
 export async function getTickets(
-  { filter, skip, take }: GetTicketsParams = {},
+  { filter, skip, take, ...buildParams }: GetTicketsParams = {},
   sender?: Sender
 ) {
   const uri = buildURI({
     paths: ['tickets'],
     params: {
-      $filter: filter || undefined,
+      $filter: filter,
       $skip: skip,
       $take: take,
     },
+    ...buildParams,
   });
 
   return await sendCommand<GetTicketsResponse>(
     {
       command: {
         method: 'get',
-        to: DESK_POSTMASTER_URL,
+        to: TO_DESK_URL,
         uri,
       },
     },

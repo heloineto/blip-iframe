@@ -3,6 +3,13 @@ import type { Equals } from 'tsafe';
 import { assert } from 'tsafe';
 import { z } from 'zod';
 
+const attendantStatusSchema = z.enum([
+  'Online',
+  'Away',
+  'Invisible',
+  'Offline',
+]);
+
 export const getAttendantsSchema = z.object({
   success: z.boolean(),
   data: z.object({
@@ -14,7 +21,7 @@ export const getAttendantsSchema = z.object({
         fullName: z.string(),
         email: z.string(),
         teams: z.array(z.string()),
-        status: z.string(),
+        status: attendantStatusSchema,
         isEnabled: z.boolean(),
         agentSlots: z.number().optional(),
         lastServiceDate: z.string().optional(),
@@ -23,7 +30,6 @@ export const getAttendantsSchema = z.object({
   }),
 });
 
-// TODO: Fix
 assert<
   Equals<
     z.infer<typeof getAttendantsSchema>,

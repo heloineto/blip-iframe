@@ -18,7 +18,7 @@ export async function getContacts(
   const uri = buildURI({
     paths: ['contacts'],
     params: {
-      $filter: filter || undefined,
+      $filter: filter,
       $skip: skip,
       $take: take,
     },

@@ -1,4 +1,5 @@
 import { blip } from 'blip-iframe';
+import type { BlipFunction } from './functions';
 import { addTenantPrefixToUrlSchema } from './schemas/addTenantPrefixToUrlSchema';
 import { getAccountSchema } from './schemas/getAccountSchema';
 import { getApplicationSchema } from './schemas/getApplicationSchema';
@@ -7,7 +8,7 @@ import { getPermissionsObjectSchema } from './schemas/getPermissionsObjectSchema
 import { getTokenSchema } from './schemas/getTokenSchema';
 import { uploadFileSchema } from './schemas/uploadFileSchema';
 
-export const actions = [
+export const actions: BlipFunction[] = [
   {
     value: 'addTenantPrefixToUrl',
     fn: () => blip.addTenantPrefixToUrl({ url: 'https://example.com' }),

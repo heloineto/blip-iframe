@@ -1,10 +1,10 @@
 // TODO: Add to docs
 import { sendCommand } from '../../actions/sendCommand';
-import { PORTAL_POSTMASTER_URL, Sender } from '../../lib';
-import { ListParams, parseListParams } from '../../lib/shared/parseListParams';
-import { buildURI } from '../../lib/utils/buildURI';
+import { Sender, TO_PORTAL_URL } from '../../lib';
+import { ListParams } from '../../lib/shared/parseListParams';
+import { BuildParams, buildURI } from '../../lib/utils/buildURI';
 
-export interface ApplicationUserAccountsParams extends ListParams {
+export interface ApplicationUserAccountsParams extends ListParams, BuildParams {
   /**
    * The bot's shortName (aka identity)
    */
@@ -17,19 +17,30 @@ export interface ApplicationUserAccountsParams extends ListParams {
  * @returns A promise that resolves to a list of attendants.
  */
 export async function getApplicationUserAccounts(
-  { shortName, ...listParams }: ApplicationUserAccountsParams,
+  {
+    shortName,
+    filter,
+    skip,
+    take,
+    ...buildParams
+  }: ApplicationUserAccountsParams,
   sender?: Sender
 ) {
   const uri = buildURI({
     paths: ['applications', `${shortName}@msging.net`, 'users', 'accounts'],
-    params: parseListParams(listParams),
+    params: {
+      $filter: filter,
+      $skip: skip,
+      $take: take,
+    },
+    ...buildParams,
   });
 
   return await sendCommand<GetApplicationUserAccountsResponse>(
     {
       command: {
         method: 'get',
-        to: PORTAL_POSTMASTER_URL,
+        to: TO_PORTAL_URL,
         uri,
       },
     },

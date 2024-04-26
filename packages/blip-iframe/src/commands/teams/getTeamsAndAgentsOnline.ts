@@ -1,31 +1,41 @@
 import { sendCommand } from '../../actions';
-import { buildURI, DESK_POSTMASTER_URL, ListParams, Sender } from '../../lib';
+import {
+  BuildParams,
+  buildURI,
+  ListParams,
+  Sender,
+  TO_DESK_URL,
+} from '../../lib';
 
-export interface GetTeamsAndAgentsOnlineParams extends ListParams {}
+export interface GetTeamsAndAgentsOnlineParams
+  extends ListParams,
+    BuildParams {}
 
 /**
  *
  * @param params - The parameters for the function
+ * @param sender Override the function that sends the command. By default it uses IframeMessageProxy
  * @returns
  */
 export async function getTeamsAndAgentsOnline(
-  { filter, skip, take }: GetTeamsAndAgentsOnlineParams = {},
+  { filter, skip, take, ...buildParams }: GetTeamsAndAgentsOnlineParams = {},
   sender?: Sender
 ) {
   const uri = buildURI({
     paths: ['teams', 'agents-online'],
     params: {
-      $filter: filter || undefined,
+      $filter: filter,
       $skip: skip,
       $take: take,
     },
+    ...buildParams,
   });
 
   return await sendCommand<GetTeamsAndAgentsOnlineResponse>(
     {
       command: {
         method: 'get',
-        to: DESK_POSTMASTER_URL,
+        to: TO_DESK_URL,
         uri,
       },
     },

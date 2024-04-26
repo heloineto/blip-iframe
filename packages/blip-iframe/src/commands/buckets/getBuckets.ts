@@ -1,7 +1,5 @@
 import { sendCommand } from '../../actions/sendCommand';
-import { DESK_POSTMASTER_URL, Sender, buildURI } from '../../lib';
-
-// {"id":"67ec4b32-6e3d-431c-a3a2-fdc8ceb93a11","method":"get","to":"postmaster@desk.msging.net","uri":"/tickets/active","metadata":{"server.shouldStore":"true"}}
+import { Sender, TO_DESK_URL, buildURI } from '../../lib';
 
 export interface GetBucketsParams {}
 
@@ -14,7 +12,7 @@ export function getBuckets(params: GetBucketsParams, sender?: Sender) {
     {
       command: {
         method: 'get',
-        to: DESK_POSTMASTER_URL,
+        to: TO_DESK_URL,
         uri,
       },
     },

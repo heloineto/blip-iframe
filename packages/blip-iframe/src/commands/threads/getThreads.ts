@@ -1,9 +1,9 @@
 import { sendCommand } from '../../actions/sendCommand';
 import { Sender } from '../../lib';
 import { ListParams } from '../../lib/shared/parseListParams';
-import { buildURI } from '../../lib/utils/buildURI';
+import { BuildParams, buildURI } from '../../lib/utils/buildURI';
 
-export interface GetThreadsParams extends ListParams {
+export interface GetThreadsParams extends ListParams, BuildParams {
   identity?: string;
   storageDate?: string;
   messageId?: string;
@@ -32,6 +32,7 @@ export async function getThreads(
     take,
     direction = 'desc',
     refreshExpiredMedia = true,
+    ...buildSearchParams
   }: GetThreadsParams,
   sender?: Sender
 ) {
@@ -45,10 +46,11 @@ export async function getThreads(
       getFromOriginator,
       direction,
       refreshExpiredMedia,
-      $filter: filter || undefined,
+      $filter: filter,
       $take: take,
       $skip: skip,
     },
+    ...buildSearchParams,
   });
 
   return await sendCommand<GetThreadsResponse>(

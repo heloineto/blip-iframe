@@ -3,6 +3,17 @@ import type { Equals } from 'tsafe';
 import { assert } from 'tsafe';
 import { z } from 'zod';
 
+const ticketStatusSchema = z.enum([
+  'None',
+  'Waiting',
+  'Assigned',
+  'Open',
+  'ClosedClient',
+  'ClosedClientInactivity',
+  'ClosedAttendant',
+  'Transferred',
+]);
+
 export const getTicketsSchema = z.object({
   success: z.boolean(),
   data: z.object({
@@ -17,7 +28,7 @@ export const getTicketsSchema = z.object({
         customerDomain: z.string(),
         agentIdentity: z.string(),
         provider: z.string(),
-        status: z.string(),
+        status: ticketStatusSchema,
         storageDate: z.string(),
         openDate: z.string(),
         statusDate: z.string(),
@@ -37,7 +48,7 @@ export const getTicketsSchema = z.object({
   }),
 });
 
-assert<
+export const getTicketsItemSchema = assert<
   Equals<
     z.infer<typeof getTicketsSchema>,
     {
