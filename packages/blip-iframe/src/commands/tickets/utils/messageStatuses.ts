@@ -42,3 +42,28 @@ export const messageStatusToLabel: Record<
     es: 'Mensaje no se pudo enviar',
   },
 };
+
+export function getMessageStatusLabel(
+  status: MessageStatus | (string & {}),
+  language: 'en' | 'pt' | 'es' = 'pt'
+) {
+  const label = messageStatusToLabel[status];
+
+  if (label) {
+    return label[language];
+  }
+
+  return status;
+}
+
+export const messageStatusToColor: Record<MessageStatus, string> = {
+  dispatched: 'grape',
+  accepted: 'blue',
+  received: 'green',
+  consumed: 'yellow',
+  failed: 'red',
+};
+
+export function getMessageStatusColor(status: string) {
+  return messageStatusToColor[status] ?? 'gray';
+}
