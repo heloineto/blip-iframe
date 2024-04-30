@@ -51,7 +51,7 @@ export async function getNotifications(
     {
       command: {
         method: 'get',
-        uri: uri,
+        uri,
       },
     },
     sender

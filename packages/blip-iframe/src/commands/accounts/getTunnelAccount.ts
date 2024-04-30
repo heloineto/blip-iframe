@@ -20,7 +20,7 @@ export async function getTunnelAccount(
       command: {
         method: 'get',
         to: TO_TUNNEL_URL,
-        uri: uri,
+        uri,
       },
     },
     sender

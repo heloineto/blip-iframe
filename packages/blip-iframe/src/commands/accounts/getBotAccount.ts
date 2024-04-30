@@ -19,7 +19,7 @@ export async function getBotAccount(
     {
       command: {
         method: 'get',
-        uri: uri,
+        uri,
       },
     },
     sender

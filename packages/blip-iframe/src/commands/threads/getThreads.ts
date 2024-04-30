@@ -57,7 +57,7 @@ export async function getThreads(
     {
       command: {
         method: 'get',
-        uri: uri,
+        uri,
       },
     },
     sender
@@ -100,6 +100,7 @@ export interface GetThreadsMetadata {
   '#messageKind'?: string;
   $elapsedTimeToStorage: string;
   '#messageEmitter'?: string;
+  [k: string]: unknown;
 }
 
 export interface GetThreadsContent {

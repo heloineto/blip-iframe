@@ -21,7 +21,7 @@ export async function setBotAccount(
       command: {
         method: 'set',
         type: 'application/vnd.lime.account+json',
-        uri: uri,
+        uri,
         resource: account,
       },
     },
