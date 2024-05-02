@@ -50,10 +50,6 @@ export function ResponseViewer({ section, blipFunction }: Props) {
     );
   }
 
-  // if(query.data.success === false) {
-  //   query.data.error =
-  // }
-
   return (
     <div className="m-md flex grow">
       <div className="flex h-fit max-h-full w-2/3 shrink-0 grow-0 overflow-hidden rounded-sm">
