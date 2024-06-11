@@ -22,6 +22,10 @@ export const commands: BlipFunction[] = [
     },
   },
   {
+    value: 'getTenantUsers',
+    fn: () => blip.getTenantUsers({ tenantId: 'csgrowth' }),
+  },
+  {
     value: 'getPlans',
     fn: () => blip.getPlans(),
   },
