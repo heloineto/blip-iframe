@@ -1,4 +1,5 @@
 export * from './accounts';
+export * from './agents';
 export * from './applications';
 export * from './attendants';
 export * from './contacts';
