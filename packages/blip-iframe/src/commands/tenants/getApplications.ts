@@ -9,13 +9,13 @@ export interface GetApplicationsParams {
    */
   tenantId: string;
   /**
-   * There are two API endpoints to get applications: `tenants/<tenantId>/applications`
+   * There are two API end points to get applications: `tenants/<tenantId>/applications`
    * and `applications?tenantId=<tenantId>`. This parameter is used to specify which
    * endpoint should be used. If `all` is passed, it will try all endpoints consecutively.
    *
    * @default 'all'
    */
-  method: 'searchParams' | 'slug' | 'all';
+  method?: 'searchParams' | 'slug' | 'all';
 }
 
 export async function getApplications(
