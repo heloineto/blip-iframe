@@ -1,5 +1,6 @@
 export * from './accounts';
 export * from './agents';
+export * from './analytics';
 export * from './applications';
 export * from './attendants';
 export * from './contacts';

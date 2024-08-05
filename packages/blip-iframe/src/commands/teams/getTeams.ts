@@ -12,7 +12,7 @@ export interface GetTeamsParams extends ListParams, BuildParams {}
 /**
  * Gets the teams (as in the queues of teams shown by Blip Desk)
  * @param params - The parameters for the function
- * @param sender Override the function that sends the command. By default it uses IframeMessageProxy
+ * @param sender - The function that sends the command. By default it uses IframeMessageProxy
  * @returns
  */
 export async function getTeams(
