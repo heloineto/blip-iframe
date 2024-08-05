@@ -14,7 +14,7 @@ export interface GetTeamsAndAgentsOnlineParams
 /**
  *
  * @param params - The parameters for the function
- * @param sender Override the function that sends the command. By default it uses IframeMessageProxy
+ * @param sender - The function that sends the command. By default it uses IframeMessageProxy
  * @returns
  */
 export async function getTeamsAndAgentsOnline(
