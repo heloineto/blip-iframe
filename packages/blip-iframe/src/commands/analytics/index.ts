@@ -1,1 +1,3 @@
-export * from './getTicketReports';
+export * from './getTicketsReports';
+export * from './getTimingsReports';
+

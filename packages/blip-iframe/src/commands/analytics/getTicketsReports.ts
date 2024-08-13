@@ -7,19 +7,19 @@ import {
   TO_DESK_URL,
 } from '../../lib';
 
-export interface GetTicketReportsParams extends ListParams, BuildParams {
+export interface GetTicketsReportsParams extends ListParams, BuildParams {
   version?: number;
   beginDate: string;
   endDate: string;
-  operators?: string;
+  operators?: string | string[];
 }
 
 /**
  * Get metrics about tickets, separated by date
- * @param params The parameters for the function
+ * @param params - The parameters for the function
  * @param sender - The function that sends the command. By default it uses IframeMessageProxy
  */
-export async function getTicketReports(
+export async function getTicketsReports(
   {
     take,
     skip,
@@ -29,7 +29,7 @@ export async function getTicketReports(
     endDate,
     operators,
     ...buildPrams
-  }: GetTicketReportsParams,
+  }: GetTicketsReportsParams,
   sender?: Sender
 ) {
   const uri = buildURI({
@@ -41,12 +41,12 @@ export async function getTicketReports(
       version,
       beginDate,
       endDate,
-      operators,
+      operators: Array.isArray(operators) ? operators.join(',') : operators,
     },
     ...buildPrams,
   });
 
-  return await sendCommand<GetTicketReportsResponse>(
+  return await sendCommand<GetTicketsReportsResponse>(
     {
       command: {
         method: 'get',
@@ -58,13 +58,13 @@ export async function getTicketReports(
   );
 }
 
-export interface GetTicketReportsResponse {
+export interface GetTicketsReportsResponse {
   total?: number;
   itemType: string;
-  items: GetTicketReportsItem[];
+  items: GetTicketsReportsItem[];
 }
 
-export interface GetTicketReportsItem {
+export interface GetTicketsReportsItem {
   date: string;
   waiting: number;
   open: number;

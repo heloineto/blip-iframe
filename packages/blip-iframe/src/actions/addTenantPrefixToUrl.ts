@@ -16,7 +16,7 @@ export interface AddTenantPrefixToUrlParams {
  * If no tenant id is provided, the current tenant id will be used.
  *
  * Example: https://example.com -> https://tenant-id.example.com
- * @param params The parameters for the function
+ * @param params - The parameters for the function
  * @returns A url string with the tenant id prefix
  */
 export function addTenantPrefixToUrl(
